@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-slate-100 transition-colors duration-300 antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand', 'Inter', sans-serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .badge-tag {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-light text-primary-hover dark:bg-primary/15 dark:text-primary text-xs font-bold uppercase tracking-wider border border-primary/20;
+  }
+
+  .btn-primary-tw {
+    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-primary hover:bg-primary-hover text-slate-950 font-extrabold text-sm rounded-xl shadow-primary hover:shadow-primary-hover hover:-translate-y-0.5 transition-all duration-300 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary-tw {
+    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-secondary hover:bg-secondary-hover text-white font-bold text-sm rounded-xl shadow-md hover:-translate-y-0.5 transition-all duration-300 active:translate-y-0;
+  }
+
+  .btn-outline-tw {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent text-slate-800 dark:text-slate-200 border-2 border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary dark:hover:text-primary font-semibold text-sm rounded-xl transition-all duration-300;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 20s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
