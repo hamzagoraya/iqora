@@ -25,7 +25,7 @@ export default function CompanyStory({ onOpenQuote }) {
   ];
 
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-16 lg:py-24" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Top Story Block */}
@@ -65,7 +65,7 @@ export default function CompanyStory({ onOpenQuote }) {
         </div>
 
         {/* 3 Feature Preview Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4" data-reveal-stagger>
           {cards.map((card) => (
             <div 
               key={card.id}

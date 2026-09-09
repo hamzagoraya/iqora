@@ -19,7 +19,7 @@ export default function EstimateCallout({ onOpenQuote }) {
   };
 
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-16 lg:py-24" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative bg-secondary rounded-3xl overflow-hidden shadow-2xl p-8 sm:p-12 lg:p-16 text-white border border-slate-800">
           

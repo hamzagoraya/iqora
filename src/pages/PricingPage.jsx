@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, CheckCircle2, Info } from 'lucide-react';
 import PageHero from '../components/shared/PageHero';
 import CTABand from '../components/shared/CTABand';
-import { SERVICES, SPECIALTY_SERVICES } from '../data/siteData';
+import { SERVICES, SPECIALTY_SERVICES, getServicePath, getSpecialtyPath } from '../data/siteData';
 
 export default function PricingPage({ onNavigate, onOpenQuote }) {
   return (
@@ -16,7 +16,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
       />
 
       {/* Main services pricing */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Main Services</div>
@@ -55,7 +55,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
                   </ul>
                   <div className="p-6 pt-4">
                     <button
-                      onClick={() => onNavigate(`service/${s.id}`)}
+                      onClick={() => onNavigate(getServicePath(s.id))}
                       className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:gap-3 transition-all"
                     >
                       Full service details
@@ -70,7 +70,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
       </section>
 
       {/* Specialty pricing */}
-      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface">
+      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Specialty Services</div>
@@ -85,7 +85,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
               return (
                 <button
                   key={s.id}
-                  onClick={() => onNavigate(`specialty/${s.id}`)}
+                  onClick={() => onNavigate(getSpecialtyPath(s.id))}
                   className="text-left bg-slate-50 dark:bg-dark-card rounded-2xl p-6 border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-card hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3 mb-4">
@@ -114,7 +114,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
       </section>
 
       {/* What affects price */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="badge-tag mb-4">Good to Know</div>

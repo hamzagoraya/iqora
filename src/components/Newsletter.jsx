@@ -14,7 +14,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="py-12 lg:py-16">
+    <section className="py-12 lg:py-16" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-br from-secondary via-slate-900 to-slate-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center border border-slate-800">
           <div className="space-y-2">

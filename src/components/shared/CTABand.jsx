@@ -4,7 +4,7 @@ import { BRAND } from '../../data/siteData';
 
 export default function CTABand({ onOpenQuote, title, text }) {
   return (
-    <section className="py-16 lg:py-20 bg-secondary relative overflow-hidden">
+    <section className="py-16 lg:py-20 bg-secondary relative overflow-hidden" data-reveal>
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1920&auto=format&fit=crop')] bg-center bg-cover opacity-10 pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -15,7 +15,7 @@ export default function BlogSection({ onNavigate }) {
   }));
 
   return (
-    <section className="py-16 lg:py-24 bg-slate-50 dark:bg-dark-bg/60">
+    <section className="py-16 lg:py-24 bg-slate-50 dark:bg-dark-bg/60" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -28,7 +28,7 @@ export default function BlogSection({ onNavigate }) {
           </div>
 
           <button 
-            onClick={() => onNavigate && onNavigate('blog')}
+            onClick={() => onNavigate && onNavigate('/blog')}
             className="btn-primary-tw self-start md:self-auto shrink-0"
           >
             <span>View All Posts</span>
@@ -37,11 +37,11 @@ export default function BlogSection({ onNavigate }) {
         </div>
 
         {/* Blog Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8" data-reveal-stagger>
           {posts.map((post) => (
             <button
               key={post.id}
-              onClick={() => onNavigate && onNavigate(`blog/${post.slug}`)}
+              onClick={() => onNavigate && onNavigate(`/blog/${post.slug}`)}
               className="text-left bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between"
             >
               <div className="relative h-60 overflow-hidden">

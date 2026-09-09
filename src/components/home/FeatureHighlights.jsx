@@ -1,11 +1,12 @@
 import React from 'react';
 import { ArrowUpRight, Award, Sparkles, ShieldCheck } from 'lucide-react';
+import { STATS } from '../../data/siteData';
 
 export default function FeatureHighlights({ onOpenQuote }) {
   return (
-    <section className="relative z-20 -mt-10 lg:-mt-16 pb-16">
+    <section className="relative z-20 -mt-10 lg:-mt-16 pb-16" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6" data-reveal-stagger>
           
           {/* Card 1: Top Image Feature Banner */}
           <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300">
@@ -42,7 +43,7 @@ export default function FeatureHighlights({ onOpenQuote }) {
             </button>
           </div>
 
-          {/* Card 2: Main Yellow Highlight Box (925+) */}
+          {/* Card 2: Main Yellow Highlight Box */}
           <div className="bg-primary text-slate-950 rounded-3xl p-8 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
             <div className="absolute -right-8 -bottom-8 opacity-15 text-slate-950 pointer-events-none">
               <Award size={180} />
@@ -55,7 +56,7 @@ export default function FeatureHighlights({ onOpenQuote }) {
               </div>
 
               <div className="flex items-baseline gap-1">
-                <span className="text-6xl sm:text-7xl font-heading font-extrabold tracking-tight">925</span>
+                <span className="text-6xl sm:text-7xl font-heading font-extrabold tracking-tight">{STATS.projectsCompleted.replace('+', '')}</span>
                 <span className="text-4xl font-extrabold">+</span>
               </div>
 

@@ -17,12 +17,17 @@ import PortfolioPage from './pages/PortfolioPage';
 import FAQPage from './pages/FAQPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
+import useRevealAnimations from './hooks/useRevealAnimations';
 
 import {
   getService,
   getSpecialty,
   getCity,
   getBlogPost,
+  getServicePath,
+  getServiceCityPath,
+  getSpecialtyPath,
+  MAIN_PAGE_ROUTES,
 } from './data/siteData';
 
 export default function App() {
@@ -56,6 +61,8 @@ export default function App() {
   };
 
   const [currentPage, setCurrentPage] = useState(getCurrentPath());
+
+  useRevealAnimations(currentPage);
 
   /* =========================================================
      THEME EFFECT
@@ -108,21 +115,70 @@ export default function App() {
      NAVIGATION
   ========================================================= */
 
+  const normalizeRoute = (path) => {
+    if (!path) return path;
+
+    let normalized = String(path).trim();
+
+    if (normalized in MAIN_PAGE_ROUTES) {
+      return MAIN_PAGE_ROUTES[normalized];
+    }
+
+    if (normalized.startsWith('/')) {
+      // leave it as-is; preserve exact SEO URLs
+    } else if (normalized === 'home') {
+      normalized = '/';
+    } else if (normalized === 'about') {
+      normalized = '/about-us';
+    } else if (normalized === 'services') {
+      normalized = '/cleaning-services';
+    } else if (normalized === 'areas') {
+      normalized = '/areas-we-serve';
+    } else if (normalized === 'pricing') {
+      normalized = '/cleaning-services-pricing';
+    } else if (normalized === 'reviews') {
+      normalized = '/our-reviews';
+    } else if (normalized === 'portfolio') {
+      normalized = '/portfolio';
+    } else if (normalized === 'faq') {
+      normalized = '/faq';
+    } else if (normalized === 'contact') {
+      normalized = '/contact-us';
+    } else if (normalized === 'blog') {
+      normalized = '/blog';
+    } else {
+      normalized = `/${normalized}`;
+    }
+
+    if (normalized.startsWith('/service/')) {
+      const servicePart = normalized.replace('/service/', '');
+      const [serviceId, citySlug] = servicePart.split('/');
+      if (citySlug) {
+        return getServiceCityPath(serviceId, citySlug);
+      }
+      return getServicePath(serviceId);
+    }
+
+    if (normalized.startsWith('/specialty/')) {
+      const specialtyId = normalized.replace('/specialty/', '');
+      return getSpecialtyPath(specialtyId);
+    }
+
+    if (normalized !== '/' && normalized.endsWith('/')) {
+      normalized = normalized.slice(0, -1);
+    }
+
+    return normalized;
+  };
+
   const handleNavigate = (path) => {
     if (!path) return;
 
-    // Make sure path starts with /
-    if (!path.startsWith('/')) {
-      path = `/${path}`;
-    }
+    const normalizedPath = normalizeRoute(path);
 
-    // Remove trailing slash except homepage
-    if (path !== '/' && path.endsWith('/')) {
-      path = path.slice(0, -1);
-    }
+    if (!normalizedPath) return;
 
-    // Don't push the same URL again
-    if (path === currentPage) {
+    if (normalizedPath === currentPage) {
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
@@ -131,9 +187,9 @@ export default function App() {
       return;
     }
 
-    window.history.pushState({}, '', path);
+    window.history.pushState({}, '', normalizedPath);
 
-    setCurrentPage(path);
+    setCurrentPage(normalizedPath);
 
     window.scrollTo({
       top: 0,

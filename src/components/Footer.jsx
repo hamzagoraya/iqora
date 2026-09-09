@@ -1,6 +1,14 @@
 import React from 'react';
 import { Phone, Mail, MapPin, ArrowUp, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-import { BRAND, SERVICES, SPECIALTY_SERVICES, CITIES } from '../data/siteData';
+import {
+  BRAND,
+  SERVICES,
+  SPECIALTY_SERVICES,
+  CITIES,
+  getServicePath,
+  getServiceCityPath,
+  getSpecialtyPath,
+} from '../data/siteData';
 
 export default function Footer({ onNavigate }) {
   const scrollToTop = () => {
@@ -10,7 +18,7 @@ export default function Footer({ onNavigate }) {
   const go = (page) => () => onNavigate && onNavigate(page);
 
   return (
-    <footer className="bg-[#0b0f17] text-slate-400 text-sm">
+    <footer className="bg-[#0b0f17] text-slate-400 text-sm" data-reveal>
       <div className="py-16 lg:py-20 border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -42,20 +50,20 @@ export default function Footer({ onNavigate }) {
               <ul className="space-y-2.5 text-xs sm:text-sm">
                 {SERVICES.map((s) => (
                   <li key={s.id}>
-                    <button onClick={() => onNavigate(`service/${s.id}`)} className="hover:text-primary transition-colors text-left">
+                    <button onClick={() => onNavigate(getServicePath(s.id))} className="hover:text-primary transition-colors text-left">
                       {s.name}
                     </button>
                   </li>
                 ))}
                 {SPECIALTY_SERVICES.map((s) => (
                   <li key={s.id}>
-                    <button onClick={() => onNavigate(`specialty/${s.id}`)} className="hover:text-primary transition-colors text-left">
+                    <button onClick={() => onNavigate(getSpecialtyPath(s.id))} className="hover:text-primary transition-colors text-left">
                       {s.name}
                     </button>
                   </li>
                 ))}
                 <li>
-                  <button onClick={go('services')} className="text-primary font-semibold hover:text-primary-hover transition-colors">
+                  <button onClick={go('/cleaning-services')} className="text-primary font-semibold hover:text-primary-hover transition-colors">
                     View All Services
                   </button>
                 </li>
@@ -68,13 +76,13 @@ export default function Footer({ onNavigate }) {
               <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs sm:text-sm">
                 {CITIES.map((c) => (
                   <li key={c.slug}>
-                    <button onClick={() => onNavigate(`service/carpet-cleaning/${c.slug}`)} className="hover:text-primary transition-colors text-left">
+                    <button onClick={() => onNavigate(getServiceCityPath('carpet-cleaning', c.slug))} className="hover:text-primary transition-colors text-left">
                       {c.name}
                     </button>
                   </li>
                 ))}
               </ul>
-              <button onClick={go('areas')} className="text-primary font-semibold hover:text-primary-hover transition-colors text-xs sm:text-sm">
+              <button onClick={go('/areas-we-serve')} className="text-primary font-semibold hover:text-primary-hover transition-colors text-xs sm:text-sm">
                 View All Areas
               </button>
             </div>
@@ -116,13 +124,13 @@ export default function Footer({ onNavigate }) {
       <div className="py-5 border-b border-slate-800/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs">
           <button onClick={go('home')} className="hover:text-primary transition-colors">Home</button>
-          <button onClick={go('about')} className="hover:text-primary transition-colors">About Us</button>
-          <button onClick={go('pricing')} className="hover:text-primary transition-colors">Pricing</button>
-          <button onClick={go('reviews')} className="hover:text-primary transition-colors">Reviews</button>
-          <button onClick={go('portfolio')} className="hover:text-primary transition-colors">Portfolio</button>
-          <button onClick={go('faq')} className="hover:text-primary transition-colors">FAQ</button>
-          <button onClick={go('blog')} className="hover:text-primary transition-colors">Blog</button>
-          <button onClick={go('contact')} className="hover:text-primary transition-colors">Contact Us</button>
+          <button onClick={go('/about-us')} className="hover:text-primary transition-colors">About Us</button>
+          <button onClick={go('/cleaning-services-pricing')} className="hover:text-primary transition-colors">Pricing</button>
+          <button onClick={go('/our-reviews')} className="hover:text-primary transition-colors">Reviews</button>
+          <button onClick={go('/portfolio')} className="hover:text-primary transition-colors">Portfolio</button>
+          <button onClick={go('/faq')} className="hover:text-primary transition-colors">FAQ</button>
+          <button onClick={go('/blog')} className="hover:text-primary transition-colors">Blog</button>
+          <button onClick={go('/contact-us')} className="hover:text-primary transition-colors">Contact Us</button>
         </div>
       </div>
 
@@ -143,7 +151,6 @@ export default function Footer({ onNavigate }) {
           </button>
         </div>
       </div>
-      /* Back to Top Button (fixed) */
     </footer>
   );
 }

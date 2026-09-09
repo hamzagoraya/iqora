@@ -18,7 +18,7 @@ export default function BlogPostPage({ post, onNavigate, onOpenQuote }) {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-900/85 to-slate-950/95"></div>
 
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 hero-content-stagger">
           <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300 font-semibold mb-5">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/30">
               <Tag size={13} />
@@ -44,7 +44,7 @@ export default function BlogPostPage({ post, onNavigate, onOpenQuote }) {
       </section>
 
       {/* Article body */}
-      <article className="py-16 lg:py-20 bg-white dark:bg-dark-surface">
+      <article className="py-16 lg:py-20 bg-white dark:bg-dark-surface" data-reveal>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed border-l-4 border-primary pl-5 mb-10">
             {post.excerpt}
@@ -136,7 +136,7 @@ export default function BlogPostPage({ post, onNavigate, onOpenQuote }) {
           {/* Back to blog */}
           <div className="mt-10 text-center">
             <button
-              onClick={() => onNavigate('blog')}
+              onClick={() => onNavigate('/blog')}
               className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:gap-3 transition-all"
             >
               ← Back to all articles
