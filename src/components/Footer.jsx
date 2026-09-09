@@ -143,6 +143,7 @@ export default function Footer({ onNavigate }) {
           </button>
         </div>
       </div>
+      /* Back to Top Button (fixed) */
     </footer>
   );
 }
