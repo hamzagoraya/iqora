@@ -16,7 +16,7 @@ export default function BlogPage({ onNavigate, onOpenQuote }) {
       />
 
       {/* Posts grid */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {BLOG_POSTS.length === 0 && (
             <p className="text-center text-slate-500 dark:text-slate-400 text-sm">
@@ -28,7 +28,7 @@ export default function BlogPage({ onNavigate, onOpenQuote }) {
             {BLOG_POSTS.map((post) => (
               <button
                 key={post.slug}
-                onClick={() => onNavigate(`blog/${post.slug}`)}
+                onClick={() => onNavigate(`/blog/${post.slug}`)}
                 className="group text-left bg-white dark:bg-dark-card rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-card hover:-translate-y-1.5 transition-all duration-300 flex flex-col"
               >
                 <div className="relative h-52 overflow-hidden">

@@ -1,9 +1,10 @@
 import React from 'react';
 import { ShieldCheck, CheckCircle2, Award } from 'lucide-react';
+import { STATS } from '../../data/siteData';
 
 export default function AboutSection({ onOpenQuote }) {
   return (
-    <section id="about" className="py-16 lg:py-24 bg-white dark:bg-dark-surface/40">
+    <section id="about" className="py-16 lg:py-24 bg-white dark:bg-dark-surface/40" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
@@ -46,7 +47,7 @@ export default function AboutSection({ onOpenQuote }) {
             <div className="grid grid-cols-2 gap-6 pt-2">
               <div className="flex items-center gap-4 bg-slate-50 dark:bg-dark-bg p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div className="w-16 h-16 rounded-full border-4 border-primary flex items-center justify-center font-heading font-extrabold text-xl text-slate-900 dark:text-white shrink-0">
-                  97%
+                  {STATS.customerSatisfaction}
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white">Satisfaction</h4>

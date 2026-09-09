@@ -16,7 +16,7 @@ export default function PortfolioPage({ onNavigate, onOpenQuote }) {
       />
 
       {/* Projects grid */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {PORTFOLIO.map((item, i) => (
@@ -55,7 +55,7 @@ export default function PortfolioPage({ onNavigate, onOpenQuote }) {
       </section>
 
       {/* CTA strip */}
-      <section className="py-14 bg-white dark:bg-dark-surface border-y border-slate-100 dark:border-slate-800">
+      <section className="py-14 bg-white dark:bg-dark-surface border-y border-slate-100 dark:border-slate-800" data-reveal>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white mb-3">
             Your home could be next
@@ -68,7 +68,7 @@ export default function PortfolioPage({ onNavigate, onOpenQuote }) {
               <span>Start My Project</span>
               <ArrowRight size={16} />
             </button>
-            <button onClick={() => onNavigate('reviews')} className="btn-outline-tw w-full sm:w-auto">
+            <button onClick={() => onNavigate('/our-reviews')} className="btn-outline-tw w-full sm:w-auto">
               <span>Read Customer Reviews</span>
             </button>
           </div>

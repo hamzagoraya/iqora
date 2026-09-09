@@ -33,7 +33,7 @@ export default function LocationMap() {
   const [activeLoc, setActiveLoc] = useState(locations[0]);
 
   return (
-    <section id="location" className="py-16 lg:py-24 bg-slate-100 dark:bg-dark-surface/50">
+    <section id="location" className="py-16 lg:py-24 bg-slate-100 dark:bg-dark-surface/50" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
           <div className="badge-tag mx-auto">Our Service Area</div>

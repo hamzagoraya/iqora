@@ -1,10 +1,10 @@
 import React from 'react';
 import { Check, Sparkles, ArrowRight } from 'lucide-react';
-import { SERVICES } from '../../data/siteData';
+import { SERVICES, getServicePath } from '../../data/siteData';
 
 export default function PricingPlans({ onOpenQuote, onNavigate }) {
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-16 lg:py-24" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -19,7 +19,7 @@ export default function PricingPlans({ onOpenQuote, onNavigate }) {
         </div>
 
         {/* 3 Service Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch" data-reveal-stagger>
           {SERVICES.map((service, idx) => {
             const featured = idx === 0;
             return (
@@ -79,7 +79,7 @@ export default function PricingPlans({ onOpenQuote, onNavigate }) {
                   </button>
 
                   <button
-                    onClick={() => onNavigate && onNavigate(`service/${service.id}`)}
+                    onClick={() => onNavigate && onNavigate(getServicePath(service.id))}
                     className={`w-full justify-center text-xs font-extrabold py-2 transition-colors ${
                       featured ? 'text-primary hover:text-primary-hover' : 'text-primary hover:text-primary-hover'
                     }`}
@@ -94,7 +94,7 @@ export default function PricingPlans({ onOpenQuote, onNavigate }) {
 
         <div className="text-center mt-10">
           <button
-            onClick={() => onNavigate && onNavigate('pricing')}
+            onClick={() => onNavigate && onNavigate('/cleaning-services-pricing')}
             className="inline-flex items-center gap-2 text-sm font-extrabold text-primary hover:text-primary-hover transition-colors"
           >
             <span>Compare all services & specialty pricing</span>

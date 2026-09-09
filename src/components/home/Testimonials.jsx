@@ -13,7 +13,7 @@ export default function Testimonials({ onNavigate }) {
   }));
 
   return (
-    <section className="py-16 lg:py-24 bg-slate-50 dark:bg-dark-bg">
+    <section className="py-16 lg:py-24 bg-slate-50 dark:bg-dark-bg" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -26,7 +26,7 @@ export default function Testimonials({ onNavigate }) {
           </div>
 
           <button 
-            onClick={() => onNavigate && onNavigate('reviews')} 
+            onClick={() => onNavigate && onNavigate('/our-reviews')} 
             className="btn-secondary-tw self-start md:self-auto shrink-0"
           >
             <span>Read All Reviews</span>
@@ -35,7 +35,7 @@ export default function Testimonials({ onNavigate }) {
         </div>
 
         {/* 2 Testimonial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8" data-reveal-stagger>
           {reviews.map((rev) => (
             <div 
               key={rev.id}

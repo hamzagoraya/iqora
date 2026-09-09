@@ -49,7 +49,7 @@ export default function ContactSection({ onOpenQuote }) {
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-24">
+    <section id="contact" className="py-16 lg:py-24" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           

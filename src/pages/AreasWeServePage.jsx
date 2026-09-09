@@ -27,7 +27,7 @@ export default function AreasWeServePage({ onNavigate, onOpenQuote }) {
       />
 
       {/* City Cards */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -127,7 +127,7 @@ export default function AreasWeServePage({ onNavigate, onOpenQuote }) {
       </section>
 
       {/* Not Listed */}
-      <section className="py-14 bg-white dark:bg-dark-surface border-y border-slate-100 dark:border-slate-800">
+      <section className="py-14 bg-white dark:bg-dark-surface border-y border-slate-100 dark:border-slate-800" data-reveal>
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 

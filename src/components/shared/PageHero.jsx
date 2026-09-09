@@ -11,7 +11,7 @@ export default function PageHero({ badge, title, subtitle, image, onNavigate, cr
     >
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/85 to-slate-950/95 pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-content-stagger">
         <div className="flex flex-col items-center">
           <div className="badge-tag mb-4 bg-primary/20 text-primary border-primary/30">
             <Sparkles size={14} />
@@ -30,7 +30,7 @@ export default function PageHero({ badge, title, subtitle, image, onNavigate, cr
 
           <div className="flex flex-wrap items-center justify-center space-x-2 text-sm text-slate-300">
             <button
-              onClick={() => onNavigate && onNavigate('home')}
+              onClick={() => onNavigate && onNavigate('/')}
               className="flex items-center gap-1.5 hover:text-primary transition-colors"
             >
               <Home size={15} />

@@ -18,7 +18,10 @@ export default function FaqAccordion({ faqs = [], dark = false }) {
             }`}
           >
             <button
+              type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
+              aria-expanded={isOpen}
+              aria-controls={`faq-answer-${i}`}
               className="w-full flex items-center justify-between gap-4 text-left px-5 py-4"
             >
               <span className="flex items-center gap-3 font-bold text-sm sm:text-base text-slate-900 dark:text-white">
@@ -31,6 +34,8 @@ export default function FaqAccordion({ faqs = [], dark = false }) {
               />
             </button>
             <div
+              id={`faq-answer-${i}`}
+              aria-hidden={!isOpen}
               className={`grid transition-all duration-300 ease-in-out ${
                 isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
               }`}

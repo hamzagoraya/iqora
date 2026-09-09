@@ -14,10 +14,11 @@ export default function AboutPage({ theme, onOpenQuote, onNavigate }) {
   return (
     <div className="aboutpage-wrapper">
       <AboutHero onNavigate={onNavigate} />
+       <TeamShowcase />
       <CompanyStory onOpenQuote={onOpenQuote} />
       <MarqueeBanner />
       <CleaningProcess onOpenQuote={onOpenQuote} />
-      <TeamShowcase />
+     
       <AboutStats />
       <TeamBanner />
       <Testimonials onNavigate={onNavigate} />

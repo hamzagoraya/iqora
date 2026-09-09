@@ -419,21 +419,13 @@ export default function Header({
           >
 
             <img
-              src={
-                theme === 'dark'
-                  ? '/assets/logo-white.svg'
-                  : '/assets/logo.svg'
-              }
+              src="/assets/iqora%20logo.png"
               alt="IQORA Cleaning Services"
               className="h-9 w-auto"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}
             />
-
-            <span className="font-heading font-extrabold text-2xl tracking-tight text-slate-900 dark:text-white">
-              IQORA
-            </span>
 
           </button>
 
@@ -978,7 +970,7 @@ export default function Header({
 
       {mobileMenuOpen && (
 
-        <div className="xl:hidden bg-white dark:bg-dark-surface border-b border-slate-200 dark:border-slate-800 px-4 py-6 shadow-xl space-y-4 max-h-[80vh] overflow-y-auto">
+        <div className="xl:hidden bg-white dark:bg-dark-surface border-b border-slate-200 dark:border-slate-800 px-4 py-6 shadow-xl space-y-4 max-h-[80vh] overflow-y-auto animate-slide-down">
 
           <nav className="flex flex-col space-y-1 font-semibold text-slate-800 dark:text-slate-200">
 
@@ -1019,6 +1011,7 @@ export default function Header({
                   )
                 }
                 className="w-full flex items-center justify-between py-2 hover:text-primary"
+                aria-expanded={mobileSection === 'services'}
               >
 
                 <span>
@@ -1043,7 +1036,7 @@ export default function Header({
 
               {mobileSection === 'services' && (
 
-                <div className="pl-4 border-l-2 border-primary/30 space-y-1.5 py-1">
+                <div className="pl-4 border-l-2 border-primary/30 space-y-1.5 py-1 animate-fade-in">
 
                   {/* Main Services */}
 
@@ -1157,6 +1150,7 @@ export default function Header({
                   )
                 }
                 className="w-full flex items-center justify-between py-2 hover:text-primary"
+                aria-expanded={mobileSection === 'areas'}
               >
 
                 <span>
