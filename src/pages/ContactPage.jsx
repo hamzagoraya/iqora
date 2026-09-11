@@ -10,11 +10,13 @@ export default function ContactPage({ theme, onOpenQuote }) {
   return (
     <div className="contactpage-wrapper">
       <Hero />
-      <ContactCards />
-      <ContactSection onOpenQuote={onOpenQuote} />
-      <LocationMap />
-      <ClientLogos theme={theme} />
-      <Newsletter />
+      <div className="relative z-10 bg-white">
+        <ContactCards />
+        <ContactSection onOpenQuote={onOpenQuote} />
+        <LocationMap />
+        <ClientLogos theme={theme} />
+        <Newsletter />
+      </div>
     </div>
   );
 }
