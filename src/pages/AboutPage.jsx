@@ -14,16 +14,17 @@ export default function AboutPage({ theme, onOpenQuote, onNavigate }) {
   return (
     <div className="aboutpage-wrapper">
       <AboutHero onNavigate={onNavigate} />
-       <TeamShowcase />
-      <CompanyStory onOpenQuote={onOpenQuote} />
-      <MarqueeBanner />
-      <CleaningProcess onOpenQuote={onOpenQuote} />
-     
-      <AboutStats />
-      <TeamBanner />
-      <Testimonials onNavigate={onNavigate} />
-      <ClientLogos theme={theme} />
-      <Newsletter />
+      <div className="relative z-10 bg-white">
+        <TeamShowcase />
+        <CompanyStory onOpenQuote={onOpenQuote} />
+        <MarqueeBanner />
+        <CleaningProcess onOpenQuote={onOpenQuote} />
+        <AboutStats />
+        <TeamBanner />
+        <Testimonials onNavigate={onNavigate} />
+        <ClientLogos theme={theme} />
+        <Newsletter />
+      </div>
     </div>
   );
 }
