@@ -24,7 +24,7 @@ export default function TeamShowcase() {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-slate-50 dark:bg-dark-bg/60">
+    <section className="py-16 lg:py-24 bg-slate-50 dark:bg-dark-bg/60" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -38,7 +38,7 @@ export default function TeamShowcase() {
         </div>
 
         {/* Team Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8" data-reveal-stagger>
           {team.map((member) => (
             <div 
               key={member.id}

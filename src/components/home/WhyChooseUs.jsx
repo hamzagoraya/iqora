@@ -30,7 +30,7 @@ export default function WhyChooseUs({ onOpenQuote }) {
   ];
 
   return (
-    <section id="why-choose-us" className="py-16 lg:py-24">
+    <section id="why-choose-us" className="py-16 lg:py-24" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
@@ -42,7 +42,7 @@ export default function WhyChooseUs({ onOpenQuote }) {
         </div>
 
         {/* 4 Feature Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-reveal-stagger>
           {fields.map((field) => (
             <div 
               key={field.id}

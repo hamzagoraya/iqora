@@ -3,7 +3,7 @@ import { ShieldCheck, Award } from 'lucide-react';
 
 export default function TeamBanner() {
   return (
-    <section className="py-12">
+    <section className="py-12" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[380px] sm:h-[460px] border border-slate-200 dark:border-slate-800 group">
           <img 

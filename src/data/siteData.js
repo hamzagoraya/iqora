@@ -22,6 +22,13 @@ export const BRAND = {
   footerBlurb: 'IQORA is a family-run cleaning company serving North Hollywood and the San Fernando Valley with expert carpet, upholstery, and tile & grout cleaning — eco-friendly products, honest pricing, and a satisfaction guarantee on every job.',
 };
 
+export const STATS = {
+  projectsCompleted: '990+',
+  squareFeetCleaned: '1.2M+',
+  customerSatisfaction: '98%',
+  hoursSpentCleaning: '18K+',
+};
+
 export const CITIES = [
   {
     slug: 'north-hollywood',
@@ -458,9 +465,63 @@ export const BLOG_POSTS = [
 
 export const ALL_SERVICES = [...SERVICES, ...SPECIALTY_SERVICES];
 
+export const MAIN_PAGE_ROUTES = {
+  home: '/',
+  about: '/about-us',
+  'cleaning-services': '/cleaning-services',
+  'areas-we-serve': '/areas-we-serve',
+  pricing: '/cleaning-services-pricing',
+  reviews: '/our-reviews',
+  portfolio: '/portfolio',
+  faq: '/faq',
+  contact: '/contact-us',
+  blog: '/blog',
+};
+
+export const SERVICE_ROUTE_PATHS = {
+  'carpet-cleaning': '/carpet-cleaning-services-in-north-hollywood',
+  'upholstery-cleaning': '/upholstery-cleaning-services-in-north-hollywood',
+  'tile-and-grout-cleaning': '/tile-and-grout-cleaning-services-in-north-hollywood',
+};
+
+export const SERVICE_CITY_ROUTE_PREFIXES = {
+  'carpet-cleaning': '/carpet-cleaning-services-in-',
+  'upholstery-cleaning': '/upholstery-cleaning-services-in-',
+  'tile-and-grout-cleaning': '/tile-and-grout-cleaning-services-in-',
+};
+
+export const SPECIALTY_ROUTE_PATHS = {
+  'area-rug-cleaning': '/area-rug-cleaning-services',
+  'mattress-cleaning': '/mattress-cleaning-services',
+  'leather-couch-cleaning': '/leather-couch-cleaning-services',
+  'scotchgard-protection': '/scotchgard-protection-services',
+  'curtain-cleaning': '/curtain-cleaning-services',
+};
+
+export const getMainPagePath = (pageKey) => MAIN_PAGE_ROUTES[pageKey] || '/';
+export const getServicePath = (serviceId) => SERVICE_ROUTE_PATHS[serviceId] || '/cleaning-services';
+export const getServiceCityPath = (serviceId, citySlug) => {
+  const prefix = SERVICE_CITY_ROUTE_PREFIXES[serviceId];
+  const city = getCity(citySlug) || getParentCity();
+
+  if (!prefix || !city) {
+    return getServicePath(serviceId);
+  }
+
+  return `${prefix}${city.slug}`;
+};
+export const getSpecialtyPath = (specialtyId) => SPECIALTY_ROUTE_PATHS[specialtyId] || '/cleaning-services';
+
 export const getService = (id) => SERVICES.find((s) => s.id === id);
 export const getSpecialty = (id) => SPECIALTY_SERVICES.find((s) => s.id === id);
 export const getCity = (slug) => CITIES.find((c) => c.slug === slug);
 export const getParentCity = () => CITIES.find((c) => c.isParent);
 export const getChildCities = () => CITIES.filter((c) => !c.isParent);
 export const getBlogPost = (slug) => BLOG_POSTS.find((p) => p.slug === slug);
+
+export const PRERENDER_ROUTES = [
+  ...Object.values(MAIN_PAGE_ROUTES),
+  ...SERVICES.flatMap((service) => CITIES.map((city) => getServiceCityPath(service.id, city.slug))),
+  ...Object.keys(SPECIALTY_ROUTE_PATHS).map((specialtyId) => getSpecialtyPath(specialtyId)),
+  ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
+];

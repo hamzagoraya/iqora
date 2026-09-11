@@ -24,7 +24,7 @@ export default function ReviewsPage({ onNavigate, onOpenQuote }) {
       />
 
       {/* Rating summary */}
-      <section className="py-14 bg-white dark:bg-dark-surface border-b border-slate-100 dark:border-slate-800">
+      <section className="py-14 bg-white dark:bg-dark-surface border-b border-slate-100 dark:border-slate-800" data-reveal>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-14">
             <div className="text-center">
@@ -35,7 +35,7 @@ export default function ReviewsPage({ onNavigate, onOpenQuote }) {
               </p>
             </div>
             <div className="hidden sm:block w-px h-24 bg-slate-200 dark:bg-slate-800"></div>
-            <div className="grid grid-cols-3 gap-6 text-center">
+            <div className="grid grid-cols-3 gap-6 text-center" data-reveal-stagger>
               <div>
                 <p className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white">{BRAND.reviewCount}+</p>
                 <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">Verified Reviews</p>
@@ -54,7 +54,7 @@ export default function ReviewsPage({ onNavigate, onOpenQuote }) {
       </section>
 
       {/* Review cards */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {REVIEWS.map((review, i) => (
@@ -88,7 +88,7 @@ export default function ReviewsPage({ onNavigate, onOpenQuote }) {
       </section>
 
       {/* CTA strip */}
-      <section className="py-14 bg-white dark:bg-dark-surface border-y border-slate-100 dark:border-slate-800">
+      <section className="py-14 bg-white dark:bg-dark-surface border-y border-slate-100 dark:border-slate-800" data-reveal>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white mb-3">
             Experience the service behind the stars

@@ -16,9 +16,30 @@ export default function QuoteModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  e.preventDefault();
+
+  // YOUR WHATSAPP NUMBER (testing)
+  const clientWhatsApp = '923010041264';
+
+  const selectedService = SERVICE_OPTIONS.find(
+    (service) => service.id === formData.service
+  );
+
+  const message = `🔔 New Cleaning Quote Request
+
+👤 Name: ${formData.name}
+📞 Phone: ${formData.phone}
+🧹 Service: ${selectedService?.name || formData.service}
+📅 Preferred Date: ${formData.date || 'Not specified'}
+
+Please contact the customer to confirm the quote.`;
+
+  const whatsappUrl = `https://wa.me/${clientWhatsApp}?text=${encodeURIComponent(message)}`;
+
+ window.location.href = whatsappUrl;
+
+  setSubmitted(true);
+};
 
   const handleClose = () => {
     setSubmitted(false);

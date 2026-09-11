@@ -1,10 +1,10 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { SERVICES } from '../../data/siteData';
+import { SERVICES, getServicePath } from '../../data/siteData';
 
 export default function ServiceShowcase({ onOpenQuote, onNavigate }) {
   return (
-    <section id="services" className="py-16 lg:py-24 bg-slate-50 dark:bg-dark-bg">
+    <section id="services" className="py-16 lg:py-24 bg-slate-50 dark:bg-dark-bg" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
@@ -17,7 +17,7 @@ export default function ServiceShowcase({ onOpenQuote, onNavigate }) {
           </div>
 
           <button
-            onClick={() => onNavigate('services')}
+            onClick={() => onNavigate('/cleaning-services')}
             className="btn-secondary-tw self-start md:self-auto shrink-0"
           >
             <span>View All Services</span>
@@ -26,7 +26,7 @@ export default function ServiceShowcase({ onOpenQuote, onNavigate }) {
         </div>
 
         {/* Service Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal-stagger>
           {SERVICES.map((service) => {
             const Icon = service.icon;
             return (
@@ -66,7 +66,7 @@ export default function ServiceShowcase({ onOpenQuote, onNavigate }) {
 
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3">
                     <button
-                      onClick={() => onNavigate(`service/${service.id}`)}
+                      onClick={() => onNavigate(getServicePath(service.id))}
                       className="inline-flex items-center gap-2 text-xs font-extrabold text-slate-900 dark:text-white hover:text-primary transition-colors"
                     >
                       <span>Explore Service</span>

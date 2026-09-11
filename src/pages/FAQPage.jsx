@@ -22,7 +22,7 @@ export default function FAQPage({ onNavigate, onOpenQuote }) {
       />
 
       {/* Filter + FAQs */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-2.5 mb-10">
             {groups.map((g) => (
@@ -57,7 +57,7 @@ export default function FAQPage({ onNavigate, onOpenQuote }) {
       </section>
 
       {/* Still have questions */}
-      <section className="py-14 bg-white dark:bg-dark-surface border-y border-slate-100 dark:border-slate-800">
+      <section className="py-14 bg-white dark:bg-dark-surface border-y border-slate-100 dark:border-slate-800" data-reveal>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white mb-3">
             Still have a question?
@@ -70,7 +70,7 @@ export default function FAQPage({ onNavigate, onOpenQuote }) {
               <Phone size={16} />
               <span>{BRAND.phone}</span>
             </a>
-            <button onClick={() => onNavigate('contact')} className="btn-outline-tw w-full sm:w-auto">
+            <button onClick={() => onNavigate('/contact-us')} className="btn-outline-tw w-full sm:w-auto">
               <span>Contact Us Online</span>
             </button>
           </div>

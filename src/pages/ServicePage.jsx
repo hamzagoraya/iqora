@@ -3,7 +3,7 @@ import { MapPin, ArrowRight, CheckCircle2, BadgeCheck, Sparkles } from 'lucide-r
 import PageHero from '../components/shared/PageHero';
 import CTABand from '../components/shared/CTABand';
 import FaqAccordion from '../components/shared/FaqAccordion';
-import { SERVICES, CITIES, getChildCities } from '../data/siteData';
+import { SERVICES, CITIES, getChildCities, getServicePath, getServiceCityPath } from '../data/siteData';
 
 const fill = (text, city) => (text ? text.replace(/\{city\}/g, city) : text);
 
@@ -15,11 +15,11 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
   const Icon = service.icon;
 
   const crumbs = [
-    { label: 'Cleaning Services', onClick: () => onNavigate('services') },
+    { label: 'Cleaning Services', onClick: () => onNavigate('/cleaning-services') },
     ...(isParent
       ? [{ label: `${service.name} — North Hollywood` }]
       : [
-          { label: `${service.name} — North Hollywood`, onClick: () => onNavigate(`service/${service.id}`) },
+          { label: `${service.name} — North Hollywood`, onClick: () => onNavigate(getServicePath(service.id)) },
           { label: city.name },
         ]),
   ];
@@ -51,7 +51,7 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
       </div>
 
       {/* Intro */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="badge-tag mb-5">
@@ -97,7 +97,7 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
       </section>
 
       {/* Benefits */}
-      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface">
+      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Why {city.name} Chooses Us</div>
@@ -123,7 +123,7 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
       </section>
 
       {/* Process */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Our Process</div>
@@ -146,7 +146,7 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
       </section>
 
       {/* Pricing */}
-      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface">
+      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="badge-tag mb-4">Transparent Pricing</div>
@@ -188,7 +188,7 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
       </section>
 
       {/* Service Areas */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Service Areas</div>
@@ -202,11 +202,11 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" data-reveal-stagger>
             {siblingCities.map((c) => (
               <button
                 key={c.slug}
-                onClick={() => onNavigate(`service/${service.id}/${c.slug}`)}
+                onClick={() => onNavigate(getServiceCityPath(service.id, c.slug))}
                 className="group bg-white dark:bg-dark-card rounded-xl border border-slate-100 dark:border-slate-800 px-4 py-4 text-center hover:border-primary hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
               >
                 <MapPin size={18} className="mx-auto mb-2 text-primary group-hover:scale-110 transition-transform" />
@@ -229,7 +229,7 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
                   return (
                     <button
                       key={s.id}
-                      onClick={() => onNavigate(`service/${s.id}/${city.slug}`)}
+                      onClick={() => onNavigate(getServiceCityPath(s.id, city.slug))}
                       className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-dark-bg border border-slate-100 dark:border-slate-800 text-sm font-bold text-slate-700 dark:text-slate-200 hover:border-primary hover:text-primary transition-all duration-300"
                     >
                       <OtherIcon size={16} className="text-primary" />
@@ -244,7 +244,7 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
       </section>
 
       {/* FAQs */}
-      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface">
+      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface" data-reveal>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="badge-tag mb-4">Common Questions</div>

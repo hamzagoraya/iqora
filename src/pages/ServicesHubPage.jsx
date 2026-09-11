@@ -2,7 +2,14 @@ import React from 'react';
 import { MapPin, ArrowRight, CheckCircle2, Building2, Sparkles } from 'lucide-react';
 import PageHero from '../components/shared/PageHero';
 import CTABand from '../components/shared/CTABand';
-import { SERVICES, SPECIALTY_SERVICES, CITIES } from '../data/siteData';
+import {
+  SERVICES,
+  SPECIALTY_SERVICES,
+  CITIES,
+  getServicePath,
+  getServiceCityPath,
+  getSpecialtyPath,
+} from '../data/siteData';
 
 export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
   return (
@@ -16,7 +23,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
       />
 
       {/* Main services */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Most Popular</div>
@@ -60,7 +67,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
                       {s.tagline.replace('{city}', 'North Hollywood')}
                     </p>
                     <button
-                      onClick={() => onNavigate(`service/${s.id}`)}
+                      onClick={() => onNavigate(getServicePath(s.id))}
                       className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:gap-3 transition-all mb-4"
                     >
                       {s.name} in North Hollywood
@@ -74,7 +81,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
                         {CITIES.filter((c) => !c.isParent).map((c) => (
                           <button
                             key={c.slug}
-                            onClick={() => onNavigate(`service/${s.id}/${c.slug}`)}
+                            onClick={() => onNavigate(getServiceCityPath(s.id, c.slug))}
                             className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-50 dark:bg-dark-bg border border-slate-100 dark:border-slate-800 text-[11px] font-semibold text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary transition-all duration-300"
                           >
                             <MapPin size={10} className="text-primary" />
@@ -92,7 +99,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
       </section>
 
       {/* Specialty services */}
-      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface">
+      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Specialty Services</div>
@@ -111,7 +118,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
               return (
                 <button
                   key={s.id}
-                  onClick={() => onNavigate(`specialty/${s.id}`)}
+                  onClick={() => onNavigate(getSpecialtyPath(s.id))}
                   className="group text-left bg-slate-50 dark:bg-dark-card rounded-2xl p-6 border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-card hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-center justify-between mb-4">
@@ -139,7 +146,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
       </section>
 
       {/* Why us strip */}
-      <section className="py-14 bg-slate-50 dark:bg-dark-bg border-y border-slate-100 dark:border-slate-800">
+      <section className="py-14 bg-slate-50 dark:bg-dark-bg border-y border-slate-100 dark:border-slate-800" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-3 gap-8 text-center">
           {[
             { title: 'Certified Technicians', text: 'Every technician is trained and certified on fabric-safe, restorative methods.' },
@@ -162,7 +169,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
       </section>
 
       {/* Areas strip */}
-      <section className="py-14 bg-white dark:bg-dark-surface">
+      <section className="py-14 bg-white dark:bg-dark-surface" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white mb-3">
             Every service, in 10 cities
@@ -170,7 +177,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
           <p className="text-sm text-slate-600 dark:text-slate-300 mb-6 max-w-xl mx-auto">
             See our full services-and-cities grid on the Areas We Serve page.
           </p>
-          <button onClick={() => onNavigate('areas')} className="btn-secondary-tw">
+          <button onClick={() => onNavigate('/areas-we-serve')} className="btn-secondary-tw">
             <MapPin size={16} />
             <span>View Areas We Serve</span>
           </button>

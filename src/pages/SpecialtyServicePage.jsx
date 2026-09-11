@@ -3,7 +3,7 @@ import { MapPin, ArrowRight, CheckCircle2, BadgeCheck, Sparkles } from 'lucide-r
 import PageHero from '../components/shared/PageHero';
 import CTABand from '../components/shared/CTABand';
 import FaqAccordion from '../components/shared/FaqAccordion';
-import { SERVICES, CITIES } from '../data/siteData';
+import { SERVICES, CITIES, getServicePath, getServiceCityPath } from '../data/siteData';
 
 const fill = (text, city) => (text ? text.replace(/\{city\}/g, city) : text);
 
@@ -20,7 +20,7 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
         image={service.image}
         onNavigate={onNavigate}
         crumbs={[
-          { label: 'Cleaning Services', onClick: () => onNavigate('services') },
+          { label: 'Cleaning Services', onClick: () => onNavigate('/cleaning-services') },
           { label: service.name },
         ]}
       />
@@ -41,7 +41,7 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
       </div>
 
       {/* Intro */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="badge-tag mb-5">
@@ -86,7 +86,7 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
       </section>
 
       {/* Benefits */}
-      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface">
+      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Why It Matters</div>
@@ -112,7 +112,7 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
       </section>
 
       {/* Pricing */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="badge-tag mb-4">Transparent Pricing</div>
@@ -154,7 +154,7 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
       </section>
 
       {/* Areas We Serve */}
-      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface">
+      <section className="py-16 lg:py-20 bg-white dark:bg-dark-surface" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Areas We Serve</div>
@@ -173,18 +173,18 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
               return (
                 <div key={main.id} className="bg-slate-50 dark:bg-dark-card rounded-2xl border border-slate-100 dark:border-slate-800 p-6">
                   <button
-                    onClick={() => onNavigate(`service/${main.id}`)}
+                    onClick={() => onNavigate(getServicePath(main.id))}
                     className="flex items-center gap-2.5 font-heading font-bold text-slate-900 dark:text-white hover:text-primary transition-colors mb-4"
                   >
                     <MainIcon size={18} className="text-primary" />
                     {main.name} by City
                     <ArrowRight size={15} className="text-primary" />
                   </button>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5" data-reveal-stagger>
                     {CITIES.map((c) => (
                       <button
                         key={c.slug}
-                        onClick={() => onNavigate(`service/${main.id}/${c.slug}`)}
+                        onClick={() => onNavigate(getServiceCityPath(main.id, c.slug))}
                         className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white dark:bg-dark-bg border border-slate-100 dark:border-slate-800 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary transition-all duration-300"
                       >
                         <MapPin size={12} className="text-primary shrink-0" />
@@ -200,7 +200,7 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
       </section>
 
       {/* FAQs */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg">
+      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="badge-tag mb-4">Common Questions</div>

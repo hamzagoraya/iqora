@@ -11,7 +11,7 @@ export default function ClientLogos({ theme }) {
   ];
 
   return (
-    <section className="py-12 border-t border-slate-200 dark:border-slate-800">
+    <section className="py-12 border-t border-slate-200 dark:border-slate-800" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-8">
           Trusted by leading companies and over 10,000+ satisfied homeowners
