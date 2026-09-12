@@ -8,8 +8,8 @@ export const BRAND = {
   tagline: 'Carpet, Upholstery & Tile Cleaning in North Hollywood and the San Fernando Valley',
   phone: '+1 (818) 555-0147',
   phoneHref: 'tel:+18185550147',
-  email: 'info@iqoracleaningservices.com',
-  supportEmail: 'support@iqoracleaningservices.com',
+  email: 'iqoracleaningservices@gmail.com',
+  supportEmail: 'iqoracleaningservices@gmail.com',
   address: 'North Hollywood, CA 91601, United States',
   hours: {
     weekdays: '8:00 AM – 7:00 PM',

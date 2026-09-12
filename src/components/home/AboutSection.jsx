@@ -44,7 +44,7 @@ export default function AboutSection({ onOpenQuote }) {
             </p>
 
             {/* Circular Progress Indicators Grid */}
-            <div className="grid grid-cols-2 gap-6 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
               <div className="flex items-center gap-4 bg-slate-50 dark:bg-dark-bg p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div className="w-16 h-16 rounded-full border-4 border-primary flex items-center justify-center font-heading font-extrabold text-xl text-slate-900 dark:text-white shrink-0">
                   {STATS.customerSatisfaction}
