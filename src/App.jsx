@@ -31,28 +31,15 @@ import {
 } from './data/siteData';
 
 export default function App() {
-  /* =========================================================
-     THEME
-  ========================================================= */
-
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('iqora-theme') || 'light';
   });
 
-  /* =========================================================
-     QUOTE MODAL
-  ========================================================= */
-
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
-
-  /* =========================================================
-     GET CURRENT URL
-  ========================================================= */
 
   const getCurrentPath = () => {
     let path = window.location.pathname;
 
-    // Remove trailing slash except homepage
     if (path !== '/' && path.endsWith('/')) {
       path = path.slice(0, -1);
     }
@@ -63,10 +50,6 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState(getCurrentPath());
 
   useRevealAnimations(currentPage);
-
-  /* =========================================================
-     THEME EFFECT
-  ========================================================= */
 
   useEffect(() => {
     const root = document.documentElement;
@@ -81,10 +64,6 @@ export default function App() {
 
     localStorage.setItem('iqora-theme', theme);
   }, [theme]);
-
-  /* =========================================================
-     BROWSER BACK / FORWARD
-  ========================================================= */
 
   useEffect(() => {
     const handlePopState = () => {
@@ -103,17 +82,9 @@ export default function App() {
     };
   }, []);
 
-  /* =========================================================
-     THEME TOGGLE
-  ========================================================= */
-
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
-
-  /* =========================================================
-     NAVIGATION
-  ========================================================= */
 
   const normalizeRoute = (path) => {
     if (!path) return path;
@@ -124,38 +95,36 @@ export default function App() {
       return MAIN_PAGE_ROUTES[normalized];
     }
 
-    if (normalized.startsWith('/')) {
-      // leave it as-is; preserve exact SEO URLs
-    } else if (normalized === 'home') {
-      normalized = '/';
-    } else if (normalized === 'about') {
-      normalized = '/about-us';
-    } else if (normalized === 'services') {
-      normalized = '/cleaning-services';
-    } else if (normalized === 'areas') {
-      normalized = '/areas-we-serve';
-    } else if (normalized === 'pricing') {
-      normalized = '/cleaning-services-pricing';
-    } else if (normalized === 'reviews') {
-      normalized = '/our-reviews';
-    } else if (normalized === 'portfolio') {
-      normalized = '/portfolio';
-    } else if (normalized === 'faq') {
-      normalized = '/faq';
-    } else if (normalized === 'contact') {
-      normalized = '/contact-us';
-    } else if (normalized === 'blog') {
-      normalized = '/blog';
-    } else {
-      normalized = `/${normalized}`;
+    if (!normalized.startsWith('/')) {
+      if (normalized === 'home') normalized = '/';
+      else if (normalized === 'about') normalized = '/about-us';
+      else if (normalized === 'services') normalized = '/cleaning-services';
+      else if (normalized === 'areas') normalized = '/areas-we-serve';
+      else if (normalized === 'pricing') {
+        normalized = '/cleaning-services-pricing';
+      } else if (normalized === 'reviews') {
+        normalized = '/our-reviews';
+      } else if (normalized === 'portfolio') {
+        normalized = '/portfolio';
+      } else if (normalized === 'faq') {
+        normalized = '/faq';
+      } else if (normalized === 'contact') {
+        normalized = '/contact-us';
+      } else if (normalized === 'blog') {
+        normalized = '/blog';
+      } else {
+        normalized = `/${normalized}`;
+      }
     }
 
     if (normalized.startsWith('/service/')) {
       const servicePart = normalized.replace('/service/', '');
       const [serviceId, citySlug] = servicePart.split('/');
+
       if (citySlug) {
         return getServiceCityPath(serviceId, citySlug);
       }
+
       return getServicePath(serviceId);
     }
 
@@ -188,7 +157,6 @@ export default function App() {
     }
 
     window.history.pushState({}, '', normalizedPath);
-
     setCurrentPage(normalizedPath);
 
     window.scrollTo({
@@ -197,25 +165,11 @@ export default function App() {
     });
   };
 
-  /* =========================================================
-     COMMON PAGE PROPS
-  ========================================================= */
-
   const pageProps = {
     theme,
     onOpenQuote: () => setQuoteModalOpen(true),
     onNavigate: handleNavigate,
   };
-
-  /* =========================================================
-     SERVICE + CITY ROUTING
-     
-     URL examples:
-
-     /carpet-cleaning-services-in-burbank
-     /upholstery-cleaning-services-in-glendale
-     /tile-and-grout-cleaning-services-in-pasadena
-  ========================================================= */
 
   const findServiceCityPage = (path) => {
     const serviceRoutes = [
@@ -254,18 +208,6 @@ export default function App() {
     return null;
   };
 
-  /* =========================================================
-     SPECIALTY ROUTING
-     
-     URL examples:
-
-     /area-rug-cleaning-services
-     /mattress-cleaning-services
-     /leather-couch-cleaning-services
-     /scotchgard-protection-services
-     /curtain-cleaning-services
-  ========================================================= */
-
   const specialtyRoutes = {
     '/area-rug-cleaning-services': 'area-rug-cleaning',
     '/mattress-cleaning-services': 'mattress-cleaning',
@@ -274,22 +216,10 @@ export default function App() {
     '/curtain-cleaning-services': 'curtain-cleaning',
   };
 
-  /* =========================================================
-     RENDER PAGE
-  ========================================================= */
-
   const renderPage = () => {
-    /* =======================================================
-       HOME
-    ======================================================= */
-
     if (currentPage === '/') {
       return <HomePage {...pageProps} />;
     }
-
-    /* =======================================================
-       CORE PAGES
-    ======================================================= */
 
     if (currentPage === '/about-us') {
       return <AboutPage {...pageProps} />;
@@ -329,34 +259,20 @@ export default function App() {
       return <FAQPage {...pageProps} />;
     }
 
-    /* =======================================================
-       BLOG
-    ======================================================= */
-
     if (currentPage === '/blog') {
       return <BlogPage {...pageProps} />;
     }
 
     if (currentPage.startsWith('/blog/')) {
       const slug = currentPage.replace('/blog/', '');
-
       const post = getBlogPost(slug);
 
       if (!post) {
         return <HomePage {...pageProps} />;
       }
 
-      return (
-        <BlogPostPage
-          post={post}
-          {...pageProps}
-        />
-      );
+      return <BlogPostPage post={post} {...pageProps} />;
     }
-
-    /* =======================================================
-       SERVICE + CITY PAGES
-    ======================================================= */
 
     const serviceCityPage = findServiceCityPage(currentPage);
 
@@ -370,13 +286,8 @@ export default function App() {
       );
     }
 
-    /* =======================================================
-       SPECIALTY SERVICE PAGES
-    ======================================================= */
-
     if (specialtyRoutes[currentPage]) {
       const specialtyId = specialtyRoutes[currentPage];
-
       const specialty = getSpecialty(specialtyId);
 
       if (specialty) {
@@ -389,20 +300,11 @@ export default function App() {
       }
     }
 
-    /* =======================================================
-       UNKNOWN URL
-    ======================================================= */
-
     return <HomePage {...pageProps} />;
   };
 
-  /* =========================================================
-     APP LAYOUT
-  ========================================================= */
-
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 flex flex-col justify-between">
-
       <Header
         theme={theme}
         toggleTheme={toggleTheme}
@@ -411,19 +313,18 @@ export default function App() {
         onNavigate={handleNavigate}
       />
 
+      <div className="h-[76px] lg:h-[116px]" aria-hidden="true" />
+
       <main className="flex-grow">
         {renderPage()}
       </main>
 
-      <Footer
-        onNavigate={handleNavigate}
-      />
+      <Footer onNavigate={handleNavigate} />
 
       <QuoteModal
         isOpen={quoteModalOpen}
         onClose={() => setQuoteModalOpen(false)}
       />
-
     </div>
   );
 }

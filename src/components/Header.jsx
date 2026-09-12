@@ -114,27 +114,9 @@ export default function Header({
   currentPage,
   onNavigate,
 }) {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState(null);
-
-  /*
-  |--------------------------------------------------------------------------
-  | Scroll Listener
-  |--------------------------------------------------------------------------
-  */
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const navbarRef = React.useRef(null);
 
   // Close the mobile menu whenever the route/page changes.
   useEffect(() => {
@@ -162,6 +144,30 @@ export default function Header({
       document.body.style.overflow = '';
     };
   }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    const updateContentOffset = () => {
+      const offset = navbarRef.current?.offsetHeight || 0;
+
+      document.documentElement.style.setProperty(
+        '--fixed-navbar-offset',
+        `${offset}px`
+      );
+    };
+
+    updateContentOffset();
+
+    const resizeObserver = new ResizeObserver(updateContentOffset);
+
+    if (navbarRef.current) resizeObserver.observe(navbarRef.current);
+    window.addEventListener('resize', updateContentOffset);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateContentOffset);
+      document.documentElement.style.removeProperty('--fixed-navbar-offset');
+    };
+  }, []);
 
   /*
   |--------------------------------------------------------------------------
@@ -309,13 +315,13 @@ export default function Header({
   */
 
   return (
-    <header className="relative z-50 w-full">
+  <header className="fixed inset-x-0 top-0 z-[10000] isolate w-full bg-white dark:bg-dark-surface">
 
       {/* ================================================================
           TOP BAR
       ================================================================= */}
 
-      <div className="bg-secondary text-slate-300 text-xs py-2 border-b border-white/10">
+      <div className="hidden lg:block bg-secondary text-slate-300 text-xs py-2 border-b border-white/10">
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 
@@ -416,24 +422,23 @@ export default function Header({
           MAIN NAVBAR
       ================================================================= */}
 
-     <div
+    <div
+  ref={navbarRef}
   className="
-    sticky
-    top-0
-    left-0
-    right-0
+    relative
     z-[100]
+    w-full
     bg-white
     dark:bg-dark-surface
     border-b
     border-slate-100
     dark:border-slate-800
     shadow-lg
-    py-3
   "
 >
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="flex items-center justify-between gap-4 py-3">
 
           {/* ============================================================
               LOGO
@@ -989,34 +994,46 @@ export default function Header({
           </div>
 
         </div>
+          </div>
       {/* ================================================================
           MOBILE MENU
       ================================================================= */}
 
       {mobileMenuOpen && (
+        <>
+          <button
+            type="button"
+            aria-label="Close mobile menu"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              setMobileSection(null);
+            }}
+            className="xl:hidden fixed inset-x-0 top-[76px] bottom-0 z-[9997] bg-black/40"
+          />
 
-  <div
-    id="mobile-navigation"
-    className="
-      xl:hidden
-      absolute
-      top-full
-      left-0
-      right-0
-      z-[110]
-      bg-white
-      dark:bg-dark-surface
-      border-b
-      border-slate-200
-      dark:border-slate-800
-      px-4
-      py-6
-      shadow-xl
-      space-y-4
-      max-h-[80vh]
-      overflow-y-auto
-    "
-  >
+          <div
+            id="mobile-navigation"
+            className="
+              xl:hidden
+              fixed
+              inset-x-0
+              top-[76px]
+              z-[9998]
+              w-full
+              max-h-[calc(100dvh-76px)]
+              overflow-y-auto
+              overscroll-contain
+              bg-white
+              dark:bg-dark-surface
+              border-b
+              border-slate-200
+              dark:border-slate-800
+              px-4
+              py-6
+              shadow-2xl
+              space-y-4
+            "
+          >
 
           <nav className="flex flex-col space-y-1 font-semibold text-slate-800 dark:text-slate-200">
 
@@ -1350,8 +1367,8 @@ export default function Header({
 
           </button>
 
-        </div>
-
+          </div>
+        </>
       )}
 
       </div>
