@@ -84,9 +84,9 @@ export default function BlogPostPage({ post, onNavigate, onOpenQuote }) {
               return (
                 <div
                   key={i}
-                  className="rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-card mb-8"
+                  className="rounded-2xl overflow-x-auto border border-slate-100 dark:border-slate-800 shadow-card mb-8"
                 >
-                  <table className="w-full text-sm">
+                  <table className="w-full min-w-[32rem] text-sm">
                     <thead>
                       <tr className="bg-secondary text-white text-left">
                         {block.table.head.map((h, j) => (

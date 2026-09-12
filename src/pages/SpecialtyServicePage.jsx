@@ -144,7 +144,7 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
             <ul className="divide-y divide-slate-100 dark:divide-slate-800">
               {service.pricingRows.map((row) => (
                 <li key={row.item} className="px-6 py-3.5 flex items-center justify-between gap-4 text-sm">
-                  <span className="text-slate-600 dark:text-slate-300">{row.item}</span>
+                  <span className="min-w-0 flex-1 text-slate-600 dark:text-slate-300 leading-snug">{row.item}</span>
                   <span className="font-bold text-slate-900 dark:text-white whitespace-nowrap">{row.price}</span>
                 </li>
               ))}
