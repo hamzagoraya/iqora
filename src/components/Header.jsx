@@ -136,6 +136,33 @@ export default function Header({
     };
   }, []);
 
+  // Close the mobile menu whenever the route/page changes.
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setMobileSection(null);
+  }, [currentPage]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setMobileMenuOpen(false);
+        setMobileSection(null);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   /*
   |--------------------------------------------------------------------------
   | Navigation Handler
@@ -389,22 +416,22 @@ export default function Header({
           MAIN NAVBAR
       ================================================================= */}
 
-      <div
-        className={`
-          bg-white
-          dark:bg-dark-surface
-          border-b
-          border-slate-100
-          dark:border-slate-800
-          transition-all
-          duration-300
-          ${
-            isScrolled
-              ? 'fixed top-0 left-0 right-0 shadow-lg py-3 z-50 animate-slide-down'
-              : 'py-4 shadow-sm'
-          }
-        `}
-      >
+     <div
+  className="
+    sticky
+    top-0
+    left-0
+    right-0
+    z-[100]
+    bg-white
+    dark:bg-dark-surface
+    border-b
+    border-slate-100
+    dark:border-slate-800
+    shadow-lg
+    py-3
+  "
+>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
 
@@ -950,6 +977,7 @@ export default function Header({
               className="xl:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-primary transition-colors"
               aria-label="Toggle mobile menu"
               aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               {mobileMenuOpen ? (
                 <X size={26} />
@@ -961,16 +989,34 @@ export default function Header({
           </div>
 
         </div>
-
-      </div>
-
       {/* ================================================================
           MOBILE MENU
       ================================================================= */}
 
       {mobileMenuOpen && (
 
-        <div className="xl:hidden bg-white dark:bg-dark-surface border-b border-slate-200 dark:border-slate-800 px-4 py-6 shadow-xl space-y-4 max-h-[80vh] overflow-y-auto animate-slide-down">
+  <div
+    id="mobile-navigation"
+    className="
+      xl:hidden
+      absolute
+      top-full
+      left-0
+      right-0
+      z-[110]
+      bg-white
+      dark:bg-dark-surface
+      border-b
+      border-slate-200
+      dark:border-slate-800
+      px-4
+      py-6
+      shadow-xl
+      space-y-4
+      max-h-[80vh]
+      overflow-y-auto
+    "
+  >
 
           <nav className="flex flex-col space-y-1 font-semibold text-slate-800 dark:text-slate-200">
 
@@ -1012,6 +1058,7 @@ export default function Header({
                 }
                 className="w-full flex items-center justify-between py-2 hover:text-primary"
                 aria-expanded={mobileSection === 'services'}
+                aria-controls="mobile-services-submenu"
               >
 
                 <span>
@@ -1036,7 +1083,7 @@ export default function Header({
 
               {mobileSection === 'services' && (
 
-                <div className="pl-4 border-l-2 border-primary/30 space-y-1.5 py-1 animate-fade-in">
+                <div id="mobile-services-submenu" className="pl-4 border-l-2 border-primary/30 space-y-1.5 py-1 animate-fade-in">
 
                   {/* Main Services */}
 
@@ -1151,6 +1198,7 @@ export default function Header({
                 }
                 className="w-full flex items-center justify-between py-2 hover:text-primary"
                 aria-expanded={mobileSection === 'areas'}
+                aria-controls="mobile-areas-submenu"
               >
 
                 <span>
@@ -1175,7 +1223,7 @@ export default function Header({
 
               {mobileSection === 'areas' && (
 
-                <div className="pl-4 border-l-2 border-primary/30 space-y-1.5 py-1">
+                <div id="mobile-areas-submenu" className="pl-4 border-l-2 border-primary/30 space-y-1.5 py-1">
 
                   {/* All Areas */}
 
@@ -1305,6 +1353,9 @@ export default function Header({
         </div>
 
       )}
+
+      </div>
+
 
     </header>
   );

@@ -101,7 +101,7 @@ export default function HomeHero({ onOpenQuote, onNavigate }) {
             src={currentSlide.image}
             alt=""
             aria-hidden="true"
-            fetchPriority={index === 0 ? 'high' : 'auto'}
+            fetchpriority={index === 0 ? 'high' : 'auto'}
             loading={index === 0 ? 'eager' : 'lazy'}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity ${prefersReducedMotion ? 'duration-0' : 'duration-700'} ${index === activeSlide ? 'opacity-100' : 'opacity-0'}`}
           />

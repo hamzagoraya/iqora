@@ -35,7 +35,7 @@ export default function ReviewsPage({ onNavigate, onOpenQuote }) {
               </p>
             </div>
             <div className="hidden sm:block w-px h-24 bg-slate-200 dark:bg-slate-800"></div>
-            <div className="grid grid-cols-3 gap-6 text-center" data-reveal-stagger>
+            <div className="grid grid-cols-1 min-[360px]:grid-cols-3 gap-4 min-[360px]:gap-6 text-center" data-reveal-stagger>
               <div>
                 <p className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white">{BRAND.reviewCount}+</p>
                 <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">Verified Reviews</p>

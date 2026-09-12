@@ -37,9 +37,9 @@ export default function Footer({ onNavigate }) {
                 {BRAND.footerBlurb}
               </p>
               <div className="flex space-x-3 pt-1">
-                <a href="#" className="w-9 h-9 rounded-full bg-white/5 hover:bg-primary text-white flex items-center justify-center transition-all duration-300" aria-label="Facebook"><Facebook size={16} /></a>
+                <a href="https://www.facebook.com/share/1DnvDuNRMU/?mibextid=wwXIfr" className="w-9 h-9 rounded-full bg-white/5 hover:bg-primary text-white flex items-center justify-center transition-all duration-300" aria-label="Facebook"><Facebook size={16} /></a>
                 <a href="#" className="w-9 h-9 rounded-full bg-white/5 hover:bg-primary text-white flex items-center justify-center transition-all duration-300" aria-label="Twitter"><Twitter size={16} /></a>
-                <a href="#" className="w-9 h-9 rounded-full bg-white/5 hover:bg-primary text-white flex items-center justify-center transition-all duration-300" aria-label="Instagram"><Instagram size={16} /></a>
+                <a href="https://www.instagram.com/iqoracleaningservices?igsi=bGVhamZoM20yZ3R5&utm_source=qr" className="w-9 h-9 rounded-full bg-white/5 hover:bg-primary text-white flex items-center justify-center transition-all duration-300" aria-label="Instagram"><Instagram size={16} /></a>
                 <a href="#" className="w-9 h-9 rounded-full bg-white/5 hover:bg-primary text-white flex items-center justify-center transition-all duration-300" aria-label="LinkedIn"><Linkedin size={16} /></a>
               </div>
             </div>
