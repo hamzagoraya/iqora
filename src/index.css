@@ -72,15 +72,15 @@
 
 @layer components {
   .badge-tag {
-    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-light text-primary-hover dark:bg-primary/15 dark:text-primary text-xs font-bold uppercase tracking-wider border border-primary/20;
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 text-black dark:bg-accent/15 dark:text-accent text-xs font-bold uppercase tracking-wider border border-accent/20;
   }
 
   .btn-primary-tw {
-    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-primary hover:bg-primary-hover text-slate-950 font-extrabold text-sm rounded-xl shadow-primary hover:shadow-primary-hover hover:-translate-y-0.5 transition-all duration-300 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-primary hover:bg-primary-hover text-white font-extrabold text-sm rounded-xl shadow-primary hover:shadow-primary-hover hover:-translate-y-0.5 transition-all duration-300 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-secondary-tw {
-    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-secondary hover:bg-secondary-hover text-white font-bold text-sm rounded-xl shadow-md hover:-translate-y-0.5 transition-all duration-300 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-teal hover:bg-[#188082] text-white font-bold text-sm rounded-xl shadow-md hover:-translate-y-0.5 transition-all duration-300 active:translate-y-0;
   }
 
   .btn-outline-tw {

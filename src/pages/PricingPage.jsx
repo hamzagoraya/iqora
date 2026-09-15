@@ -76,7 +76,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
             <div
               className="
                 relative
-                bg-[#111923]
+                bg-navy
                 px-5 py-4
                 min-h-[90px]
                 flex items-center gap-3
@@ -102,7 +102,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
                   relative shrink-0
                   w-12 h-12
                   rounded-2xl
-                  bg-[#30291d]
+                  bg-white/10
                   border border-primary/10
                   flex items-center justify-center
                   transition-all duration-300
@@ -150,7 +150,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
                     text-sm
                     transition-colors duration-200
                     group-hover:bg-slate-50/50
-                    dark:group-hover:bg-slate-800/20
+                    dark:group-hover:bg-white/5
                   "
                 >
 

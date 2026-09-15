@@ -86,7 +86,7 @@ export default function QuoteModal({ isOpen, onClose }) {
     <div
       onClick={handleClose}
       role="presentation"
-      className="fixed inset-0 z-[100] bg-slate-950/65 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+      className="fixed inset-0 z-[100] bg-navy/80 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
     >
       <div
         onClick={(e) => e.stopPropagation()}

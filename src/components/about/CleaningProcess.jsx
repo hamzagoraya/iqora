@@ -38,7 +38,7 @@ export default function CleaningProcess({ onOpenQuote }) {
         
         {/* Header */}
         <div className="max-w-2xl mb-12 space-y-3">
-          <div className="badge-tag bg-primary/20 text-primary border-primary/30">
+          <div className="badge-tag ">
             <span>How It Works</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white leading-tight">

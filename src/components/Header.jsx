@@ -428,11 +428,9 @@ export default function Header({
     relative
     z-[100]
     w-full
-    bg-white
-    dark:bg-dark-surface
+    bg-navy
     border-b
-    border-slate-100
-    dark:border-slate-800
+    border-white/10
     shadow-lg
   "
 >
@@ -451,11 +449,11 @@ export default function Header({
           >
 
             <img
-              src="/assets/iqora%20logo.png"
+              src="/assets/footer-logo.svg"
               alt="IQORA Cleaning Services"
               className="h-9 w-auto"
               onError={(e) => {
-                e.currentTarget.style.display = 'none';
+                e.target.src = "/assets/logo-white.svg";
               }}
             />
 
@@ -504,7 +502,7 @@ export default function Header({
                             currentPage
                           )
                             ? 'text-primary font-bold'
-                            : 'text-slate-700 dark:text-slate-200 hover:text-primary'
+                            : 'text-slate-200 hover:text-primary'
                         }
                       `}
                     >
@@ -764,7 +762,7 @@ export default function Header({
                             currentPage
                           )
                             ? 'text-primary font-bold'
-                            : 'text-slate-700 dark:text-slate-200 hover:text-primary'
+                            : 'text-slate-200 hover:text-primary'
                         }
                       `}
                     >
@@ -940,7 +938,7 @@ export default function Header({
                         currentPage
                       )
                         ? 'text-primary font-bold'
-                        : 'text-slate-700 dark:text-slate-200 hover:text-primary'
+                        : 'text-slate-200 hover:text-primary'
                     }
                   `}
                 >
@@ -979,7 +977,7 @@ export default function Header({
                   !mobileMenuOpen
                 )
               }
-              className="xl:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-primary transition-colors"
+              className="xl:hidden p-2 text-slate-200 hover:text-primary transition-colors"
               aria-label="Toggle mobile menu"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
@@ -1023,11 +1021,9 @@ export default function Header({
               max-h-[calc(100dvh-76px)]
               overflow-y-auto
               overscroll-contain
-              bg-white
-              dark:bg-dark-surface
+              bg-navy
               border-b
-              border-slate-200
-              dark:border-slate-800
+              border-white/10
               px-4
               py-6
               shadow-2xl
@@ -1035,7 +1031,7 @@ export default function Header({
             "
           >
 
-          <nav className="flex flex-col space-y-1 font-semibold text-slate-800 dark:text-slate-200">
+          <nav className="flex flex-col space-y-1 font-semibold text-white">
 
             {/* HOME */}
 

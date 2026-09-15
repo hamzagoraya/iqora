@@ -18,7 +18,7 @@ export default function Footer({ onNavigate }) {
   const go = (page) => () => onNavigate && onNavigate(page);
 
   return (
-    <footer className="bg-[#0b0f17] text-slate-400 text-sm" data-reveal>
+    <footer className="bg-navy text-slate-400 text-sm" data-reveal>
       <div className="py-16 lg:py-20 border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">

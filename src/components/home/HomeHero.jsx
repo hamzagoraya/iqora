@@ -81,7 +81,7 @@ export default function HomeHero({ onOpenQuote, onNavigate }) {
 
   return (
     <section
-      className="relative bg-slate-950 text-white min-h-[580px] lg:min-h-[640px] flex items-center overflow-hidden"
+      className="relative bg-navy text-white min-h-[580px] lg:min-h-[640px] flex items-center overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}
@@ -111,7 +111,7 @@ export default function HomeHero({ onOpenQuote, onNavigate }) {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
         <div key={slide.id} className="max-w-2xl space-y-6 hero-content-stagger" aria-live="polite">
-          <div className="badge-tag bg-primary/20 text-primary border-primary/30">
+          <div className="badge-tag ">
             <Sparkles size={14} />
             <span>{slide.badge}</span>
           </div>

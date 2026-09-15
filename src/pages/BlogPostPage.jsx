@@ -10,13 +10,13 @@ export default function BlogPostPage({ post, onNavigate, onOpenQuote }) {
   return (
     <div>
       {/* Hero */}
-      <section className="relative bg-[#101720] py-20 lg:py-24 text-white overflow-hidden">
+      <section className="relative bg-navy py-20 lg:py-24 text-white overflow-hidden">
         <img
           src={post.image}
           alt={post.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-900/85 to-slate-950/95"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/85 via-navy/85 to-navy/95"></div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 hero-content-stagger">
           <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300 font-semibold mb-5">
