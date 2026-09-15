@@ -71,7 +71,7 @@ export default function TeamShowcase() {
                     <Share2 size={16} />
                   </button>
 
-                  <div className="absolute right-0 bottom-12 hidden group-hover/share:flex bg-slate-900 text-white p-2 rounded-xl space-x-2 shadow-xl border border-white/10 z-20">
+                  <div className="absolute right-0 bottom-12 hidden group-hover/share:flex bg-navy text-white p-2 rounded-xl space-x-2 shadow-xl border border-white/10 z-20">
                     <a href="#" className="p-1.5 hover:text-primary"><Facebook size={14} /></a>
                     <a href="#" className="p-1.5 hover:text-primary"><Twitter size={14} /></a>
                     <a href="#" className="p-1.5 hover:text-primary"><Linkedin size={14} /></a>

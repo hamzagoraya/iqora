@@ -32,7 +32,7 @@ export default function EstimateCallout({ onOpenQuote }) {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-5 space-y-4">
-              <div className="badge-tag bg-primary/20 text-primary border-primary/30">
+              <div className="badge-tag ">
                 <Sparkles size={14} />
                 <span>Free Estimate</span>
               </div>
@@ -102,7 +102,7 @@ export default function EstimateCallout({ onOpenQuote }) {
                       <select 
                         value={formData.service}
                         onChange={(e) => setFormData({...formData, service: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/15 text-white text-sm focus:outline-none focus:border-primary transition-all cursor-pointer"
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 text-white text-sm focus:outline-none focus:border-primary transition-all cursor-pointer"
                       >
                         {SERVICE_OPTIONS.map((s) => (
                           <option key={s.id} value={s.id}>{s.name}</option>

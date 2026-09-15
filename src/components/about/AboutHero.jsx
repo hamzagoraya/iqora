@@ -3,13 +3,13 @@ import { ChevronRight, Home, Sparkles } from 'lucide-react';
 
 export default function AboutHero({ onNavigate }) {
   return (
-    <section className="relative bg-[#101720] bg-[url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1920&auto=format&fit=crop')] bg-center bg-cover bg-no-repeat py-20 lg:py-24 text-center text-white overflow-hidden">
+    <section className="relative bg-navy bg-[url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1920&auto=format&fit=crop')] bg-center bg-cover bg-no-repeat py-20 lg:py-24 text-center text-white overflow-hidden">
       {/* Background Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/85 to-slate-950/95 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/85 to-navy/95 pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-content-stagger">
         <div className="flex flex-col items-center">
-          <div className="badge-tag mb-4 bg-primary/20 text-primary border-primary/30">
+          <div className="badge-tag mb-4 ">
             <Sparkles size={14} />
             <span>Our Heritage</span>
           </div>

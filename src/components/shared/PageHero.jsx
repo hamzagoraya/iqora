@@ -6,7 +6,7 @@ export default function PageHero({ badge, title, subtitle, image, onNavigate, cr
 
   return (
     <section
-      className="relative bg-[#101720] bg-center bg-cover bg-no-repeat py-20 lg:py-24 text-center text-white overflow-hidden"
+      className="relative bg-navy bg-center bg-cover bg-no-repeat py-20 lg:py-24 text-center text-white overflow-hidden"
     >
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat lg:bg-fixed"
@@ -14,11 +14,11 @@ export default function PageHero({ badge, title, subtitle, image, onNavigate, cr
         aria-hidden="true"
       ></div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/85 to-slate-950/95 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/85 to-navy/95 pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-content-stagger">
         <div className="flex flex-col items-center">
-          <div className="badge-tag mb-4 bg-primary/20 text-primary border-primary/30">
+          <div className="badge-tag mb-4">
             <Sparkles size={14} />
             <span>{badge}</span>
           </div>

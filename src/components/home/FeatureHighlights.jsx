@@ -16,8 +16,8 @@ export default function FeatureHighlights({ onOpenQuote }) {
                 alt="Expert Cleaners" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent"></div>
-              <div className="absolute bottom-3 left-3 text-xs font-bold text-white flex items-center gap-1.5 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent"></div>
+              <div className="absolute bottom-3 left-3 text-xs font-bold text-white flex items-center gap-1.5 bg-navy/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
                 <ShieldCheck size={14} className="text-primary" />
                 <span>Certified Teams</span>
               </div>
@@ -44,13 +44,13 @@ export default function FeatureHighlights({ onOpenQuote }) {
           </div>
 
           {/* Card 2: Main Yellow Highlight Box */}
-          <div className="bg-primary text-slate-950 rounded-3xl p-8 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
-            <div className="absolute -right-8 -bottom-8 opacity-15 text-slate-950 pointer-events-none">
+          <div className="bg-primary text-white rounded-3xl p-8 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
+            <div className="absolute -right-8 -bottom-8 opacity-15 text-white pointer-events-none">
               <Award size={180} />
             </div>
 
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/10 text-xs font-extrabold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/10 text-xs font-extrabold uppercase tracking-wider">
                 <Sparkles size={13} />
                 <span>Proven Record</span>
               </div>

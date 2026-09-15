@@ -196,7 +196,7 @@ export default function ContactSection({ onOpenQuote }) {
                     step="250"
                     value={formData.sqft}
                     onChange={(e) => setFormData({...formData, sqft: Number(e.target.value)})}
-                    className="w-full accent-primary cursor-pointer"
+                    className="w-full accent-accent cursor-pointer"
                   />
 
                   <div className="grid grid-cols-3 gap-1.5">
@@ -243,7 +243,7 @@ export default function ContactSection({ onOpenQuote }) {
                     id="saveInfo"
                     checked={formData.saveInfo}
                     onChange={(e) => setFormData({...formData, saveInfo: e.target.checked})}
-                    className="accent-primary w-4 h-4 rounded cursor-pointer"
+                    className="accent-accent w-4 h-4 rounded cursor-pointer"
                   />
                   <label htmlFor="saveInfo" className="cursor-pointer">Save my details in this browser for future bookings.</label>
                 </div>

@@ -3,13 +3,13 @@ import { ChevronRight, Home, Sparkles } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative bg-[#101720] bg-[url('/assets/titlebar-bg-img-01.jpg')] bg-center bg-cover bg-no-repeat py-20 lg:py-24 text-center text-white overflow-hidden">
+    <section className="relative bg-navy bg-[url('/assets/titlebar-bg-img-01.jpg')] bg-center bg-cover bg-no-repeat py-20 lg:py-24 text-center text-white overflow-hidden">
       {/* Background Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/85 to-slate-950/95 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/85 to-navy/95 pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
-          <div className="badge-tag mb-4 bg-primary/20 text-primary border-primary/30">
+          <div className="badge-tag mb-4">
             <Sparkles size={14} />
             <span>North Hollywood, CA</span>
           </div>
