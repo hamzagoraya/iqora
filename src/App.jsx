@@ -9,6 +9,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ServicesHubPage from './pages/ServicesHubPage';
 import AreasWeServePage from './pages/AreasWeServePage';
+import AreaPage from './pages/AreaPage';
 import ServicePage from './pages/ServicePage';
 import SpecialtyServicePage from './pages/SpecialtyServicePage';
 import PricingPage from './pages/PricingPage';
@@ -241,6 +242,15 @@ export default function App() {
 
     if (currentPage === '/areas-we-serve') {
       return <AreasWeServePage {...pageProps} />;
+    }
+
+    if (currentPage.startsWith('/areas-we-serve/')) {
+      const citySlug = currentPage.replace('/areas-we-serve/', '');
+      const city = getCity(citySlug);
+
+      if (city) {
+        return <AreaPage city={city} {...pageProps} />;
+      }
     }
 
     if (currentPage === '/cleaning-services-pricing') {

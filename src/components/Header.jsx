@@ -11,6 +11,7 @@ import {
   ArrowRight,
   Clock,
   ChevronDown,
+  ChevronRight,
   Sparkles,
 } from 'lucide-react';
 
@@ -116,12 +117,16 @@ export default function Header({
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState(null);
+  const [mobileSubSection, setMobileSubSection] = useState(null);
+  const [desktopSubSection, setDesktopSubSection] = useState(null);
   const navbarRef = React.useRef(null);
 
-  // Close the mobile menu whenever the route/page changes.
+  // Close the menus whenever the route/page changes.
   useEffect(() => {
     setMobileMenuOpen(false);
     setMobileSection(null);
+    setMobileSubSection(null);
+    setDesktopSubSection(null);
   }, [currentPage]);
 
   useEffect(() => {
@@ -129,12 +134,25 @@ export default function Header({
       if (event.key === 'Escape') {
         setMobileMenuOpen(false);
         setMobileSection(null);
+        setMobileSubSection(null);
+        setDesktopSubSection(null);
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
 
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    const handleClickOutside = (event) => {
+      // If clicking anything outside a nav item, close desktop sub-section
+      if (!event.target.closest('.group\\/sub')) {
+        setDesktopSubSection(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   useEffect(() => {
@@ -183,6 +201,7 @@ export default function Header({
      */
     setMobileMenuOpen(false);
     setMobileSection(null);
+    setMobileSubSection(null);
 
     /*
      * Make sure path starts with /
@@ -295,11 +314,6 @@ export default function Header({
       id: 'portfolio',
       label: 'Portfolio',
       path: '/portfolio',
-    },
-    {
-      id: 'faq',
-      label: 'FAQ',
-      path: '/faq',
     },
     {
       id: 'contact',
@@ -538,6 +552,10 @@ export default function Header({
                         group-hover:visible
                         group-hover:translate-y-0
 
+                        group-focus-within:opacity-100
+                        group-focus-within:visible
+                        group-focus-within:translate-y-0
+
                         transition-all
                         duration-200
                       "
@@ -559,24 +577,23 @@ export default function Header({
                         {/* Main Services */}
 
                         {SERVICES.map((service) => {
-
                           const Icon = service.icon;
+                          const hasSubmenu = ['carpet-cleaning', 'upholstery-cleaning', 'tile-and-grout-cleaning'].includes(service.id);
+                          const isSubVisible = desktopSubSection === service.id;
 
-                          return (
+                          const ServiceItem = (
                             <button
                               key={service.id}
                               type="button"
-                              onClick={() => {
-
-                                const path =
-                                  SERVICE_PATHS[
-                                    service.id
-                                  ];
-
-                                if (path) {
-                                  handleNavClick(path);
+                              onClick={(e) => {
+                                if (hasSubmenu) {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  setDesktopSubSection(isSubVisible ? null : service.id);
+                                } else {
+                                  const path = SERVICE_PATHS[service.id];
+                                  if (path) handleNavClick(path);
                                 }
-
                               }}
                               className="
                                 w-full
@@ -597,21 +614,90 @@ export default function Header({
                                 transition-all
                               "
                             >
-
-                              <Icon
-                                size={17}
-                                className="text-primary shrink-0"
-                              />
-
-                              <span className="flex-1">
-                                {service.name}
-                              </span>
-
-                              <ArrowRight
-                                size={14}
-                              />
-
+                              <Icon size={17} className="text-primary shrink-0" />
+                              <span className="flex-1">{service.name}</span>
+                              {hasSubmenu ? <ChevronRight size={14} /> : <ArrowRight size={14} />}
                             </button>
+                          );
+
+                          if (!hasSubmenu) {
+                            return ServiceItem;
+                          }
+
+                          return (
+                            <div
+                              key={service.id}
+                              className="relative group/sub"
+                              onMouseEnter={() => setDesktopSubSection(null)}
+                            >
+                              {ServiceItem}
+                              
+                              <div
+                                className={`
+                                  absolute
+                                  left-full
+                                  top-0
+                                  ml-2
+                                  z-50
+                                  w-64
+                                  
+                                  ${isSubVisible 
+                                    ? 'opacity-100 visible translate-x-0' 
+                                    : 'opacity-0 invisible translate-x-2 group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 group-focus-within/sub:opacity-100 group-focus-within/sub:visible group-focus-within/sub:translate-x-0'}
+                                  
+                                  transition-all
+                                  duration-200
+                                `}
+                              >
+                                <div
+                                  className="
+                                    bg-white
+                                    dark:bg-dark-card
+                                    rounded-2xl
+                                    border
+                                    border-slate-100
+                                    dark:border-slate-800
+                                    shadow-2xl
+                                    p-3
+                                    max-h-[70vh]
+                                    overflow-y-auto
+                                  "
+                                >
+                                  {CITIES.map((city) => (
+                                    <button
+                                      key={city.slug}
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleNavClick(`/${service.id}-services-in-${city.slug}`);
+                                      }}
+                                      className="
+                                        w-full
+                                        flex
+                                        items-center
+                                        gap-3
+                                        px-4
+                                        py-2.5
+                                        rounded-xl
+                                        text-left
+                                        text-sm
+                                        font-bold
+                                        text-slate-700
+                                        dark:text-slate-200
+                                        hover:text-primary
+                                        hover:bg-primary-light
+                                        dark:hover:bg-primary/10
+                                        transition-all
+                                      "
+                                    >
+                                      <MapPin size={15} className="text-primary shrink-0" />
+                                      <span className="flex-1">{city.name}</span>
+                                      <ArrowRight size={13} />
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
                           );
 
                         })}
@@ -798,6 +884,10 @@ export default function Header({
                         group-hover:visible
                         group-hover:translate-y-0
 
+                        group-focus-within:opacity-100
+                        group-focus-within:visible
+                        group-focus-within:translate-y-0
+
                         transition-all
                         duration-200
                       "
@@ -866,8 +956,7 @@ export default function Header({
                             type="button"
                             onClick={() =>
                               handleNavClick(
-                                '/areas-we-serve',
-                                `city-${city.slug}`
+                                `/areas-we-serve/${city.slug}`
                               )
                             }
                             className="
@@ -1005,6 +1094,7 @@ export default function Header({
             onClick={() => {
               setMobileMenuOpen(false);
               setMobileSection(null);
+              setMobileSubSection(null);
             }}
             className="xl:hidden fixed inset-x-0 top-[76px] bottom-0 z-[9997] bg-black/40"
           />
@@ -1101,37 +1191,57 @@ export default function Header({
                   {/* Main Services */}
 
                   {SERVICES.map((service) => {
-
                     const Icon = service.icon;
+                    const hasSubmenu = ['carpet-cleaning', 'upholstery-cleaning', 'tile-and-grout-cleaning'].includes(service.id);
+
+                    if (!hasSubmenu) {
+                      return (
+                        <button
+                          key={service.id}
+                          onClick={() => {
+                            const path = SERVICE_PATHS[service.id];
+                            if (path) handleNavClick(path);
+                          }}
+                          className="w-full flex items-center gap-2 text-left text-sm py-1.5 text-slate-600 dark:text-slate-300 hover:text-primary"
+                        >
+                          <Icon size={15} className="text-primary" />
+                          {service.name}
+                        </button>
+                      );
+                    }
 
                     return (
-                      <button
-                        key={service.id}
-                        onClick={() => {
-
-                          const path =
-                            SERVICE_PATHS[
-                              service.id
-                            ];
-
-                          if (path) {
-                            handleNavClick(path);
-                          }
-
-                        }}
-                        className="w-full flex items-center gap-2 text-left text-sm py-1.5 text-slate-600 dark:text-slate-300 hover:text-primary"
-                      >
-
-                        <Icon
-                          size={15}
-                          className="text-primary"
-                        />
-
-                        {service.name}
-
-                      </button>
+                      <div key={service.id} className="w-full">
+                        <button
+                          onClick={() => setMobileSubSection(mobileSubSection === service.id ? null : service.id)}
+                          className="w-full flex items-center justify-between py-1.5 text-sm text-slate-600 dark:text-slate-300 hover:text-primary"
+                        >
+                          <div className="flex items-center gap-2">
+                            <Icon size={15} className="text-primary" />
+                            {service.name}
+                          </div>
+                          <ChevronDown
+                            size={14}
+                            className={`transition-transform duration-300 ${mobileSubSection === service.id ? 'rotate-180' : ''}`}
+                          />
+                        </button>
+                        
+                        {mobileSubSection === service.id && (
+                          <div className="pl-6 border-l-2 border-primary/20 space-y-1 py-1 mt-1 animate-fade-in">
+                            {CITIES.map((city) => (
+                              <button
+                                key={city.slug}
+                                onClick={() => handleNavClick(`/${service.id}-services-in-${city.slug}`)}
+                                className="w-full flex items-center gap-2 text-left text-sm py-1.5 text-slate-500 dark:text-slate-400 hover:text-primary"
+                              >
+                                <MapPin size={13} className="text-primary/70" />
+                                {city.name}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     );
-
                   })}
 
                   {/* Specialty Services */}
@@ -1263,8 +1373,7 @@ export default function Header({
                       key={city.slug}
                       onClick={() =>
                         handleNavClick(
-                          '/areas-we-serve',
-                          `city-${city.slug}`
+                          `/areas-we-serve/${city.slug}`
                         )
                       }
                       className="w-full flex items-center gap-2 text-left text-sm py-1.5 text-slate-600 dark:text-slate-300 hover:text-primary"

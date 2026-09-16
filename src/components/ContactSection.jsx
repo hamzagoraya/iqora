@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Send, CheckCircle2, Calculator, Sparkles } from 'lucide-react';
 import { BRAND, SERVICES, SPECIALTY_SERVICES } from '../data/siteData';
+import WhatsAppIcon from './shared/WhatsAppIcon';
 
 const SERVICE_OPTIONS = [...SERVICES, ...SPECIALTY_SERVICES];
 
@@ -81,9 +82,21 @@ export default function ContactSection({ onOpenQuote }) {
                   </a>
                 </div>
               </div>
-              <button onClick={onOpenQuote} className="btn-secondary-tw w-full sm:w-auto shrink-0">
-                Get a Free Quote
-              </button>
+              <div className="flex flex-col gap-2 shrink-0 w-full sm:w-auto">
+                <button onClick={onOpenQuote} className="btn-secondary-tw w-full sm:w-auto">
+                  Get a Free Quote
+                </button>
+                <a 
+                  href={BRAND.whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-green-600 hover:bg-green-500 text-white font-bold text-sm rounded-xl transition-all duration-300"
+                  aria-label="Get a Quote on WhatsApp"
+                >
+                  <WhatsAppIcon size={16} />
+                  <span>Get a Quote on WhatsApp</span>
+                </a>
+              </div>
             </div>
 
             {/* Trust Features */}
