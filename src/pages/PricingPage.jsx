@@ -2,7 +2,8 @@ import React from 'react';
 import { ArrowRight, CheckCircle2, Info } from 'lucide-react';
 import PageHero from '../components/shared/PageHero';
 import CTABand from '../components/shared/CTABand';
-import { SERVICES, SPECIALTY_SERVICES, getServicePath, getSpecialtyPath } from '../data/siteData';
+import { SERVICES, SPECIALTY_SERVICES, getServicePath, getSpecialtyPath, BRAND } from '../data/siteData';
+import WhatsAppIcon from '../components/shared/WhatsAppIcon';
 
 export default function PricingPage({ onNavigate, onOpenQuote }) {
   return (
@@ -305,10 +306,22 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
                 </li>
               ))}
             </ul>
-            <button onClick={onOpenQuote} className="btn-primary-tw w-full">
-              <span>Get My Free Quote</span>
-              <ArrowRight size={16} />
-            </button>
+            <div className="flex flex-col gap-3">
+              <button onClick={onOpenQuote} className="btn-primary-tw w-full justify-center">
+                <span>Get My Free Quote</span>
+                <ArrowRight size={16} />
+              </button>
+              <a
+                href={BRAND.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-green-600 hover:bg-green-500 text-white font-bold text-sm rounded-xl transition-all duration-300 w-full"
+                aria-label="Get a Quote on WhatsApp"
+              >
+                <WhatsAppIcon size={16} />
+                <span>Get a Quote on WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

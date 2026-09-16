@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
 import { BRAND, SERVICES, getParentCity } from '../../data/siteData';
+import WhatsAppIcon from '../shared/WhatsAppIcon';
 
 export default function HomeHero({ onOpenQuote, onNavigate }) {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -129,6 +130,17 @@ export default function HomeHero({ onOpenQuote, onNavigate }) {
               <span>Get a Free Quote</span>
               <ArrowRight size={18} />
             </button>
+
+            <a
+              href={BRAND.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold text-base rounded-xl transition-all duration-300"
+              aria-label="Get a Quote on WhatsApp"
+            >
+              <WhatsAppIcon size={18} />
+              <span>Get a Quote on WhatsApp</span>
+            </a>
 
             <button
               onClick={() => {

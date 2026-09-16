@@ -3,7 +3,8 @@ import { MapPin, ArrowRight, CheckCircle2, BadgeCheck, Sparkles } from 'lucide-r
 import PageHero from '../components/shared/PageHero';
 import CTABand from '../components/shared/CTABand';
 import FaqAccordion from '../components/shared/FaqAccordion';
-import { SERVICES, CITIES, getServicePath, getServiceCityPath } from '../data/siteData';
+import { SERVICES, CITIES, getServicePath, getServiceCityPath, BRAND } from '../data/siteData';
+import WhatsAppIcon from '../components/shared/WhatsAppIcon';
 
 const fill = (text, city) => (text ? text.replace(/\{city\}/g, city) : text);
 
@@ -59,6 +60,16 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
                 <span>Get a Free Quote</span>
                 <ArrowRight size={16} />
               </button>
+              <a
+                href={BRAND.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-green-600 hover:bg-green-500 text-white font-bold text-sm rounded-xl transition-all duration-300"
+                aria-label="Get a Quote on WhatsApp"
+              >
+                <WhatsAppIcon size={16} />
+                <span>Get a Quote on WhatsApp</span>
+              </a>
               <button onClick={() => onNavigate('pricing')} className="btn-outline-tw">
                 <span>View Pricing</span>
               </button>

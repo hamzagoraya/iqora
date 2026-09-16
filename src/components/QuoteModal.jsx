@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { X, Sparkles, Send, CheckCircle2 } from 'lucide-react';
+import {
+  X,
+  Sparkles,
+  Send,
+  CheckCircle2,
+  MessageCircle,
+} from 'lucide-react';
 import { SERVICES, SPECIALTY_SERVICES } from '../data/siteData';
 
 const SERVICE_OPTIONS = [...SERVICES, ...SPECIALTY_SERVICES];
+
+const WHATSAPP_NUMBER = '15598240198';
+
+const WHATSAPP_MESSAGE =
+  'Hello IQORA Cleaning Services, I would like to get a quote for your cleaning services. Please share your availability and pricing.';
 
 export default function QuoteModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
@@ -15,6 +26,8 @@ export default function QuoteModal({ isOpen, onClose }) {
     phone: '',
     service: SERVICES[0].id,
     date: '',
+    areaSize: '',
+    details: '',
   });
 
   useEffect(() => {
@@ -25,6 +38,7 @@ export default function QuoteModal({ isOpen, onClose }) {
     };
 
     const previousOverflow = document.body.style.overflow;
+
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleKeyDown);
 
@@ -35,6 +49,13 @@ export default function QuoteModal({ isOpen, onClose }) {
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
+
+  const updateField = (field, value) => {
+    setFormData((previous) => ({
+      ...previous,
+      [field]: value,
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,6 +72,8 @@ export default function QuoteModal({ isOpen, onClose }) {
       phone: formData.phone,
       service: selectedService?.name || formData.service,
       date: formData.date || 'Not specified',
+      areaSize: formData.areaSize,
+      details: formData.details || 'No additional details provided',
     };
 
     try {
@@ -75,10 +98,43 @@ export default function QuoteModal({ isOpen, onClose }) {
     }
   };
 
+  const handleWhatsAppQuote = () => {
+    const selectedService = SERVICE_OPTIONS.find(
+      (service) => service.id === formData.service
+    );
+
+    const message = [
+      WHATSAPP_MESSAGE,
+      '',
+      `Name: ${formData.name || 'Not specified'}`,
+      `Phone: ${formData.phone || 'Not specified'}`,
+      `Service: ${selectedService?.name || formData.service}`,
+      `Area Size: ${formData.areaSize || 'Not specified'}`,
+      `Preferred Date: ${formData.date || 'Not specified'}`,
+      `Additional Details: ${formData.details || 'None'}`,
+    ].join('\n');
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+
   const handleClose = () => {
     setSubmitted(false);
     setError('');
     setIsSending(false);
+
+    setFormData({
+      name: '',
+      phone: '',
+      service: SERVICES[0].id,
+      date: '',
+      areaSize: '',
+      details: '',
+    });
+
     onClose();
   };
 
@@ -117,6 +173,25 @@ export default function QuoteModal({ isOpen, onClose }) {
               quote and schedule.
             </p>
 
+            <div className="text-left bg-slate-50 dark:bg-dark-bg rounded-xl p-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+              <p>
+                <strong>Service:</strong>{' '}
+                {SERVICE_OPTIONS.find(
+                  (service) => service.id === formData.service
+                )?.name || formData.service}
+              </p>
+
+              <p>
+                <strong>Area Size:</strong> {formData.areaSize}
+              </p>
+
+              {formData.details && (
+                <p>
+                  <strong>Details:</strong> {formData.details}
+                </p>
+              )}
+            </div>
+
             <button
               onClick={handleClose}
               className="btn-primary-tw mt-4"
@@ -132,7 +207,10 @@ export default function QuoteModal({ isOpen, onClose }) {
                 <span>Free Quote</span>
               </div>
 
-              <h2 id="quote-modal-title" className="text-2xl font-heading font-bold text-slate-900 dark:text-white">
+              <h2
+                id="quote-modal-title"
+                className="text-2xl font-heading font-bold text-slate-900 dark:text-white"
+              >
                 Get a Free Instant Quote
               </h2>
 
@@ -144,7 +222,10 @@ export default function QuoteModal({ isOpen, onClose }) {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-1">
-                <label htmlFor="quote-name" className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                <label
+                  htmlFor="quote-name"
+                  className="text-xs font-bold text-slate-700 dark:text-slate-300"
+                >
                   Your Name *
                 </label>
 
@@ -154,18 +235,16 @@ export default function QuoteModal({ isOpen, onClose }) {
                   required
                   placeholder="Enter full name"
                   value={formData.name}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      name: e.target.value,
-                    })
-                  }
+                  onChange={(e) => updateField('name', e.target.value)}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                 />
               </div>
 
               <div className="space-y-1">
-                <label htmlFor="quote-phone" className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                <label
+                  htmlFor="quote-phone"
+                  className="text-xs font-bold text-slate-700 dark:text-slate-300"
+                >
                   Phone Number *
                 </label>
 
@@ -175,30 +254,23 @@ export default function QuoteModal({ isOpen, onClose }) {
                   required
                   placeholder="+1 (555) 000-0000"
                   value={formData.phone}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      phone: e.target.value,
-                    })
-                  }
+                  onChange={(e) => updateField('phone', e.target.value)}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                 />
               </div>
 
               <div className="space-y-1">
-                <label htmlFor="quote-service" className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                <label
+                  htmlFor="quote-service"
+                  className="text-xs font-bold text-slate-700 dark:text-slate-300"
+                >
                   Cleaning Service
                 </label>
 
                 <select
                   id="quote-service"
                   value={formData.service}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      service: e.target.value,
-                    })
-                  }
+                  onChange={(e) => updateField('service', e.target.value)}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all cursor-pointer"
                 >
                   {SERVICE_OPTIONS.map((s) => (
@@ -210,7 +282,29 @@ export default function QuoteModal({ isOpen, onClose }) {
               </div>
 
               <div className="space-y-1">
-                <label htmlFor="quote-date" className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                <label
+                  htmlFor="quote-area-size"
+                  className="text-xs font-bold text-slate-700 dark:text-slate-300"
+                >
+                  How Much Area Do You Want to Clean? *
+                </label>
+
+                <input
+                  type="text"
+                  id="quote-area-size"
+                  required
+                  placeholder="e.g. 500 sq ft, 2 rooms, 1 sofa"
+                  value={formData.areaSize}
+                  onChange={(e) => updateField('areaSize', e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label
+                  htmlFor="quote-date"
+                  className="text-xs font-bold text-slate-700 dark:text-slate-300"
+                >
                   Preferred Date
                 </label>
 
@@ -218,13 +312,26 @@ export default function QuoteModal({ isOpen, onClose }) {
                   type="date"
                   id="quote-date"
                   value={formData.date}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      date: e.target.value,
-                    })
-                  }
+                  onChange={(e) => updateField('date', e.target.value)}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label
+                  htmlFor="quote-details"
+                  className="text-xs font-bold text-slate-700 dark:text-slate-300"
+                >
+                  Additional Details
+                </label>
+
+                <textarea
+                  id="quote-details"
+                  rows={3}
+                  placeholder="Tell us about the cleaning area, stains, furniture, or any special requirements..."
+                  value={formData.details}
+                  onChange={(e) => updateField('details', e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-y"
                 />
               </div>
 
@@ -241,6 +348,15 @@ export default function QuoteModal({ isOpen, onClose }) {
               >
                 <span>{isSending ? 'Sending...' : 'Submit Request'}</span>
                 <Send size={16} />
+              </button>
+
+              <button
+                type="button"
+                onClick={handleWhatsAppQuote}
+                className="w-full justify-center inline-flex items-center gap-2 rounded-xl border border-green-500 text-green-600 hover:bg-green-500 hover:text-white py-3 font-bold text-sm transition-colors"
+              >
+                <MessageCircle size={17} />
+                <span>Get a Quote on WhatsApp</span>
               </button>
             </form>
           </div>
