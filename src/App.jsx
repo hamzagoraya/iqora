@@ -244,15 +244,6 @@ export default function App() {
       return <AreasWeServePage {...pageProps} />;
     }
 
-    if (currentPage.startsWith('/areas-we-serve/')) {
-      const citySlug = currentPage.replace('/areas-we-serve/', '');
-      const city = getCity(citySlug);
-
-      if (city) {
-        return <AreaPage city={city} {...pageProps} />;
-      }
-    }
-
     if (currentPage === '/cleaning-services-pricing') {
       return <PricingPage {...pageProps} />;
     }
@@ -294,6 +285,15 @@ export default function App() {
           {...pageProps}
         />
       );
+    }
+
+    if (currentPage.startsWith('/cleaning-services-in-')) {
+      const citySlug = currentPage.replace('/cleaning-services-in-', '');
+      const city = getCity(citySlug);
+
+      if (city) {
+        return <AreaPage city={city} {...pageProps} />;
+      }
     }
 
     if (specialtyRoutes[currentPage]) {

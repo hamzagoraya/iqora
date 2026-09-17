@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2, Info } from 'lucide-react';
-import PageHero from '../components/shared/PageHero';
+import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import { SERVICES, SPECIALTY_SERVICES, getServicePath, getSpecialtyPath, BRAND } from '../data/siteData';
 import WhatsAppIcon from '../components/shared/WhatsAppIcon';
@@ -8,10 +8,12 @@ import WhatsAppIcon from '../components/shared/WhatsAppIcon';
 export default function PricingPage({ onNavigate, onOpenQuote }) {
   return (
     <div>
-      <PageHero
+      <Hero
         badge="Transparent Pricing"
         title="Cleaning Services Pricing"
+        currentPage="Pricing"
         subtitle="Real price ranges for every IQORA service. Your exact quote is confirmed on-site before any work begins — never hourly, never a surprise."
+        onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[{ label: 'Pricing' }]}
       />

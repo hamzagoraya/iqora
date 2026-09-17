@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, ArrowRight, CheckCircle2, Building2, Sparkles } from 'lucide-react';
-import PageHero from '../components/shared/PageHero';
+import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import {
   SERVICES,
@@ -14,10 +14,12 @@ import {
 export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
   return (
     <div>
-      <PageHero
+      <Hero
         badge="Our Services"
         title="Cleaning Services"
+        currentPage="Cleaning Services"
         subtitle="Restorative cleaning for carpets, upholstery, tile, and fine furnishings — delivered by certified technicians across North Hollywood and the San Fernando Valley."
+        onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[{ label: 'Cleaning Services' }]}
       />

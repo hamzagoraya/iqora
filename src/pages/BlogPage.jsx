@@ -1,16 +1,18 @@
 import React from 'react';
 import { CalendarDays, Clock, ArrowRight } from 'lucide-react';
-import PageHero from '../components/shared/PageHero';
+import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import { BLOG_POSTS } from '../data/siteData';
 
 export default function BlogPage({ onNavigate, onOpenQuote }) {
   return (
     <div>
-      <PageHero
+      <Hero
         badge="IQORA Blog"
         title="Cleaning Tips &amp; Local Price Guides"
+        currentPage="Blog"
         subtitle="Practical answers from the field: what services really cost in the Valley, how often to clean what, and how to keep your home healthier between visits."
+        onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[{ label: 'Blog' }]}
       />

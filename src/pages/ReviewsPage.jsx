@@ -1,6 +1,6 @@
 import React from 'react';
 import { Star, Quote, MapPin, ArrowRight } from 'lucide-react';
-import PageHero from '../components/shared/PageHero';
+import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import { REVIEWS, BRAND } from '../data/siteData';
 
@@ -15,10 +15,12 @@ const Stars = ({ size = 16 }) => (
 export default function ReviewsPage({ onNavigate, onOpenQuote }) {
   return (
     <div>
-      <PageHero
+      <Hero
         badge="Our Reviews"
         title="What Your Neighbors Say"
+        currentPage="Our Reviews"
         subtitle={`Rated ${BRAND.rating} out of 5 by ${BRAND.reviewCount}+ customers across North Hollywood and the San Fernando Valley.`}
+        onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[{ label: 'Our Reviews' }]}
       />

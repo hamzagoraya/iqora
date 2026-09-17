@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, ArrowRight, CheckCircle2, BadgeCheck, Sparkles } from 'lucide-react';
-import PageHero from '../components/shared/PageHero';
+import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import FaqAccordion from '../components/shared/FaqAccordion';
 import { SERVICES, CITIES, getServicePath, getServiceCityPath, BRAND } from '../data/siteData';
@@ -14,11 +14,13 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
 
   return (
     <div>
-      <PageHero
+      <Hero
         badge={service.badge}
         title={`${service.name} Services`}
+        currentPage={service.name}
         subtitle={fill(service.tagline, baseCity)}
         image={service.image}
+        onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[
           { label: 'Cleaning Services', onClick: () => onNavigate('/cleaning-services') },
