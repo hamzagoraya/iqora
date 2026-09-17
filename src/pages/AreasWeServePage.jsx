@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, ArrowRight, Phone, Star } from 'lucide-react';
-import PageHero from '../components/shared/PageHero';
+import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import { SERVICES, CITIES, BRAND } from '../data/siteData';
 
@@ -18,10 +18,12 @@ export default function AreasWeServePage({ onNavigate, onOpenQuote }) {
 
   return (
     <div>
-      <PageHero
+      <Hero
         badge="Service Area"
         title="Areas We Serve"
+        currentPage="Areas We Serve"
         subtitle="IQORA Cleaning Services is based in North Hollywood and serves 10 cities across the San Fernando Valley and Pasadena with carpet, upholstery, and tile & grout cleaning."
+        onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[{ label: 'Areas We Serve' }]}
       />

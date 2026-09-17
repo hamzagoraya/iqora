@@ -1,5 +1,5 @@
 import React from 'react';
-import AboutHero from '../components/about/AboutHero';
+import Hero from '../components/Hero';
 import CompanyStory from '../components/about/CompanyStory';
 import MarqueeBanner from '../components/home/MarqueeBanner';
 import CleaningProcess from '../components/about/CleaningProcess';
@@ -13,7 +13,13 @@ import Newsletter from '../components/Newsletter';
 export default function AboutPage({ theme, onOpenQuote, onNavigate }) {
   return (
     <div className="aboutpage-wrapper">
-      <AboutHero onNavigate={onNavigate} />
+      <Hero
+        badge="Our Heritage"
+        title="About Us"
+        currentPage="About Us"
+        onOpenQuote={onOpenQuote}
+        onNavigate={onNavigate}
+      />
       <div className="relative z-10 bg-white">
         <TeamShowcase />
         <CompanyStory onOpenQuote={onOpenQuote} />

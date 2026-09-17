@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, MessageCircleQuestion } from 'lucide-react';
-import PageHero from '../components/shared/PageHero';
+import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import FaqAccordion from '../components/shared/FaqAccordion';
 import { FAQ_GROUPS, BRAND } from '../data/siteData';
@@ -13,10 +13,12 @@ export default function FAQPage({ onNavigate, onOpenQuote }) {
 
   return (
     <div>
-      <PageHero
+      <Hero
         badge="Help Center"
         title="Frequently Asked Questions"
+        currentPage="FAQ"
         subtitle="Answers to the questions we hear most — pricing, scheduling, safety, and our guarantees. Can't find yours? Call us anytime."
+        onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[{ label: 'FAQ' }]}
       />

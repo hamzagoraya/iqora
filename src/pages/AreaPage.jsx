@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { MapPin, ArrowRight, CheckCircle2, Building2, Sparkles, ShieldCheck } from 'lucide-react';
-import PageHero from '../components/shared/PageHero';
+import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import {
   ALL_SERVICES,
@@ -32,17 +32,19 @@ export default function AreaPage({ city, onNavigate, onOpenQuote }) {
       linkCanonical.rel = 'canonical';
       document.head.appendChild(linkCanonical);
     }
-    linkCanonical.href = `https://iqoracleaning.com/areas-we-serve/${city.slug}`;
+    linkCanonical.href = `https://iqoracleaning.com/cleaning-services-in-${city.slug}`;
   }, [city]);
 
   if (!city) return null;
 
   return (
     <div>
-      <PageHero
+      <Hero
         badge="Local Service Area"
         title={`Professional Cleaning Services in ${city.name}`}
+        currentPage={city.name}
         subtitle={city.note || `Providing expert carpet, upholstery, and tile cleaning for homes and businesses in ${city.name}.`}
+        onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[
           { label: 'Areas We Serve', onClick: () => onNavigate('/areas-we-serve') },

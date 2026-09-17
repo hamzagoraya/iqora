@@ -525,6 +525,6 @@ export const PRERENDER_ROUTES = [
   ...Object.values(MAIN_PAGE_ROUTES),
   ...SERVICES.flatMap((service) => CITIES.map((city) => getServiceCityPath(service.id, city.slug))),
   ...Object.keys(SPECIALTY_ROUTE_PATHS).map((specialtyId) => getSpecialtyPath(specialtyId)),
-  ...CITIES.map((city) => `/areas-we-serve/${city.slug}`),
+  ...CITIES.map((city) => `/cleaning-services-in-${city.slug}`),
   ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
 ];
