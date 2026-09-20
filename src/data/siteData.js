@@ -33,15 +33,95 @@ export const STATS = {
 
 export const CITIES = [
   {
-    slug: 'north-hollywood',
-    name: 'North Hollywood',
-    isParent: true,
-    note: 'Our home base. From NoHo Arts District apartments to family homes near Valley Plaza, we clean carpets, upholstery, and tile across the neighborhood every week.',
+    slug: 'santa-ana',
+    name: 'Santa Ana',
+    note: 'From downtown lofts to family homes near the Flower Streets, Santa Ana residents count on IQORA for fast-drying carpet, upholstery, and tile cleaning.',
   },
   {
-    slug: 'burbank',
-    name: 'Burbank',
-    note: 'From Media District studios to Magnolia Park bungalows, Burbank homes and offices trust IQORA for fast-drying, low-moisture cleaning.',
+    slug: 'irvine',
+    name: 'Irvine',
+    note: 'Irvine’s master-planned communities and corporate offices book us for eco-certified carpet and tile cleaning with same-week scheduling.',
+  },
+  {
+    slug: 'riverside',
+    name: 'Riverside',
+    note: 'Serving Riverside homes and businesses — from Canyon Crest to downtown — with deep-steam carpet cleaning and heritage-safe tile care.',
+  },
+  {
+    slug: 'san-bernardino',
+    name: 'San Bernardino',
+    note: 'San Bernardino families and offices rely on our truck-mounted extraction for carpets, upholstery, and tile at honest, upfront prices.',
+  },
+  {
+    slug: 'ontario',
+    name: 'Ontario',
+    note: 'From Ontario Ranch homes to business parks near the airport, we keep carpets and tile floors clean with fast-drying, low-moisture methods.',
+  },
+  {
+    slug: 'pomona',
+    name: 'Pomona',
+    note: 'Pomona’s historic homes and rentals trust IQORA for careful fiber-id testing and pet-safe carpet and upholstery cleaning.',
+  },
+  {
+    slug: 'anaheim',
+    name: 'Anaheim',
+    note: 'Anaheim households — from the Colony to Anaheim Hills — count on us for allergen-friendly carpet cleaning and grout restoration.',
+  },
+  {
+    slug: 'huntington-beach',
+    name: 'Huntington Beach',
+    note: 'Coastal living means sand and salt — our Huntington Beach crews specialize in deep carpet extraction and tile & grout cleaning that stands up to beach traffic.',
+  },
+  {
+    slug: 'long-beach',
+    name: 'Long Beach',
+    note: 'From Bixby Knolls apartments to Naples Island homes, Long Beach customers trust our eco-certified carpet, rug, and tile cleaning.',
+  },
+  {
+    slug: 'torrance',
+    name: 'Torrance',
+    note: 'Torrance families and South Bay offices book our same-week appointments for pet-safe carpet cleaning and gleaming tile floors.',
+  },
+  {
+    slug: 'santa-monica',
+    name: 'Santa Monica',
+    note: 'Santa Monica’s beachside apartments and boutiques need discreet, fast-drying cleaning — our low-moisture methods deliver exactly that.',
+  },
+  {
+    slug: 'los-angeles',
+    name: 'Los Angeles',
+    isParent: true,
+    note: 'Our home base. From Hollywood apartments to Westside family homes, we clean carpets, upholstery, and tile across the city every week.',
+  },
+  {
+    slug: 'pasadena',
+    name: 'Pasadena',
+    note: 'From Old Pasadena businesses to Craftsman-era homes, we use heritage-safe methods on every floor and fabric.',
+  },
+  {
+    slug: 'santa-clarita',
+    name: 'Santa Clarita',
+    note: 'Santa Clarita’s family homes and new builds rely on us for whole-home carpet packages and grout sealing, usually within the same week.',
+  },
+  {
+    slug: 'thousand-oaks',
+    name: 'Thousand Oaks',
+    note: 'Thousand Oaks families refer us again and again for detail-obsessed upholstery care and deep carpet cleaning in the Conejo Valley.',
+  },
+  {
+    slug: 'beverly-hills',
+    name: 'Beverly Hills',
+    note: 'Beverly Hills estates and designer interiors receive white-glove care — from fine upholstery and delicate rugs to stone-safe tile cleaning.',
+  },
+  {
+    slug: 'west-hollywood',
+    name: 'West Hollywood',
+    note: 'WeHo apartments, showrooms, and restaurants book us for discreet, after-hours carpet and upholstery cleaning that never interrupts business.',
+  },
+  {
+    slug: 'culver-city',
+    name: 'Culver City',
+    note: 'From downtown lofts to studio offices, Culver City homes and businesses trust our eco-certified, fragrance-free cleaning.',
   },
   {
     slug: 'glendale',
@@ -49,39 +129,9 @@ export const CITIES = [
     note: 'Serving Glendale families and businesses — from the Americana corridor to the Verdugo Woodlands — with eco-certified cleaning products.',
   },
   {
-    slug: 'sherman-oaks',
-    name: 'Sherman Oaks',
-    note: 'Busy Sherman Oaks households count on our same-week carpet and rug cleaning with pet-safe, fragrance-free options.',
-  },
-  {
-    slug: 'van-nuys',
-    name: 'Van Nuys',
-    note: 'Van Nuys apartments, offices, and storefronts rely on our flexible scheduling, including evenings and weekends.',
-  },
-  {
-    slug: 'encino',
-    name: 'Encino',
-    note: 'Encino’s family homes and higher-end interiors receive white-glove care, from fine upholstery to delicate area rugs.',
-  },
-  {
-    slug: 'studio-city',
-    name: 'Studio City',
-    note: 'Studio City homes and production offices book us for discreet, quiet, after-hours cleaning that never interrupts a shoot.',
-  },
-  {
-    slug: 'valley-village',
-    name: 'Valley Village',
-    note: 'A quiet residential favorite — Valley Village neighbors refer us for our careful, detail-obsessed technicians.',
-  },
-  {
-    slug: 'toluca-lake',
-    name: 'Toluca Lake',
-    note: 'Lakeside estates and classic Toluca Lake homes get museum-grade fabric and carpet treatment on every visit.',
-  },
-  {
-    slug: 'pasadena',
-    name: 'Pasadena',
-    note: 'From Old Pasadena businesses to Craftsman-era homes, we use heritage-safe methods on every floor and fabric.',
+    slug: 'burbank',
+    name: 'Burbank',
+    note: 'From Media District studios to Magnolia Park bungalows, Burbank homes and offices trust IQORA for fast-drying, low-moisture cleaning.',
   },
 ];
 
@@ -403,7 +453,7 @@ export const FAQ_GROUPS = [
   {
     group: 'General',
     items: [
-      { q: 'What areas do you serve?', a: 'We serve North Hollywood and nine surrounding cities: Burbank, Glendale, Sherman Oaks, Van Nuys, Encino, Studio City, Valley Village, Toluca Lake, and Pasadena.' },
+      { q: 'What areas do you serve?', a: `We serve ${CITIES.length} areas across greater Los Angeles, Orange County, and the Inland Empire: ${CITIES.map((c) => c.name).join(', ')}. Each area has its own page with local details and pricing.` },
       { q: 'Are you licensed and insured?', a: 'Yes — IQORA Cleaning Services is fully licensed, bonded, and insured for both residential and commercial work.' },
       { q: 'What makes IQORA different from other cleaning companies?', a: 'We specialize in restorative cleaning of carpet, upholstery, tile, and fine furnishings — not general housekeeping. Every technician is certified, every job starts with an inspection, and every service is backed by a 100% satisfaction guarantee.' },
       { q: 'Are your products safe for kids and pets?', a: 'Yes. We use eco-certified, fragrance-free solutions by default and offer fully hypoallergenic product lines for sensitive households.' },
@@ -480,17 +530,22 @@ export const MAIN_PAGE_ROUTES = {
   blog: '/blog',
 };
 
-export const SERVICE_ROUTE_PATHS = {
-  'carpet-cleaning': '/carpet-cleaning-services-in-north-hollywood',
-  'upholstery-cleaning': '/upholstery-cleaning-services-in-north-hollywood',
-  'tile-and-grout-cleaning': '/tile-and-grout-cleaning-services-in-north-hollywood',
-};
-
 export const SERVICE_CITY_ROUTE_PREFIXES = {
   'carpet-cleaning': '/carpet-cleaning-services-in-',
   'upholstery-cleaning': '/upholstery-cleaning-services-in-',
   'tile-and-grout-cleaning': '/tile-and-grout-cleaning-services-in-',
 };
+
+export const AREA_ROUTE_PREFIX = '/cleaning-services-in-';
+
+const parentCitySlug = (CITIES.find((c) => c.isParent) || CITIES[0]).slug;
+
+export const SERVICE_ROUTE_PATHS = Object.fromEntries(
+  Object.entries(SERVICE_CITY_ROUTE_PREFIXES).map(([serviceId, prefix]) => [
+    serviceId,
+    `${prefix}${parentCitySlug}`,
+  ])
+);
 
 export const SPECIALTY_ROUTE_PATHS = {
   'area-rug-cleaning': '/area-rug-cleaning-services',
@@ -518,13 +573,13 @@ export const getService = (id) => SERVICES.find((s) => s.id === id);
 export const getSpecialty = (id) => SPECIALTY_SERVICES.find((s) => s.id === id);
 export const getCity = (slug) => CITIES.find((c) => c.slug === slug);
 export const getParentCity = () => CITIES.find((c) => c.isParent);
-export const getChildCities = () => CITIES.filter((c) => !c.isParent);
+export const getAreaPath = (citySlug) => `${AREA_ROUTE_PREFIX}${citySlug}`;
 export const getBlogPost = (slug) => BLOG_POSTS.find((p) => p.slug === slug);
 
 export const PRERENDER_ROUTES = [
   ...Object.values(MAIN_PAGE_ROUTES),
   ...SERVICES.flatMap((service) => CITIES.map((city) => getServiceCityPath(service.id, city.slug))),
   ...Object.keys(SPECIALTY_ROUTE_PATHS).map((specialtyId) => getSpecialtyPath(specialtyId)),
-  ...CITIES.map((city) => `/cleaning-services-in-${city.slug}`),
+  ...CITIES.map((city) => getAreaPath(city.slug)),
   ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
 ];

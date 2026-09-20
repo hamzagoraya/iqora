@@ -2,27 +2,16 @@ import React from 'react';
 import { MapPin, ArrowRight, Phone, Star } from 'lucide-react';
 import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
-import { SERVICES, CITIES, BRAND } from '../data/siteData';
+import { SERVICES, CITIES, BRAND, getServiceCityPath, getAreaPath } from '../data/siteData';
 
 export default function AreasWeServePage({ onNavigate, onOpenQuote }) {
-  // Convert service ID + city slug into the new SEO-friendly URL
-  const getServicePath = (serviceId, citySlug) => {
-    const servicePaths = {
-      'carpet-cleaning': `/carpet-cleaning-services-in-${citySlug}`,
-      'upholstery-cleaning': `/upholstery-cleaning-services-in-${citySlug}`,
-      'tile-and-grout-cleaning': `/tile-and-grout-cleaning-services-in-${citySlug}`,
-    };
-
-    return servicePaths[serviceId] || '/cleaning-services';
-  };
-
   return (
     <div>
       <Hero
         badge="Service Area"
         title="Areas We Serve"
         currentPage="Areas We Serve"
-        subtitle="IQORA Cleaning Services is based in North Hollywood and serves 10 cities across the San Fernando Valley and Pasadena with carpet, upholstery, and tile & grout cleaning."
+        subtitle={`IQORA Cleaning Services serves ${CITIES.length} areas across greater Los Angeles, Orange County, and the Inland Empire with carpet, upholstery, and tile & grout cleaning.`}
         onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[{ label: 'Areas We Serve' }]}
@@ -38,13 +27,13 @@ export default function AreasWeServePage({ onNavigate, onOpenQuote }) {
             </div>
 
             <h2 className="text-3xl lg:text-4xl font-heading font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-              Our 10 service cities
+              Our {CITIES.length} service areas
             </h2>
 
             <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-              Every city has a dedicated page for each of our three main
-              services. Pick your city and service for local details and
-              pricing.
+              Every area has its own guide page plus a dedicated page for
+              each of our three main services. Pick your area for local
+              details and pricing.
             </p>
           </div>
 
@@ -71,7 +60,14 @@ export default function AreasWeServePage({ onNavigate, onOpenQuote }) {
 
                     <div>
                       <h3 className="font-heading font-extrabold text-lg text-slate-900 dark:text-white">
-                        {city.name}
+                        <button
+                          type="button"
+                          onClick={() => onNavigate(getAreaPath(city.slug))}
+                          className="text-left hover:text-primary transition-colors"
+                          aria-label={`View the ${city.name} area page`}
+                        >
+                          {city.name}
+                        </button>
                       </h3>
 
                       {city.isParent && (
@@ -96,7 +92,7 @@ export default function AreasWeServePage({ onNavigate, onOpenQuote }) {
                   {SERVICES.map((service) => {
                     const Icon = service.icon;
 
-                    const servicePath = getServicePath(
+                    const servicePath = getServiceCityPath(
                       service.id,
                       city.slug
                     );
@@ -147,7 +143,7 @@ export default function AreasWeServePage({ onNavigate, onOpenQuote }) {
           </div>
 
           <h3 className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white mb-3">
-            {BRAND.rating} stars from {BRAND.reviewCount}+ neighbors across the Valley
+            {BRAND.rating} stars from {BRAND.reviewCount}+ neighbors across Southern California
           </h3>
 
           <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">

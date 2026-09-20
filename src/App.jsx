@@ -28,6 +28,7 @@ import {
   getServicePath,
   getServiceCityPath,
   getSpecialtyPath,
+  AREA_ROUTE_PREFIX,
   MAIN_PAGE_ROUTES,
 } from './data/siteData';
 
@@ -287,8 +288,8 @@ export default function App() {
       );
     }
 
-    if (currentPage.startsWith('/cleaning-services-in-')) {
-      const citySlug = currentPage.replace('/cleaning-services-in-', '');
+    if (currentPage.startsWith(AREA_ROUTE_PREFIX)) {
+      const citySlug = currentPage.replace(AREA_ROUTE_PREFIX, '');
       const city = getCity(citySlug);
 
       if (city) {

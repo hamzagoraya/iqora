@@ -7,6 +7,7 @@ import {
   SPECIALTY_SERVICES,
   getServiceCityPath,
   getSpecialtyPath,
+  getAreaPath,
   BRAND,
 } from '../data/siteData';
 import WhatsAppIcon from '../components/shared/WhatsAppIcon';
@@ -32,7 +33,7 @@ export default function AreaPage({ city, onNavigate, onOpenQuote }) {
       linkCanonical.rel = 'canonical';
       document.head.appendChild(linkCanonical);
     }
-    linkCanonical.href = `https://iqoracleaning.com/cleaning-services-in-${city.slug}`;
+    linkCanonical.href = `https://iqoracleaning.com${getAreaPath(city.slug)}`;
   }, [city]);
 
   if (!city) return null;
@@ -129,7 +130,7 @@ export default function AreaPage({ city, onNavigate, onOpenQuote }) {
               {
                 icon: Building2,
                 title: 'Local Experts',
-                text: 'Our technicians are highly trained and familiar with the unique architectural styles and materials found across the Valley.'
+                text: 'Our technicians are highly trained and familiar with the unique architectural styles and materials found across Southern California.'
               },
               {
                 icon: CheckCircle2,

@@ -3,14 +3,14 @@ import { MapPin, ArrowRight, CheckCircle2, BadgeCheck, Sparkles } from 'lucide-r
 import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import FaqAccordion from '../components/shared/FaqAccordion';
-import { SERVICES, CITIES, getServicePath, getServiceCityPath, BRAND } from '../data/siteData';
+import { SERVICES, CITIES, getParentCity, getServicePath, getServiceCityPath, BRAND } from '../data/siteData';
 import WhatsAppIcon from '../components/shared/WhatsAppIcon';
 
 const fill = (text, city) => (text ? text.replace(/\{city\}/g, city) : text);
 
 export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote }) {
   const Icon = service.icon;
-  const baseCity = 'North Hollywood';
+  const baseCity = getParentCity().name;
 
   return (
     <div>
@@ -52,7 +52,7 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
               <span>Specialty Service</span>
             </div>
             <h2 className="text-3xl lg:text-4xl font-heading font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
-              Expert {service.name.toLowerCase()} for North Hollywood &amp; the Valley
+              Expert {service.name.toLowerCase()} for {baseCity} &amp; every area we serve
             </h2>
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
               {fill(service.intro, baseCity)}
@@ -172,11 +172,11 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Areas We Serve</div>
             <h2 className="text-3xl lg:text-4xl font-heading font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-              {service.name} available across 10 Valley cities
+              {service.name} available across all {CITIES.length} areas we serve
             </h2>
             <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-              We’re based in North Hollywood and serve the entire area. Our most in-demand services — carpet,
-              upholstery, and tile &amp; grout cleaning — are available in every city below:
+              {baseCity} is our home base, and we serve the entire area. Our most in-demand services — carpet,
+              upholstery, and tile &amp; grout cleaning — are available in every area below:
             </p>
           </div>
 
@@ -228,7 +228,7 @@ export default function SpecialtyServicePage({ service, onNavigate, onOpenQuote 
       <CTABand
         onOpenQuote={onOpenQuote}
         title={`Book ${service.name.toLowerCase()} with IQORA`}
-        text="Free on-site estimates in North Hollywood and every city we serve. Most customers are scheduled within the same week."
+        text={`Free on-site estimates in ${baseCity} and every area we serve. Most customers are scheduled within the same week.`}
       />
     </div>
   );

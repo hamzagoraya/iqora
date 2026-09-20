@@ -6,19 +6,22 @@ import {
   SERVICES,
   SPECIALTY_SERVICES,
   CITIES,
+  getParentCity,
   getServicePath,
   getServiceCityPath,
   getSpecialtyPath,
 } from '../data/siteData';
 
 export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
+  const parentCity = getParentCity();
+
   return (
     <div>
       <Hero
         badge="Our Services"
         title="Cleaning Services"
         currentPage="Cleaning Services"
-        subtitle="Restorative cleaning for carpets, upholstery, tile, and fine furnishings — delivered by certified technicians across North Hollywood and the San Fernando Valley."
+        subtitle={`Restorative cleaning for carpets, upholstery, tile, and fine furnishings — delivered by certified technicians across ${CITIES.length} areas of greater Los Angeles, Orange County, and the Inland Empire.`}
         onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[{ label: 'Cleaning Services' }]}
@@ -66,13 +69,13 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
                       </div>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5 flex-grow">
-                      {s.tagline.replace('{city}', 'North Hollywood')}
+                      {s.tagline.replace('{city}', parentCity.name)}
                     </p>
                     <button
                       onClick={() => onNavigate(getServicePath(s.id))}
                       className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:gap-3 transition-all mb-4"
                     >
-                      {s.name} in North Hollywood
+                      {s.name} in {parentCity.name}
                       <ArrowRight size={15} />
                     </button>
                     <div className="border-t border-slate-100 dark:border-slate-800 pt-4">
@@ -134,7 +137,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
                     <ArrowRight size={15} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h3>
                   <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
-                    {s.tagline.replace('{city}', 'North Hollywood')}
+                    {s.tagline.replace('{city}', parentCity.name)}
                   </p>
                   <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
                     <Sparkles size={12} className="text-primary" />
@@ -174,7 +177,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
       <section className="py-14 bg-white dark:bg-dark-surface" data-reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white mb-3">
-            Every service, in 10 cities
+            Every service, in {CITIES.length} areas
           </h3>
           <p className="text-sm text-slate-600 dark:text-slate-300 mb-6 max-w-xl mx-auto">
             See our full services-and-cities grid on the Areas We Serve page.
