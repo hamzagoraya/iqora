@@ -19,6 +19,10 @@ import {
   SERVICES,
   SPECIALTY_SERVICES,
   CITIES,
+  getServicePath,
+  getServiceCityPath,
+  getSpecialtyPath,
+  getAreaPath,
 } from '../data/siteData';
 
 /*
@@ -47,7 +51,10 @@ const isActive = (navId, currentPage) => {
       );
 
     case 'areas':
-      return currentPage === '/areas-we-serve';
+      return (
+        currentPage === '/areas-we-serve' ||
+        currentPage.startsWith('/cleaning-services-in-')
+      );
 
     case 'pricing':
       return currentPage === '/cleaning-services-pricing';
@@ -67,38 +74,6 @@ const isActive = (navId, currentPage) => {
     default:
       return false;
   }
-};
-
-/*
-|--------------------------------------------------------------------------
-| Service URL Map
-|--------------------------------------------------------------------------
-*/
-
-const SERVICE_PATHS = {
-  'carpet-cleaning':
-    '/carpet-cleaning-services-in-north-hollywood',
-
-  'upholstery-cleaning':
-    '/upholstery-cleaning-services-in-north-hollywood',
-
-  'tile-and-grout-cleaning':
-    '/tile-and-grout-cleaning-services-in-north-hollywood',
-
-  'area-rug-cleaning':
-    '/area-rug-cleaning-services',
-
-  'mattress-cleaning':
-    '/mattress-cleaning-services',
-
-  'leather-couch-cleaning':
-    '/leather-couch-cleaning-services',
-
-  'scotchgard-protection':
-    '/scotchgard-protection-services',
-
-  'curtain-cleaning':
-    '/curtain-cleaning-services',
 };
 
 /*
@@ -517,8 +492,7 @@ export default function Header({
                                       isSubVisible ? null : service.id
                                     );
                                   } else {
-                                    const path =
-                                      SERVICE_PATHS[service.id];
+                                    const path = getServicePath(service.id);
 
                                     if (path) {
                                       handleNavClick(path);
@@ -601,7 +575,10 @@ export default function Header({
                                           event.stopPropagation();
 
                                           handleNavClick(
-                                            `/${service.id}-services-in-${city.slug}`
+                                            getServiceCityPath(
+                                              service.id,
+                                              city.slug
+                                            )
                                           );
                                         }}
                                         className="
@@ -650,8 +627,7 @@ export default function Header({
                                 key={service.id}
                                 type="button"
                                 onClick={() => {
-                                  const path =
-                                    SERVICE_PATHS[service.id];
+                                  const path = getSpecialtyPath(service.id);
 
                                   if (path) {
                                     handleNavClick(path);
@@ -758,7 +734,7 @@ export default function Header({
                           duration-200
                         "
                       >
-                        <div className="bg-white dark:bg-dark-card rounded-2xl border border-slate-100 dark:border-slate-800 shadow-2xl p-3">
+                        <div className="bg-white dark:bg-dark-card rounded-2xl border border-slate-100 dark:border-slate-800 shadow-2xl p-3 max-h-[calc(100vh-180px)] flex flex-col">
                           {/* All Areas */}
                           <button
                             type="button"
@@ -780,6 +756,7 @@ export default function Header({
                               hover:bg-primary-light
                               dark:hover:bg-primary/10
                               transition-all
+                              shrink-0
                             "
                           >
                             <MapPin size={17} />
@@ -791,49 +768,49 @@ export default function Header({
                             <ArrowRight size={14} />
                           </button>
 
-                          <div className="my-2 border-t border-slate-100 dark:border-slate-800" />
+                          <div className="my-2 border-t border-slate-100 dark:border-slate-800 shrink-0" />
 
                           {/* Cities */}
-                          {CITIES.map((city) => (
-                            <button
-                              key={city.slug}
-                              type="button"
-                              onClick={() =>
-                                handleNavClick(
-                                  `/cleaning-services-in-${city.slug}`
-                                )
-                              }
-                              className="
-                                w-full
-                                flex
-                                items-center
-                                gap-3
-                                px-4
-                                py-2.5
-                                rounded-xl
-                                text-left
-                                text-sm
-                                font-bold
-                                text-slate-700
-                                dark:text-slate-200
-                                hover:text-primary
-                                hover:bg-primary-light
-                                dark:hover:bg-primary/10
-                                transition-all
-                              "
-                            >
-                              <MapPin
-                                size={15}
-                                className="text-primary shrink-0"
-                              />
+                          <div className="overflow-y-auto min-h-0 areas-dropdown-scroll">
+                            {CITIES.map((city) => (
+                              <button
+                                key={city.slug}
+                                type="button"
+                                onClick={() =>
+                                  handleNavClick(getAreaPath(city.slug))
+                                }
+                                className="
+                                  w-full
+                                  flex
+                                  items-center
+                                  gap-3
+                                  px-4
+                                  py-2.5
+                                  rounded-xl
+                                  text-left
+                                  text-sm
+                                  font-bold
+                                  text-slate-700
+                                  dark:text-slate-200
+                                  hover:text-primary
+                                  hover:bg-primary-light
+                                  dark:hover:bg-primary/10
+                                  transition-all
+                                "
+                              >
+                                <MapPin
+                                  size={15}
+                                  className="text-primary shrink-0"
+                                />
 
-                              <span className="flex-1">
-                                {city.name}
-                              </span>
+                                <span className="flex-1">
+                                  {city.name}
+                                </span>
 
-                              <ArrowRight size={13} />
-                            </button>
-                          ))}
+                                <ArrowRight size={13} />
+                              </button>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1005,8 +982,7 @@ export default function Header({
                           <button
                             key={service.id}
                             onClick={() => {
-                              const path =
-                                SERVICE_PATHS[service.id];
+                              const path = getServicePath(service.id);
 
                               if (path) {
                                 handleNavClick(path);
@@ -1069,7 +1045,10 @@ export default function Header({
                                   key={city.slug}
                                   onClick={() =>
                                     handleNavClick(
-                                      `/${service.id}-services-in-${city.slug}`
+                                      getServiceCityPath(
+                                        service.id,
+                                        city.slug
+                                      )
                                     )
                                   }
                                   className="w-full flex items-center gap-2 text-left text-sm py-1.5 text-slate-300 hover:text-primary"
@@ -1096,8 +1075,7 @@ export default function Header({
                         <button
                           key={service.id}
                           onClick={() => {
-                            const path =
-                              SERVICE_PATHS[service.id];
+                            const path = getSpecialtyPath(service.id);
 
                             if (path) {
                               handleNavClick(path);
@@ -1171,9 +1149,7 @@ export default function Header({
                       <button
                         key={city.slug}
                         onClick={() =>
-                          handleNavClick(
-                            `/cleaning-services-in-${city.slug}`
-                          )
+                          handleNavClick(getAreaPath(city.slug))
                         }
                         className="w-full flex items-center gap-2 text-left text-sm py-1.5 text-slate-200 hover:text-primary"
                       >

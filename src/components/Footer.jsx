@@ -6,8 +6,8 @@ import {
   SPECIALTY_SERVICES,
   CITIES,
   getServicePath,
-  getServiceCityPath,
   getSpecialtyPath,
+  getAreaPath,
 } from '../data/siteData';
 
 export default function Footer({ onNavigate }) {
@@ -76,7 +76,7 @@ export default function Footer({ onNavigate }) {
               <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs sm:text-sm">
                 {CITIES.map((c) => (
                   <li key={c.slug}>
-                    <button onClick={() => onNavigate(getServiceCityPath('carpet-cleaning', c.slug))} className="hover:text-primary transition-colors text-left">
+                    <button onClick={() => onNavigate(getAreaPath(c.slug))} className="hover:text-primary transition-colors text-left">
                       {c.name}
                     </button>
                   </li>

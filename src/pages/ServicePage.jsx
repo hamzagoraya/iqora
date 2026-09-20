@@ -3,14 +3,14 @@ import { MapPin, ArrowRight, CheckCircle2, BadgeCheck, Sparkles } from 'lucide-r
 import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import FaqAccordion from '../components/shared/FaqAccordion';
-import { SERVICES, CITIES, getChildCities, getServicePath, getServiceCityPath, BRAND } from '../data/siteData';
+import { SERVICES, CITIES, getParentCity, getServicePath, getServiceCityPath, BRAND } from '../data/siteData';
 import WhatsAppIcon from '../components/shared/WhatsAppIcon';
 
 const fill = (text, city) => (text ? text.replace(/\{city\}/g, city) : text);
 
 export default function ServicePage({ service, city, onNavigate, onOpenQuote }) {
   const isParent = !!city.isParent;
-  const childCities = getChildCities();
+  const parentCity = getParentCity();
   const siblingCities = CITIES.filter((c) => c.slug !== city.slug);
   const otherServices = SERVICES.filter((s) => s.id !== service.id);
   const Icon = service.icon;
@@ -18,9 +18,9 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
   const crumbs = [
     { label: 'Cleaning Services', onClick: () => onNavigate('/cleaning-services') },
     ...(isParent
-      ? [{ label: `${service.name} — North Hollywood` }]
+      ? [{ label: `${service.name} — ${parentCity.name}` }]
       : [
-          { label: `${service.name} — North Hollywood`, onClick: () => onNavigate(getServicePath(service.id)) },
+          { label: `${service.name} — ${parentCity.name}`, onClick: () => onNavigate(getServicePath(service.id)) },
           { label: city.name },
         ]),
   ];
@@ -208,11 +208,11 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="badge-tag mb-4">Service Areas</div>
             <h2 className="text-3xl lg:text-4xl font-heading font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-              {isParent ? `We bring ${service.name.toLowerCase()} to 10 Valley cities` : `Also serving ${service.shortName.toLowerCase()} customers nearby`}
+              {isParent ? `We bring ${service.name.toLowerCase()} to all ${CITIES.length} areas we serve` : `Also serving ${service.shortName.toLowerCase()} customers nearby`}
             </h2>
             <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
               {isParent
-                ? `North Hollywood is our home base, and our ${service.name.toLowerCase()} teams serve all of these communities, usually within the same week:`
+                ? `${parentCity.name} is our home base, and our ${service.name.toLowerCase()} teams serve all of these communities, usually within the same week:`
                 : `Not in ${city.name}? We provide the same professional ${service.name.toLowerCase()} throughout the area:`}
             </p>
           </div>
@@ -274,7 +274,7 @@ export default function ServicePage({ service, city, onNavigate, onOpenQuote }) 
       <CTABand
         onOpenQuote={onOpenQuote}
         title={`Book ${service.name.toLowerCase()} in ${city.name} today`}
-        text={`Free on-site estimates across ${city.name} and all 10 cities we serve. Most customers are scheduled within the same week.`}
+        text={`Free on-site estimates across ${city.name} and all ${CITIES.length} areas we serve. Most customers are scheduled within the same week.`}
       />
     </div>
   );
