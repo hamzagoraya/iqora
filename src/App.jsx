@@ -6,6 +6,7 @@ import QuoteModal from './components/QuoteModal';
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import OurTeamPage from './pages/OurTeamPage';
 import ContactPage from './pages/ContactPage';
 import ServicesHubPage from './pages/ServicesHubPage';
 import AreasWeServePage from './pages/AreasWeServePage';
@@ -22,9 +23,11 @@ import useRevealAnimations from './hooks/useRevealAnimations';
 
 import {
   getService,
+  getServiceMainPath,
   getSpecialty,
   getCity,
   getBlogPost,
+  SERVICES,
   getServicePath,
   getServiceCityPath,
   getSpecialtyPath,
@@ -218,6 +221,10 @@ export default function App() {
     '/curtain-cleaning-services': 'curtain-cleaning',
   };
 
+  const mainServiceRoutes = Object.fromEntries(
+    SERVICES.map((service) => [getServiceMainPath(service.id), service.id])
+  );
+
   const renderPage = () => {
     if (currentPage === '/') {
       return <HomePage {...pageProps} />;
@@ -225,6 +232,10 @@ export default function App() {
 
     if (currentPage === '/about-us') {
       return <AboutPage {...pageProps} />;
+    }
+
+    if (currentPage === '/our-team') {
+      return <OurTeamPage {...pageProps} />;
     }
 
     if (currentPage === '/contact-us') {
@@ -263,6 +274,15 @@ export default function App() {
 
     if (currentPage === '/blog') {
       return <BlogPage {...pageProps} />;
+    }
+
+    if (mainServiceRoutes[currentPage]) {
+      const service = getService(mainServiceRoutes[currentPage]);
+      const city = getCity('los-angeles');
+
+      if (service && city) {
+        return <ServicePage service={service} city={city} {...pageProps} />;
+      }
     }
 
     if (currentPage.startsWith('/blog/')) {
