@@ -536,6 +536,12 @@ export const SERVICE_CITY_ROUTE_PREFIXES = {
   'tile-and-grout-cleaning': '/tile-and-grout-cleaning-services-in-',
 };
 
+export const SERVICE_MAIN_ROUTE_PATHS = {
+  'carpet-cleaning': '/carpet-cleaning',
+  'upholstery-cleaning': '/upholstery-cleaning',
+  'tile-and-grout-cleaning': '/tile-and-grout-cleaning',
+};
+
 export const AREA_ROUTE_PREFIX = '/cleaning-services-in-';
 
 const parentCitySlug = (CITIES.find((c) => c.isParent) || CITIES[0]).slug;
@@ -556,6 +562,7 @@ export const SPECIALTY_ROUTE_PATHS = {
 };
 
 export const getMainPagePath = (pageKey) => MAIN_PAGE_ROUTES[pageKey] || '/';
+export const getServiceMainPath = (serviceId) => SERVICE_MAIN_ROUTE_PATHS[serviceId] || '/cleaning-services';
 export const getServicePath = (serviceId) => SERVICE_ROUTE_PATHS[serviceId] || '/cleaning-services';
 export const getServiceCityPath = (serviceId, citySlug) => {
   const prefix = SERVICE_CITY_ROUTE_PREFIXES[serviceId];

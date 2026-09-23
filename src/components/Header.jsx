@@ -19,6 +19,7 @@ import {
   SERVICES,
   SPECIALTY_SERVICES,
   CITIES,
+  getServiceMainPath,
   getServicePath,
   getServiceCityPath,
   getSpecialtyPath,
@@ -39,9 +40,15 @@ const isActive = (navId, currentPage) => {
     case 'about':
       return currentPage === '/about-us';
 
+    case 'team':
+      return currentPage === '/our-team';
+
     case 'services':
       return (
         currentPage === '/cleaning-services' ||
+        currentPage === '/carpet-cleaning' ||
+        currentPage === '/upholstery-cleaning' ||
+        currentPage === '/tile-and-grout-cleaning' ||
         currentPage.includes('-cleaning-services-in-') ||
         currentPage === '/area-rug-cleaning-services' ||
         currentPage === '/mattress-cleaning-services' ||
@@ -296,6 +303,11 @@ export default function Header({
       label: 'Contact Us',
       path: '/contact-us',
     },
+    {
+      id: 'team',
+      label: 'Our Team',
+      path: '/our-team',
+    },
   ];
 
   return (
@@ -480,24 +492,20 @@ export default function Header({
                               desktopSubSection === service.id;
 
                             const ServiceItem = (
-                              <button
+                              <a
                                 key={service.id}
-                                type="button"
+                                href={
+                                  hasSubmenu
+                                    ? getServiceMainPath(service.id)
+                                    : getServicePath(service.id)
+                                }
                                 onClick={(event) => {
-                                  if (hasSubmenu) {
-                                    event.preventDefault();
-                                    event.stopPropagation();
-
-                                    setDesktopSubSection(
-                                      isSubVisible ? null : service.id
-                                    );
-                                  } else {
-                                    const path = getServicePath(service.id);
-
-                                    if (path) {
-                                      handleNavClick(path);
-                                    }
-                                  }
+                                  event.preventDefault();
+                                  handleNavClick(
+                                    hasSubmenu
+                                      ? getServiceMainPath(service.id)
+                                      : getServicePath(service.id)
+                                  );
                                 }}
                                 className="
                                   w-full
@@ -532,7 +540,7 @@ export default function Header({
                                 ) : (
                                   <ArrowRight size={14} />
                                 )}
-                              </button>
+                              </a>
                             );
 
                             if (!hasSubmenu) {
@@ -1005,41 +1013,56 @@ export default function Header({
                           key={service.id}
                           className="w-full"
                         >
-                          <button
-                            onClick={() =>
-                              setMobileSubSection(
-                                mobileSubSection === service.id
-                                  ? null
-                                  : service.id
-                              )
-                            }
-                            className="w-full flex items-center justify-between py-1.5 text-sm text-slate-200 hover:text-primary"
-                          >
-                            <div className="flex items-center gap-2">
+                          <div className="w-full flex items-center justify-between py-1.5 text-sm text-slate-200 hover:text-primary">
+                            <a
+                              href={getServiceMainPath(service.id)}
+                              onClick={(event) => {
+                                event.preventDefault();
+                                handleNavClick(getServiceMainPath(service.id));
+                              }}
+                              className="flex items-center gap-2"
+                            >
                               <Icon
                                 size={15}
                                 className="text-primary"
                               />
 
                               {service.name}
-                            </div>
+                            </a>
 
-                            <ChevronDown
-                              size={14}
-                              className={`
-                                transition-transform
-                                duration-300
-                                ${
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setMobileSubSection(
                                   mobileSubSection === service.id
-                                    ? 'rotate-180'
-                                    : ''
-                                }
-                              `}
-                            />
-                          </button>
+                                    ? null
+                                    : service.id
+                                )
+                              }
+                              aria-expanded={mobileSubSection === service.id}
+                              aria-controls={`mobile-${service.id}-submenu`}
+                              className="p-1"
+                            >
+                              <ChevronDown
+                                size={14}
+                                className={`
+                                  transition-transform
+                                  duration-300
+                                  ${
+                                    mobileSubSection === service.id
+                                      ? 'rotate-180'
+                                      : ''
+                                  }
+                                `}
+                              />
+                            </button>
+                          </div>
 
                           {mobileSubSection === service.id && (
-                            <div className="pl-6 border-l-2 border-primary/20 space-y-1 py-1 mt-1 animate-fade-in">
+                            <div
+                              id={`mobile-${service.id}-submenu`}
+                              className="pl-6 border-l-2 border-primary/20 space-y-1 py-1 mt-1 animate-fade-in"
+                            >
                               {CITIES.map((city) => (
                                 <button
                                   key={city.slug}
@@ -1201,6 +1224,13 @@ export default function Header({
                 className="text-left py-2 text-primary"
               >
                 Contact Us
+              </button>
+
+              <button
+                onClick={() => handleNavClick('/our-team')}
+                className="text-left py-2 hover:text-primary"
+              >
+                Our Team
               </button>
             </nav>
 
