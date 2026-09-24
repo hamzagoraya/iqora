@@ -14,7 +14,7 @@ export default function TeamBanner() {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/40 to-transparent"></div>
 
           <div className="absolute inset-0 p-8 sm:p-14 flex flex-col justify-end max-w-xl text-white space-y-3">
-            <div className="badge-tag bg-primary/20 text-primary border-primary/30">
+            <div className="badge-tag ">
               <Award size={14} />
               <span>Certified Standards</span>
             </div>

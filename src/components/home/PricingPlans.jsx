@@ -71,7 +71,7 @@ export default function PricingPlans({ onOpenQuote, onNavigate }) {
                   <button
                     onClick={onOpenQuote}
                     className={`w-full justify-center ${
-                      featured ? 'btn-primary-tw' : 'btn-secondary-tw dark:bg-slate-800 dark:hover:bg-slate-700'
+                      featured ? 'btn-primary-tw' : 'btn-secondary-tw'
                     }`}
                   >
                     <span>Get a Free Quote</span>

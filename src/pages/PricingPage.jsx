@@ -1,16 +1,19 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2, Info } from 'lucide-react';
-import PageHero from '../components/shared/PageHero';
+import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
-import { SERVICES, SPECIALTY_SERVICES, getServicePath, getSpecialtyPath } from '../data/siteData';
+import { SERVICES, SPECIALTY_SERVICES, getServicePath, getSpecialtyPath, BRAND } from '../data/siteData';
+import WhatsAppIcon from '../components/shared/WhatsAppIcon';
 
 export default function PricingPage({ onNavigate, onOpenQuote }) {
   return (
     <div>
-      <PageHero
+      <Hero
         badge="Transparent Pricing"
         title="Cleaning Services Pricing"
+        currentPage="Pricing"
         subtitle="Real price ranges for every IQORA service. Your exact quote is confirmed on-site before any work begins — never hourly, never a surprise."
+        onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[{ label: 'Pricing' }]}
       />
@@ -76,7 +79,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
             <div
               className="
                 relative
-                bg-[#111923]
+                bg-navy
                 px-5 py-4
                 min-h-[90px]
                 flex items-center gap-3
@@ -102,7 +105,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
                   relative shrink-0
                   w-12 h-12
                   rounded-2xl
-                  bg-[#30291d]
+                  bg-white/10
                   border border-primary/10
                   flex items-center justify-center
                   transition-all duration-300
@@ -150,7 +153,7 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
                     text-sm
                     transition-colors duration-200
                     group-hover:bg-slate-50/50
-                    dark:group-hover:bg-slate-800/20
+                    dark:group-hover:bg-white/5
                   "
                 >
 
@@ -305,10 +308,22 @@ export default function PricingPage({ onNavigate, onOpenQuote }) {
                 </li>
               ))}
             </ul>
-            <button onClick={onOpenQuote} className="btn-primary-tw w-full">
-              <span>Get My Free Quote</span>
-              <ArrowRight size={16} />
-            </button>
+            <div className="flex flex-col gap-3">
+              <button onClick={onOpenQuote} className="btn-primary-tw w-full justify-center">
+                <span>Get My Free Quote</span>
+                <ArrowRight size={16} />
+              </button>
+              <a
+                href={BRAND.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-green-600 hover:bg-green-500 text-white font-bold text-sm rounded-xl transition-all duration-300 w-full"
+                aria-label="Get a Quote on WhatsApp"
+              >
+                <WhatsAppIcon size={16} />
+                <span>Get a Quote on WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

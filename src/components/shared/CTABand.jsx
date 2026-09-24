@@ -1,8 +1,9 @@
 import React from 'react';
 import { Phone, ArrowRight, Clock, ShieldCheck } from 'lucide-react';
 import { BRAND } from '../../data/siteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
-export default function CTABand({ onOpenQuote, title, text }) {
+export default function CTABand({ onOpenQuote, title, text, buttonLabel }) {
   return (
     <section className="py-16 lg:py-20 bg-secondary relative overflow-hidden" data-reveal>
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1920&auto=format&fit=crop')] bg-center bg-cover opacity-10 pointer-events-none"></div>
@@ -18,9 +19,19 @@ export default function CTABand({ onOpenQuote, title, text }) {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button onClick={onOpenQuote} className="btn-primary-tw w-full sm:w-auto">
-              <span>Get My Free Quote</span>
+              <span>{buttonLabel || 'Get My Free Quote'}</span>
               <ArrowRight size={16} />
             </button>
+            <a
+              href={BRAND.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-green-600 hover:bg-green-500 text-white font-bold text-sm rounded-xl transition-all duration-300 w-full sm:w-auto"
+              aria-label="Get a Quote on WhatsApp"
+            >
+              <WhatsAppIcon size={16} />
+              <span>Get a Quote on WhatsApp</span>
+            </a>
             <a
               href={BRAND.phoneHref}
               className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-white/10 hover:bg-white/15 text-white font-bold text-sm rounded-xl border border-white/20 transition-all duration-300 w-full sm:w-auto"

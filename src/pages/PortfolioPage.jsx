@@ -1,16 +1,18 @@
 import React from 'react';
 import { MapPin, TrendingUp, ArrowRight } from 'lucide-react';
-import PageHero from '../components/shared/PageHero';
+import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import { PORTFOLIO } from '../data/siteData';
 
 export default function PortfolioPage({ onNavigate, onOpenQuote }) {
   return (
     <div>
-      <PageHero
+      <Hero
         badge="Our Work"
         title="Portfolio"
+        currentPage="Portfolio"
         subtitle="Real results from real homes and businesses across North Hollywood and the Valley — rescued rugs, revived carpets, and grout that looks brand new."
+        onOpenQuote={onOpenQuote}
         onNavigate={onNavigate}
         crumbs={[{ label: 'Portfolio' }]}
       />

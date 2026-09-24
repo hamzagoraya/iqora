@@ -6,9 +6,11 @@ import QuoteModal from './components/QuoteModal';
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import OurTeamPage from './pages/OurTeamPage';
 import ContactPage from './pages/ContactPage';
 import ServicesHubPage from './pages/ServicesHubPage';
 import AreasWeServePage from './pages/AreasWeServePage';
+import AreaPage from './pages/AreaPage';
 import ServicePage from './pages/ServicePage';
 import SpecialtyServicePage from './pages/SpecialtyServicePage';
 import PricingPage from './pages/PricingPage';
@@ -21,12 +23,15 @@ import useRevealAnimations from './hooks/useRevealAnimations';
 
 import {
   getService,
+  getServiceMainPath,
   getSpecialty,
   getCity,
   getBlogPost,
+  SERVICES,
   getServicePath,
   getServiceCityPath,
   getSpecialtyPath,
+  AREA_ROUTE_PREFIX,
   MAIN_PAGE_ROUTES,
 } from './data/siteData';
 
@@ -216,6 +221,10 @@ export default function App() {
     '/curtain-cleaning-services': 'curtain-cleaning',
   };
 
+  const mainServiceRoutes = Object.fromEntries(
+    SERVICES.map((service) => [getServiceMainPath(service.id), service.id])
+  );
+
   const renderPage = () => {
     if (currentPage === '/') {
       return <HomePage {...pageProps} />;
@@ -223,6 +232,10 @@ export default function App() {
 
     if (currentPage === '/about-us') {
       return <AboutPage {...pageProps} />;
+    }
+
+    if (currentPage === '/our-team') {
+      return <OurTeamPage {...pageProps} />;
     }
 
     if (currentPage === '/contact-us') {
@@ -263,6 +276,15 @@ export default function App() {
       return <BlogPage {...pageProps} />;
     }
 
+    if (mainServiceRoutes[currentPage]) {
+      const service = getService(mainServiceRoutes[currentPage]);
+      const city = getCity('los-angeles');
+
+      if (service && city) {
+        return <ServicePage service={service} city={city} {...pageProps} />;
+      }
+    }
+
     if (currentPage.startsWith('/blog/')) {
       const slug = currentPage.replace('/blog/', '');
       const post = getBlogPost(slug);
@@ -284,6 +306,15 @@ export default function App() {
           {...pageProps}
         />
       );
+    }
+
+    if (currentPage.startsWith(AREA_ROUTE_PREFIX)) {
+      const citySlug = currentPage.replace(AREA_ROUTE_PREFIX, '');
+      const city = getCity(citySlug);
+
+      if (city) {
+        return <AreaPage city={city} {...pageProps} />;
+      }
     }
 
     if (specialtyRoutes[currentPage]) {
