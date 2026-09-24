@@ -189,7 +189,7 @@ export default function ContactSection({ onOpenQuote }) {
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all cursor-pointer"
                     >
                       {SERVICE_OPTIONS.map((s) => (
-                        <option key={s.id} value={s.id}>{s.name}</option>
+                        <option key={s.id} value={s.id} className="bg-white text-[#021E3B]">{s.name}</option>
                       ))}
                     </select>
                   </div>
