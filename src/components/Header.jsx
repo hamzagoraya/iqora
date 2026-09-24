@@ -403,12 +403,9 @@ export default function Header({
               aria-label="Go to homepage"
             >
               <img
-                src="/assets/footer-logo.svg"
+                src="/assets/iqora logo.png"
                 alt="IQORA Cleaning Services"
-                className="h-9 w-auto"
-                onError={(event) => {
-                  event.currentTarget.src = '/assets/logo-white.svg';
-                }}
+                className="h-10 w-auto max-w-[190px] object-contain brightness-0 invert"
               />
             </button>
 
@@ -743,41 +740,6 @@ export default function Header({
                         "
                       >
                         <div className="bg-white dark:bg-dark-card rounded-2xl border border-slate-100 dark:border-slate-800 shadow-2xl p-3 max-h-[calc(100vh-180px)] flex flex-col">
-                          {/* All Areas */}
-                          <button
-                            type="button"
-                            onClick={() =>
-                              handleNavClick('/areas-we-serve')
-                            }
-                            className="
-                              w-full
-                              flex
-                              items-center
-                              gap-3
-                              px-4
-                              py-3
-                              rounded-xl
-                              text-left
-                              text-sm
-                              font-extrabold
-                              text-primary
-                              hover:bg-primary-light
-                              dark:hover:bg-primary/10
-                              transition-all
-                              shrink-0
-                            "
-                          >
-                            <MapPin size={17} />
-
-                            <span className="flex-1">
-                              All Areas We Serve
-                            </span>
-
-                            <ArrowRight size={14} />
-                          </button>
-
-                          <div className="my-2 border-t border-slate-100 dark:border-slate-800 shrink-0" />
-
                           {/* Cities */}
                           <div className="overflow-y-auto min-h-0 areas-dropdown-scroll">
                             {CITIES.map((city) => (
@@ -1155,18 +1117,6 @@ export default function Header({
                     id="mobile-areas-submenu"
                     className="pl-4 border-l-2 border-primary/30 space-y-1.5 py-1"
                   >
-                    {/* All Areas */}
-                    <button
-                      onClick={() =>
-                        handleNavClick('/areas-we-serve')
-                      }
-                      className="w-full flex items-center gap-2 text-left text-sm py-1.5 font-bold text-primary"
-                    >
-                      <MapPin size={15} />
-
-                      All Areas We Serve
-                    </button>
-
                     {/* Cities */}
                     {CITIES.map((city) => (
                       <button

@@ -105,7 +105,7 @@ export default function EstimateCallout({ onOpenQuote }) {
                         className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 text-white text-sm focus:outline-none focus:border-primary transition-all cursor-pointer"
                       >
                         {SERVICE_OPTIONS.map((s) => (
-                          <option key={s.id} value={s.id}>{s.name}</option>
+                          <option key={s.id} value={s.id} className="bg-white text-[#021E3B]">{s.name}</option>
                         ))}
                       </select>
                     </div>
