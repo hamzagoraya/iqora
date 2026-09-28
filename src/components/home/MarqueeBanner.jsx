@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function MarqueeBanner() {
-  const words = ['Carpet Cleaning', 'Upholstery', 'Tile & Grout', 'Area Rugs', 'Eco-Friendly', 'Satisfaction Guaranteed'];
+  const words = ['Carpet Cleaning', 'Upholstery Cleaning', 'Tile & Grout Cleaning', 'Area Rug Cleaning', 'Mattress Cleaning', 'Leather Couch Cleaning', 'Scotchgard Protection', 'Curtain Cleaning'];
 
   return (
     <section className="bg-primary py-4 overflow-hidden shadow-inner select-none">

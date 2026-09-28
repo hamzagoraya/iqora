@@ -4,9 +4,83 @@ import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import { SERVICES, CITIES, BRAND, getServiceCityPath, getAreaPath } from '../data/siteData';
 
+const areaSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': 'https://iqoracleaningservices.com/areas-we-serve/#webpage',
+      url: 'https://iqoracleaningservices.com/areas-we-serve/',
+      name: 'Areas We Serve | IQORA Cleaning Services',
+      description: 'IQORA Cleaning Services provides carpet, upholstery, and tile cleaning in Los Angeles, Orange County, the Inland Empire, and nearby communities.',
+      isPartOf: { '@id': 'https://iqoracleaningservices.com/#website' },
+      about: { '@id': 'https://iqoracleaningservices.com/#organization' },
+      breadcrumb: { '@id': 'https://iqoracleaningservices.com/areas-we-serve/#breadcrumb' },
+      inLanguage: 'en-US',
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: CITIES.map((city, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'Place',
+            name: city.name,
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: city.name,
+              addressRegion: 'CA',
+              addressCountry: 'US',
+            },
+            description: city.note,
+          },
+        })),
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://iqoracleaningservices.com/areas-we-serve/#breadcrumb',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://iqoracleaningservices.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Areas We Serve', item: 'https://iqoracleaningservices.com/areas-we-serve/' },
+      ],
+    },
+    {
+      '@type': ['LocalBusiness', 'Organization'],
+      '@id': 'https://iqoracleaningservices.com/#organization',
+      name: 'IQORA Cleaning Services',
+      legalName: 'IQORA Cleaning Services LLC',
+      url: 'https://iqoracleaningservices.com/',
+      telephone: '+1-323-916-8039',
+      email: 'iqoracleaningservices@gmail.com',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'North Hollywood',
+        addressRegion: 'CA',
+        addressCountry: 'US',
+      },
+      areaServed: CITIES.map((city) => city.name),
+      makesOffer: SERVICES.map((service) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: service.name,
+        },
+      })),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://iqoracleaningservices.com/#website',
+      url: 'https://iqoracleaningservices.com/',
+      name: 'IQORA Cleaning Services',
+      publisher: { '@id': 'https://iqoracleaningservices.com/#organization' },
+    },
+  ],
+};
+
 export default function AreasWeServePage({ onNavigate, onOpenQuote }) {
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(areaSchema) }} />
       <Hero
         badge="Service Area"
         title="Areas We Serve"
@@ -177,7 +251,6 @@ export default function AreasWeServePage({ onNavigate, onOpenQuote }) {
 
       {/* CTA */}
       <CTABand onOpenQuote={onOpenQuote} />
-
     </div>
   );
 }

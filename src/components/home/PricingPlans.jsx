@@ -1,30 +1,47 @@
 import React from 'react';
 import { Check, Sparkles, ArrowRight } from 'lucide-react';
-import { SERVICES, getServicePath } from '../../data/siteData';
 
 export default function PricingPlans({ onOpenQuote, onNavigate }) {
-  return (
-    <section className="py-16 lg:py-24" data-reveal>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  const cards = [
+    {
+      title: 'Carpet Cleaning Prices',
+      price: '$40 per room',
+      description: '$120 minimum visit · Hallways 30–40 · Stairs $5 per step · Hot water extraction',
+      featured: true,
+    },
+    {
+      title: 'Upholstery Cleaning Prices',
+      price: '$29 per seat',
+      description: 'Loveseats $149 · U-shaped sectionals $200 · Recliners $80 with other services · Dining chairs $25',
+      featured: false,
+    },
+    {
+      title: 'Tile & Grout Cleaning Prices',
+      price: '[CONFIRM]',
+      description: 'Deep grout-line cleaning · Restores original color · Kitchens, bathrooms, and entryways',
+      featured: false,
+    },
+  ];
 
-        {/* Header */}
+  return (
+    <section id="pricing" className="py-16 lg:py-24" data-reveal>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <div className="badge-tag mx-auto">Transparent Pricing</div>
+          <div className="badge-tag mx-auto">Transparent pricing</div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 dark:text-white leading-tight">
-            Honest prices, quoted before we start
+            Honest Cleaning Prices, Confirmed Before We Start
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-            Per-job pricing with no hidden fees. We inspect, quote a firm price, and honor it — for homes and businesses alike.
+            The three cards below cover our core services. Stairs, hallways, recliners, rugs, mattresses, and every other item have their own rates on the <a href="https://iqoracleaningservices.com/cleaning-services-pricing/" className="text-primary underline underline-offset-4">complete IQORA cleaning price list</a>, and bundling services lowers the cost of added items.
           </p>
         </div>
 
-        {/* 3 Service Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch" data-reveal-stagger>
-          {SERVICES.map((service, idx) => {
-            const featured = idx === 0;
+          {cards.map((card, idx) => {
+            const featured = card.featured;
             return (
               <div
-                key={service.id}
+                key={card.title}
                 className={`rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 relative ${
                   featured
                     ? 'bg-secondary text-white shadow-2xl border-2 border-primary md:-translate-y-2'
@@ -40,68 +57,25 @@ export default function PricingPlans({ onOpenQuote, onNavigate }) {
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-xl font-heading font-bold mb-2">
-                      {service.name}
-                    </h3>
-
+                    <h3 className="text-xl font-heading font-bold mb-2">{card.title}</h3>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-heading font-extrabold tracking-tight">
-                        {service.priceSummary}
-                      </span>
+                      <span className="text-3xl font-heading font-extrabold tracking-tight">{card.price}</span>
                     </div>
                   </div>
 
-                  <ul className="space-y-3 text-xs sm:text-sm pt-4 border-t border-slate-200/20">
-                    {service.benefits.slice(0, 4).map((benefit) => (
-                      <li key={benefit.title} className="flex items-center gap-3">
-                        <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
-                          featured ? 'bg-primary text-slate-950' : 'bg-primary-light text-primary dark:bg-primary/20'
-                        }`}>
-                          <Check size={13} strokeWidth={3} />
-                        </div>
-                        <span className={featured ? 'text-slate-200' : 'text-slate-600 dark:text-slate-300'}>
-                          {benefit.title}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className={`text-xs sm:text-sm ${featured ? 'text-slate-200' : 'text-slate-600 dark:text-slate-300'}`}>{card.description}</p>
                 </div>
 
-                <div className="pt-8 space-y-3">
-                  <button
-                    onClick={onOpenQuote}
-                    className={`w-full justify-center ${
-                      featured ? 'btn-primary-tw' : 'btn-secondary-tw'
-                    }`}
-                  >
+                <div className="pt-8">
+                  <button type="button" onClick={onOpenQuote} className={`w-full justify-center ${featured ? 'btn-primary-tw' : 'btn-secondary-tw'}`}>
                     <span>Get a Free Quote</span>
                     <ArrowRight size={16} />
-                  </button>
-
-                  <button
-                    onClick={() => onNavigate && onNavigate(getServicePath(service.id))}
-                    className={`w-full justify-center text-xs font-extrabold py-2 transition-colors ${
-                      featured ? 'text-primary hover:text-primary-hover' : 'text-primary hover:text-primary-hover'
-                    }`}
-                  >
-                    <span>View Full Price List</span>
                   </button>
                 </div>
               </div>
             );
           })}
         </div>
-
-        <div className="text-center mt-10">
-          <button
-            onClick={() => onNavigate && onNavigate('/cleaning-services-pricing')}
-            className="inline-flex items-center gap-2 text-sm font-extrabold text-primary hover:text-primary-hover transition-colors"
-          >
-            <span>Compare all services & specialty pricing</span>
-            <ArrowRight size={16} />
-          </button>
-        </div>
-
       </div>
     </section>
   );
