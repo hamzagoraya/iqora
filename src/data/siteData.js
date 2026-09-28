@@ -31,6 +31,54 @@ export const STATS = {
   hoursSpentCleaning: '18K+',
 };
 
+export const HOME_PAGE_META = {
+  title: 'Carpet & Upholstery Cleaning in Greater Los Angeles | IQORA',
+  description: 'IQORA cleans carpets, sofas, rugs, mattresses, and tile across Los Angeles, Orange County, and the Inland Empire. Upfront prices and open 24/7 for bookings.',
+};
+
+export const HOME_FAQS = [
+  {
+    q: 'How much does carpet cleaning cost in Los Angeles?',
+    a: 'Carpet cleaning with IQORA costs $40 per room, with a $120 minimum per visit. Hallways run $30 to $40 and stairs are $5 per step. Your price is confirmed before any work starts, so the amount you agree to is exactly the amount you pay at the end.',
+  },
+  {
+    q: 'How long does carpet take to dry after cleaning?',
+    a: 'Most carpets dry in about 6 to 12 hours after hot water extraction. Thick carpet, humid weather, and closed-up rooms can stretch that time. Running fans, opening a few windows, or turning on the AC helps your carpet dry faster and smell fresh sooner.',
+  },
+  {
+    q: 'What cleaning method does IQORA use?',
+    a: 'We use professional hot water extraction, often called steam cleaning. A cleaning solution loosens soil deep in the carpet fibers, then strong suction pulls the dirt and moisture back out, leaving far less sticky residue behind than rental machines do.',
+  },
+  {
+    q: 'Can you remove pet stains and odors?',
+    a: 'Yes. We treat pet stains and odors in carpet, rugs, and upholstery. Fresh accidents usually come out completely, while older urine that has soaked into the padding can fade a lot but may not always disappear, and we\'ll tell you that before we start.',
+  },
+  {
+    q: 'Are your cleaning products safe for kids and pets?',
+    a: 'We choose eco-friendly cleaning products with kids and pets in mind, and extraction rinses most of the solution back out of the fibers. We suggest keeping everyone off damp carpet until it dries, mainly so fresh dirt isn\'t tracked onto clean floors.',
+  },
+  {
+    q: 'Which areas does IQORA serve?',
+    a: 'We\'re based in North Hollywood and serve 20 cities across Los Angeles County, Orange County, the Inland Empire, and Thousand Oaks, including Long Beach, Pasadena, Anaheim, Irvine, Riverside, and Santa Clarita. Call us to confirm your city.',
+  },
+  {
+    q: 'Do I need to move furniture before you arrive?',
+    a: 'Please clear small items, breakables, and anything sitting on the floor before we arrive. Tell us about beds, dressers, or other heavy pieces when you book, and we\'ll explain how we\'ll clean around them so no part of the room gets left out.',
+  },
+  {
+    q: 'Can you clean couches and sectionals?',
+    a: 'Yes. Fabric sofas are $29 per seat, loveseats are $149, and U-shaped sectionals are $200. We check each fabric\'s cleaning code before we start so the method suits the material. Leather couches get a separate leather-safe cleaning at $40 per seat.',
+  },
+  {
+    q: 'When can I book a cleaning?',
+    a: 'IQORA is open 24 hours, so you can reach us for a quote or booking whenever it suits you. That makes a real difference for urgent spills, tight move-out deadlines, and busy households that can\'t fit a cleaning into regular business hours.',
+  },
+  {
+    q: 'How often should carpets be professionally cleaned?',
+    a: 'Most homes do well with professional carpet cleaning every 12 to 18 months. Homes with pets, young kids, allergies, or heavy foot traffic benefit from cleaning every 6 to 12 months, with regular vacuuming in between visits to keep fibers in good shape.',
+  },
+];
+
 export const CITIES = [
   {
     slug: 'santa-ana',
