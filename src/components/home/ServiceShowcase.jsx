@@ -1,7 +1,5 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { getServicePath } from '../../data/siteData';
-
 const services = [
   {
     id: 'carpet-cleaning',
