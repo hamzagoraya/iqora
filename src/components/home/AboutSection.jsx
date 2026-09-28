@@ -42,7 +42,7 @@ export default function AboutSection({ onOpenQuote }) {
                   2025
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">Founded in North Hollywood</h4>
+                  <p className="text-sm font-bold text-slate-900 dark:text-white">Founded in North Hollywood</p>
                 </div>
               </div>
 
@@ -51,16 +51,16 @@ export default function AboutSection({ onOpenQuote }) {
                   8
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">Cleaning services under one roof</h4>
+                  <p className="text-sm font-bold text-slate-900 dark:text-white">Cleaning services under one roof</p>
                 </div>
               </div>
             </div>
 
             <div className="bg-slate-100 dark:bg-dark-bg/80 rounded-2xl p-5 border-l-4 border-primary space-y-2">
-              <div className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white">
+              <p className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white">
                 <ShieldCheck size={18} className="text-primary" />
                 <span>Price Confirmed Before We Start</span>
-              </div>
+              </p>
               <p className="text-xs text-slate-600 dark:text-slate-400">We look at the job first and confirm your price before any cleaning begins, so there\'s never a surprise on the final bill.</p>
             </div>
 

@@ -20,14 +20,12 @@ export default function HomeHero({ onOpenQuote, onNavigate }) {
     },
     {
       id: 'hero-upholstery',
-      badge: 'Couches and sectionals',
       heading: 'Couches and sectionals, fresh and clean again',
       copy: 'Fabric-safe upholstery cleaning from $29 per seat, with every fabric\'s cleaning code checked before we start.',
       image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop',
     },
     {
       id: 'hero-tile',
-      badge: 'Tile & Grout',
       heading: 'Tile and grout that looks new, not just clean',
       copy: 'We lift the grime that settles deep in grout lines and bring back the original color of your floors.',
       image: 'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=1200&auto=format&fit=crop',
@@ -121,10 +119,12 @@ export default function HomeHero({ onOpenQuote, onNavigate }) {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
         <div key={slide.id} className="max-w-2xl space-y-6 hero-content-stagger" aria-live="polite">
-          <div className="badge-tag">
-            <Sparkles size={14} />
-            <span>{slide.badge}</span>
-          </div>
+          {slide.badge && (
+            <div className="badge-tag">
+              <Sparkles size={14} />
+              <span>{slide.badge}</span>
+            </div>
+          )}
 
           <HeadingTag className={`font-heading font-extrabold text-white tracking-tight leading-[1.1] ${isPrimarySlide ? 'text-4xl sm:text-6xl lg:text-7xl' : 'text-4xl sm:text-5xl lg:text-6xl'}`}>
             {slide.heading}
@@ -134,34 +134,29 @@ export default function HomeHero({ onOpenQuote, onNavigate }) {
             {slide.copy}
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <button type="button" onClick={onOpenQuote} className="btn-primary-tw text-base px-8 py-4">
-              <span>Get a Free Quote</span>
-              <ArrowRight size={18} />
-            </button>
-
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold text-base rounded-xl transition-all duration-300"
-              aria-label="Get a Quote on WhatsApp"
-            >
-              <WhatsAppIcon size={18} />
-              <span>Get a Quote on WhatsApp</span>
-            </a>
-
-            <button type="button" onClick={scrollToPricing} className="btn-outline-tw text-white border-white/20 hover:border-primary hover:text-primary px-7 py-4">
-              <span>See Our Prices</span>
-            </button>
-          </div>
-
-          <div className="pt-6 flex items-center gap-6 text-xs sm:text-sm text-slate-400 border-t border-white/10 mt-8">
-            <div className="flex items-center gap-2">
-              <Clock3 size={18} className="text-primary" />
-              <span>Open 24 hours · Upfront, posted prices</span>
-            </div>
-          </div>
+          {isPrimarySlide && (
+            <>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <button type="button" onClick={onOpenQuote} className="btn-primary-tw text-base px-8 py-4">
+                  <span>Get a Free Quote</span>
+                  <ArrowRight size={18} />
+                </button>
+                <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold text-base rounded-xl transition-all duration-300" aria-label="Get a Quote on WhatsApp">
+                  <WhatsAppIcon size={18} />
+                  <span>Get a Quote on WhatsApp</span>
+                </a>
+                <button type="button" onClick={scrollToPricing} className="btn-outline-tw text-white border-white/20 hover:border-primary hover:text-primary px-7 py-4">
+                  <span>See Our Prices</span>
+                </button>
+              </div>
+              <div className="pt-6 flex items-center gap-6 text-xs sm:text-sm text-slate-400 border-t border-white/10 mt-8">
+                <div className="flex items-center gap-2">
+                  <Clock3 size={18} className="text-primary" />
+                  <span>Open 24 hours · Upfront, posted prices</span>
+                </div>
+              </div>
+            </>
+          )}
 
           <div className="flex items-center gap-2 pt-2" role="group" aria-label="Choose hero slide">
             {slides.map((currentSlide, index) => (
