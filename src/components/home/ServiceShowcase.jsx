@@ -24,7 +24,7 @@ const services = [
     name: 'Tile & Grout Cleaning',
     badge: 'Restore, don\'t replace',
     description: 'Deep cleaning that lifts the grime settled in grout lines and brings back your floor\'s original color.',
-    price: '[CONFIRM price and unit]',
+    price: '$20 per room',
     image: 'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=1200&auto=format&fit=crop',
     link: 'https://iqoracleaningservices.com/tile-and-grout-cleaning-services-in-north-hollywood/',
   },
@@ -41,7 +41,7 @@ export default function ServiceShowcase({ onOpenQuote, onNavigate }) {
               Carpet, Upholstery, and Tile & Grout Cleaning for Southern California Homes
             </h2>
             <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
-              These are the three services homeowners ask us about most, and each one is matched to the material we\'re cleaning. Many older Pasadena homes, for example, still have their original kitchen and bathroom tile, and tile and grout cleaning in Pasadena can bring decades-old grout much closer to its original color.
+              These are the three services homeowners ask us about most, and each one is matched to the material we're cleaning. Many older Pasadena homes, for example, still have their original kitchen and bathroom tile, and tile and grout cleaning in Pasadena can bring decades-old grout much closer to its original color.
             </p>
           </div>
 

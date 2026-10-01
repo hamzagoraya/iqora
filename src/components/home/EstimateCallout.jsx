@@ -36,7 +36,7 @@ export default function EstimateCallout() {
               </h2>
 
               <p className="text-sm text-slate-300 leading-relaxed">
-                Tell us what needs cleaning and we\'ll send a clear price breakdown with no obligation. Because we\'re open 24 hours, IQORA\'s phone, WhatsApp, and email details work just as well at midnight as at noon.
+                Tell us what needs cleaning and we'll send a clear price breakdown with no obligation. Because we're open 24 hours, IQORA's phone, WhatsApp, and email details work just as well at midnight as at noon.
               </p>
 
               <div className="space-y-2 pt-2 text-xs font-semibold text-slate-300">

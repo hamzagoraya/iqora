@@ -98,6 +98,14 @@ export default function ContactSection({ onOpenQuote }) {
                 <span>Serving 20 Southern California cities</span>
               </div>
             </div>
+
+            <div className="mt-8 rounded-3xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80&w=1000" 
+                alt="Cleaning Service" 
+                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
           </div>
 
           <div id="quote" className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl">
@@ -217,48 +225,46 @@ export default function ContactSection({ onOpenQuote }) {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-        <div className="bg-slate-50 dark:bg-dark-bg rounded-3xl p-8">
-          <div className="space-y-6">
-            <div className="space-y-3">
-              <h3 className="text-2xl font-heading font-extrabold text-slate-900 dark:text-white">What\'s the fastest way to reach IQORA?</h3>
-              <p className="text-slate-600 dark:text-slate-400">Calling +1 (323) 916-8039 or sending a WhatsApp message to the same number is the quickest way to reach us. Email and the quote form work well too, especially if you want to include several photos or describe a larger job in more detail.</p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-2xl font-heading font-extrabold text-slate-900 dark:text-white">What should I include in a quote request?</h3>
-              <p className="text-slate-600 dark:text-slate-400">Tell us your city, which items need cleaning, and how many rooms, seats, or pieces are involved. Mention pets, stains, stairs, or anything unusual. The more detail you share upfront, the more accurate your quote will be from the very first reply.</p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-2xl font-heading font-extrabold text-slate-900 dark:text-white">Can I send photos for a quote?</h3>
-              <p className="text-slate-600 dark:text-slate-400">Yes, and it helps a lot. A clear photo of a stained carpet, a sofa, a rug, or discolored grout lets us see the fabric, the damage, and the size of the job. Photos sent by WhatsApp or text usually get you a more accurate price and a realistic idea of results.</p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-2xl font-heading font-extrabold text-slate-900 dark:text-white">Do you need to visit my home before giving a price?</h3>
-              <p className="text-slate-600 dark:text-slate-400">No. Our prices are based on rooms, seats, and item sizes, so most quotes can be given by phone, WhatsApp, or email without a visit. When we arrive, we check the job and confirm the total with you again before any cleaning begins in your home.</p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-2xl font-heading font-extrabold text-slate-900 dark:text-white">Is the quote free?</h3>
-              <p className="text-slate-600 dark:text-slate-400">Yes. Quotes are free and come with no obligation to book. Ask as many questions as you need about the process, drying time, or what cleaning can realistically fix, and decide once you have all the information you need to feel comfortable.</p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-2xl font-heading font-extrabold text-slate-900 dark:text-white">Which areas can I book service in?</h3>
-              <p className="text-slate-600 dark:text-slate-400">We serve 20 cities across Los Angeles County, Orange County, the Inland Empire, and Thousand Oaks, including Los Angeles, Burbank, Pasadena, Long Beach, Anaheim, Irvine, and Riverside. If your city isn't on the list, contact us and we'll check your address.</p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-2xl font-heading font-extrabold text-slate-900 dark:text-white">Can I book a cleaning for a rental property or someone else's home?</h3>
-              <p className="text-slate-600 dark:text-slate-400">Yes. Landlords, property managers, and family members often book cleanings for homes they don't live in. We just need someone to provide access and approve the confirmed price before we start, whether that's in person, by phone, or by message.</p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-2xl font-heading font-extrabold text-slate-900 dark:text-white">Do I need to be home during the cleaning?</h3>
-              <p className="text-slate-600 dark:text-slate-400">Someone should be there when we arrive to let us in, point out problem areas, and approve the confirmed price. After that, you don't need to stay in the room while we work, though you're always welcome to ask questions or watch how we clean.</p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-2xl font-heading font-extrabold text-slate-900 dark:text-white">How should I prepare after booking?</h3>
-              <p className="text-slate-600 dark:text-slate-400">Clear small items, breakables, and anything sitting on the floor from the areas being cleaned. Let us know about pets, parking, gate codes, or elevator access in advance, so the visit starts on time and nothing holds up the cleaning once we arrive.</p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-2xl font-heading font-extrabold text-slate-900 dark:text-white">What if I need to reschedule?</h3>
-              <p className="text-slate-600 dark:text-slate-400">Let us know as early as possible by phone or WhatsApp, and we'll find a new time that works for you. Early notice makes it much easier to offer you a good replacement slot and to give your original time to another customer who's waiting for one.</p>
-            </div>
+        <div className="grid gap-6">
+          <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+            <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">What's the fastest way to reach IQORA?</h3>
+            <p className="text-slate-600 dark:text-slate-400">Calling +1 (323) 916-8039 or sending a WhatsApp message to the same number is the quickest way to reach us. Email and the quote form work well too, especially if you want to include several photos or describe a larger job in more detail.</p>
+          </div>
+          <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+            <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">What should I include in a quote request?</h3>
+            <p className="text-slate-600 dark:text-slate-400">Tell us your city, which items need cleaning, and how many rooms, seats, or pieces are involved. Mention pets, stains, stairs, or anything unusual. The more detail you share upfront, the more accurate your quote will be from the very first reply.</p>
+          </div>
+          <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+            <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">Can I send photos for a quote?</h3>
+            <p className="text-slate-600 dark:text-slate-400">Yes, and it helps a lot. A clear photo of a stained carpet, a sofa, a rug, or discolored grout lets us see the fabric, the damage, and the size of the job. Photos sent by WhatsApp or text usually get you a more accurate price and a realistic idea of results.</p>
+          </div>
+          <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+            <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">Do you need to visit my home before giving a price?</h3>
+            <p className="text-slate-600 dark:text-slate-400">No. Our prices are based on rooms, seats, and item sizes, so most quotes can be given by phone, WhatsApp, or email without a visit. When we arrive, we check the job and confirm the total with you again before any cleaning begins in your home.</p>
+          </div>
+          <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+            <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">Is the quote free?</h3>
+            <p className="text-slate-600 dark:text-slate-400">Yes. Quotes are free and come with no obligation to book. Ask as many questions as you need about the process, drying time, or what cleaning can realistically fix, and decide once you have all the information you need to feel comfortable.</p>
+          </div>
+          <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+            <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">Which areas can I book service in?</h3>
+            <p className="text-slate-600 dark:text-slate-400">We serve 20 cities across Los Angeles County, Orange County, the Inland Empire, and Thousand Oaks, including Los Angeles, Burbank, Pasadena, Long Beach, Anaheim, Irvine, and Riverside. If your city isn't on the list, contact us and we'll check your address.</p>
+          </div>
+          <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+            <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">Can I book a cleaning for a rental property or someone else's home?</h3>
+            <p className="text-slate-600 dark:text-slate-400">Yes. Landlords, property managers, and family members often book cleanings for homes they don't live in. We just need someone to provide access and approve the confirmed price before we start, whether that's in person, by phone, or by message.</p>
+          </div>
+          <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+            <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">Do I need to be home during the cleaning?</h3>
+            <p className="text-slate-600 dark:text-slate-400">Someone should be there when we arrive to let us in, point out problem areas, and approve the confirmed price. After that, you don't need to stay in the room while we work, though you're always welcome to ask questions or watch how we clean.</p>
+          </div>
+          <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+            <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">How should I prepare after booking?</h3>
+            <p className="text-slate-600 dark:text-slate-400">Clear small items, breakables, and anything sitting on the floor from the areas being cleaned. Let us know about pets, parking, gate codes, or elevator access in advance, so the visit starts on time and nothing holds up the cleaning once we arrive.</p>
+          </div>
+          <div className="bg-white dark:bg-dark-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+            <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">What if I need to reschedule?</h3>
+            <p className="text-slate-600 dark:text-slate-400">Let us know as early as possible by phone or WhatsApp, and we'll find a new time that works for you. Early notice makes it much easier to offer you a good replacement slot and to give your original time to another customer who's waiting for one.</p>
           </div>
         </div>
       </div>

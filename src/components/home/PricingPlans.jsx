@@ -17,7 +17,7 @@ export default function PricingPlans({ onOpenQuote, onNavigate }) {
     },
     {
       title: 'Tile & Grout Cleaning Prices',
-      price: '[CONFIRM]',
+      price: '$20 per room',
       description: 'Deep grout-line cleaning · Restores original color · Kitchens, bathrooms, and entryways',
       featured: false,
     },

@@ -27,6 +27,7 @@
         "@id": "https://iqoracleaningservices.com/#founder",
         "name": "Gurbaj Singh",
         "jobTitle": "Founder & Owner",
+        "description": "Gurbaj brings 5 years of hands-on cleaning experience to every job.",
         "worksFor": { "@id": "https://iqoracleaningservices.com/#organization" }
       },
       "address": {
@@ -160,10 +161,17 @@
               "@id": "https://iqoracleaningservices.com/tile-and-grout-cleaning-services-in-north-hollywood/#service",
               "name": "Tile & Grout Cleaning",
               "url": "https://iqoracleaningservices.com/tile-and-grout-cleaning-services-in-north-hollywood/",
-              "description": "Deep tile and grout cleaning that lifts the grime settled in grout lines and restores the floor's original color.",
-              "serviceType": "Tile & Grout Cleaning",
+              "description": "Deep tile and grout cleaning that lifts the grime settled in grout lines and restores the floor's original color. $20 per room.",
+                "serviceType": "Tile & Grout Cleaning",
               "provider": { "@id": "https://iqoracleaningservices.com/#organization" },
-              "areaServed": { "@id": "https://iqoracleaningservices.com/#service-area" }
+              "areaServed": { "@id": "https://iqoracleaningservices.com/#service-area" },
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "priceSpecification": { "@type": "UnitPriceSpecification", "price": 20, "priceCurrency": "USD", "unitText": "per room" },
+                  "name": "Tile and grout cleaning per room"
+                }
+              ]
             }
           },
           {
