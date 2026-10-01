@@ -47,7 +47,7 @@ const CORE_CONTENT = [
     id: 'tile-and-grout-cleaning',
     name: 'Tile & Grout Cleaning',
     badge: "Restore, don't replace",
-    price: '[CONFIRM price and unit]',
+    price: '$20 per room',
     description: 'Deep cleaning that lifts the grime settled in grout lines and brings kitchen, bathroom, and entryway floors back to their original color.',
   },
 ];
@@ -513,7 +513,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-secondary py-16 lg:py-20" data-reveal>
+      <section className="relative overflow-hidden bg-secondary py-16 lg:py-20 mb-12 lg:mb-16" data-reveal>
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="mb-4 text-3xl font-heading font-extrabold text-white sm:text-4xl">Ready for Cleaner Carpets and Furniture?</h2>
           <p className="mb-8 text-sm leading-relaxed text-slate-300 sm:text-base">Tell us what needs cleaning and we'll confirm your exact price before any work begins, with no hidden fees. You can also reach us around the clock through IQORA's phone, WhatsApp, and email contact options.</p>

@@ -208,15 +208,15 @@ export default function PortfolioPage({ onNavigate, onOpenQuote }) {
             <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400 sm:text-base">Before-and-after photos are most useful when you know what they can realistically predict for your own home. Every item is different, but most results fall into one of three groups.</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
-            <div className="space-y-3">
+            <div className="bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
               <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white">Stains That Come Out Completely</h3>
               <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Everyday soil, traffic dirt, most food and drink spills, and fresh pet accidents usually come out fully with pre-treatment and hot water extraction. The sooner a spill is cleaned, the better the odds, because stains that haven't had time to set are still sitting on the fibers rather than bonded to them.</p>
             </div>
-            <div className="space-y-3">
+            <div className="bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
               <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white">Stains That Fade but Stay Visible</h3>
               <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Older pet urine, coffee, red wine, and stains that were scrubbed with the wrong product often fade a lot without disappearing. Some of the portfolio photos show exactly this kind of result, because we think it's more useful to show real outcomes than only the most dramatic ones.</p>
             </div>
-            <div className="space-y-3">
+            <div className="bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
               <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white">Damage Cleaning Can't Fix</h3>
               <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Bleach spots, sun fading, burns, and worn or crushed fibers are damage rather than dirt, so there's nothing for cleaning to lift out. We'll point these out before you pay for a cleaning, so you can decide whether repair, patching, or replacement makes more sense.</p>
             </div>

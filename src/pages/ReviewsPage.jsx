@@ -210,7 +210,7 @@ export default function ReviewsPage({ onNavigate, onOpenQuote }) {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-secondary py-16 lg:py-20" data-reveal>
+      <section className="relative overflow-hidden bg-secondary py-16 lg:py-20 mb-12 lg:mb-16" data-reveal>
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center opacity-10" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="mb-4 text-3xl font-heading font-extrabold text-white sm:text-4xl">Ready for Cleaner Carpets and Furniture?</h2>

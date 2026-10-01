@@ -33,7 +33,7 @@ export default function AboutSection({ onOpenQuote }) {
             </h2>
 
             <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
-              IQORA Cleaning Services is a <a href="https://iqoracleaningservices.com/about-us/" className="text-primary underline underline-offset-4">locally owned cleaning company in North Hollywood</a>, founded in 2025 by Gurbaj Singh. [CONFIRM: Gurbaj brings X years of hands-on cleaning experience to every job.] The business runs on a simple idea: tell customers the price before starting, do careful work in their home, and leave every room fresher than we found it.
+              IQORA Cleaning Services is a <a href="https://iqoracleaningservices.com/about-us/" className="text-primary underline underline-offset-4">locally owned cleaning company in North Hollywood</a>, founded in 2025 by Gurbaj Singh. Gurbaj brings 5 years of hands-on cleaning experience to every job. The business runs on a simple idea: tell customers the price before starting, do careful work in their home, and leave every room fresher than we found it.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
@@ -61,7 +61,7 @@ export default function AboutSection({ onOpenQuote }) {
                 <ShieldCheck size={18} className="text-primary" />
                 <span>Price Confirmed Before We Start</span>
               </p>
-              <p className="text-xs text-slate-600 dark:text-slate-400">We look at the job first and confirm your price before any cleaning begins, so there\'s never a surprise on the final bill.</p>
+              <p className="text-xs text-slate-600 dark:text-slate-400">We look at the job first and confirm your price before any cleaning begins, so there's never a surprise on the final bill.</p>
             </div>
 
             <div className="pt-2">

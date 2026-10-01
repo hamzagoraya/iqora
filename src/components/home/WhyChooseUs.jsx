@@ -42,7 +42,7 @@ export default function WhyChooseUs({ onOpenQuote }) {
             Why Los Angeles Homeowners Choose IQORA
           </h2>
           <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
-            Families from the San Fernando Valley to Orange County want the same things from a cleaning company: work that actually lifts the dirt, a price they can trust, and someone who shows up when they said they would. That\'s what we\'ve built IQORA around.
+            Families from the San Fernando Valley to Orange County want the same things from a cleaning company: work that actually lifts the dirt, a price they can trust, and someone who shows up when they said they would. That's what we've built IQORA around.
           </p>
         </div>
 

@@ -26,7 +26,7 @@ export default function HomeHero({ onOpenQuote, onNavigate }) {
     },
     {
       id: 'hero-tile',
-      heading: 'Tile and grout that looks new, not just clean',
+      heading: 'Tile and grout that look new, not just clean',
       copy: 'We lift the grime that settles deep in grout lines and bring back the original color of your floors.',
       image: 'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=1200&auto=format&fit=crop',
     },
@@ -134,29 +134,25 @@ export default function HomeHero({ onOpenQuote, onNavigate }) {
             {slide.copy}
           </p>
 
-          {isPrimarySlide && (
-            <>
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <button type="button" onClick={onOpenQuote} className="btn-primary-tw text-base px-8 py-4">
-                  <span>Get a Free Quote</span>
-                  <ArrowRight size={18} />
-                </button>
-                <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold text-base rounded-xl transition-all duration-300" aria-label="Get a Quote on WhatsApp">
-                  <WhatsAppIcon size={18} />
-                  <span>Get a Quote on WhatsApp</span>
-                </a>
-                <button type="button" onClick={scrollToPricing} className="btn-outline-tw text-white border-white/20 hover:border-primary hover:text-primary px-7 py-4">
-                  <span>See Our Prices</span>
-                </button>
-              </div>
-              <div className="pt-6 flex items-center gap-6 text-xs sm:text-sm text-slate-400 border-t border-white/10 mt-8">
-                <div className="flex items-center gap-2">
-                  <Clock3 size={18} className="text-primary" />
-                  <span>Open 24 hours · Upfront, posted prices</span>
-                </div>
-              </div>
-            </>
-          )}
+          <div className="flex flex-wrap items-center gap-4 pt-2">
+            <button type="button" onClick={onOpenQuote} className="btn-primary-tw text-base px-8 py-4">
+              <span>Get a Free Quote</span>
+              <ArrowRight size={18} />
+            </button>
+            <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold text-base rounded-xl transition-all duration-300" aria-label="Get a Quote on WhatsApp">
+              <WhatsAppIcon size={18} />
+              <span>Get a Quote on WhatsApp</span>
+            </a>
+            <button type="button" onClick={scrollToPricing} className="btn-outline-tw text-white border-white/20 hover:border-primary hover:text-primary px-7 py-4">
+              <span>See Our Prices</span>
+            </button>
+          </div>
+          <div className="pt-6 flex items-center gap-6 text-xs sm:text-sm text-slate-400 border-t border-white/10 mt-8">
+            <div className="flex items-center gap-2">
+              <Clock3 size={18} className="text-primary" />
+              <span>Open 24 hours · Upfront, posted prices</span>
+            </div>
+          </div>
 
           <div className="flex items-center gap-2 pt-2" role="group" aria-label="Choose hero slide">
             {slides.map((currentSlide, index) => (
