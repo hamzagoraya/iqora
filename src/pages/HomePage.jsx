@@ -11,7 +11,8 @@ import EstimateCallout from '../components/home/EstimateCallout';
 import FaqAccordion from '../components/shared/FaqAccordion';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { getServiceCityPath, HOME_FAQS, HOME_PAGE_META } from '../data/siteData';
-import homeSchema from '../data/homeSchema.json';
+import homeSchema from '../data/homeSchema';
+import { BASE_URL } from '../config';
 
 export default function HomePage({ onOpenQuote, onNavigate }) {
   const scrollToEstimate = () => {
@@ -27,7 +28,7 @@ export default function HomePage({ onOpenQuote, onNavigate }) {
     const path = getServiceCityPath(serviceId, citySlug);
     return (
       <a
-        href={`https://iqoracleaningservices.com${path}/`}
+        href={`${BASE_URL}${path}/`}
         onClick={(event) => {
           event.preventDefault();
           onNavigate(path);
@@ -59,7 +60,7 @@ export default function HomePage({ onOpenQuote, onNavigate }) {
       <FeatureHighlights />
       <WhyChooseUs onOpenQuote={scrollToEstimate} />
       <MarqueeBanner />
-      <AboutSection onOpenQuote={scrollToEstimate} />
+      <AboutSection onOpenQuote={scrollToEstimate} onNavigate={onNavigate} />
       <ServiceShowcase onOpenQuote={scrollToEstimate} onNavigate={onNavigate} />
       <section className="bg-white py-16 dark:bg-dark-surface lg:py-20" data-reveal>
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -79,17 +80,17 @@ export default function HomePage({ onOpenQuote, onNavigate }) {
             <p>Newer homes in Orange County lean heavily on tile, so {serviceAreaLink('tile-and-grout-cleaning', 'irvine', 'tile and grout cleaning in Irvine')} is a common request in kitchens, bathrooms, and entryways. Further inland, larger family homes in Riverside and Santa Clarita tend to have several carpeted bedrooms, where {serviceAreaLink('carpet-cleaning', 'riverside', 'carpet cleaning in Riverside')} and {serviceAreaLink('carpet-cleaning', 'santa-clarita', 'carpet cleaning in Santa Clarita')} get the most value from per-room bundle pricing.</p>
             <p>We also serve Santa Ana, Anaheim, Huntington Beach, Torrance, Culver City, San Bernardino, Ontario, Pomona, and Thousand Oaks. Our full Southern California service area stretches from Thousand Oaks in the west to San Bernardino in the east.</p>
           </div>
-          <a href="https://iqoracleaningservices.com/areas-we-serve/" onClick={(event) => { event.preventDefault(); onNavigate('/areas-we-serve'); }} className="btn-outline-tw mt-6 inline-flex items-center gap-2"><MapPin size={16} />View All Service Areas</a>
+          <a href={`${BASE_URL}/areas-we-serve/`} onClick={(event) => { event.preventDefault(); onNavigate('/areas-we-serve'); }} className="btn-outline-tw mt-6 inline-flex items-center gap-2"><MapPin size={16} />View All Service Areas</a>
         </div>
       </section>
       <section className="border-y border-slate-100 bg-white py-14 text-center dark:border-slate-800 dark:bg-dark-surface" data-reveal>
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="badge-tag mx-auto mb-3">Reviews</div>
           <h2 className="mb-5 text-3xl font-heading font-extrabold text-slate-900 dark:text-white sm:text-4xl">What Our Customers Say About IQORA</h2>
-          <a href="https://iqoracleaningservices.com/our-reviews/" onClick={(event) => { event.preventDefault(); onNavigate('/our-reviews'); }} className="btn-outline-tw inline-flex items-center gap-2">Read Customer Reviews<ArrowRight size={16} /></a>
+          <a href={`${BASE_URL}/our-reviews/`} onClick={(event) => { event.preventDefault(); onNavigate('/our-reviews'); }} className="btn-outline-tw inline-flex items-center gap-2">Read Customer Reviews<ArrowRight size={16} /></a>
         </div>
       </section>
-      <PricingPlans onOpenQuote={scrollToEstimate} />
+      <PricingPlans onOpenQuote={scrollToEstimate} onNavigate={onNavigate} />
       <section className="py-16 lg:py-20 bg-slate-50 dark:bg-dark-bg" data-reveal>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-center space-y-3">

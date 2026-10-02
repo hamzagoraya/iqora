@@ -1,5 +1,6 @@
 import React from 'react';
 import { Check, Sparkles, ArrowRight } from 'lucide-react';
+import { BASE_URL } from '../../config';
 
 export default function PricingPlans({ onOpenQuote, onNavigate }) {
   const cards = [
@@ -32,7 +33,7 @@ export default function PricingPlans({ onOpenQuote, onNavigate }) {
             Honest Cleaning Prices, Confirmed Before We Start
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-            The three cards below cover our core services. Stairs, hallways, recliners, rugs, mattresses, and every other item have their own rates on the <a href="https://iqoracleaningservices.com/cleaning-services-pricing/" className="text-primary underline underline-offset-4">complete IQORA cleaning price list</a>, and bundling services lowers the cost of added items.
+            The three cards below cover our core services. Stairs, hallways, recliners, rugs, mattresses, and every other item have their own rates on the <a href={`${BASE_URL}/cleaning-services-pricing`} onClick={(e) => { e.preventDefault(); onNavigate('/cleaning-services-pricing'); }} className="text-primary underline underline-offset-4">complete IQORA cleaning price list</a>, and bundling services lowers the cost of added items.
           </p>
         </div>
 

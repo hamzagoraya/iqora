@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight, Phone } from 'lucide-react';
 import FaqAccordion from '../components/shared/FaqAccordion';
 import { BRAND } from '../data/siteData';
+import { BASE_URL } from '../config';
 
 const PAGE_TITLE = 'Carpet & Upholstery Cleaning FAQs | IQORA Cleaning Services';
 const PAGE_DESCRIPTION = "Answers about IQORA's carpet, upholstery, and tile cleaning: pricing, payment, scheduling, what to expect on service day, and caring for carpet afterward.";
@@ -55,13 +56,13 @@ const faqSchema = {
   '@graph': [
     {
       '@type': 'FAQPage',
-      '@id': 'https://iqoracleaningservices.com/faq/#webpage',
-      url: 'https://iqoracleaningservices.com/faq/',
+      '@id': `${BASE_URL}/faq/#webpage`,
+      url: `${BASE_URL}/faq/`,
       name: 'Carpet & Upholstery Cleaning FAQs | IQORA Cleaning Services',
       description: 'Answers about IQORA\'s carpet, upholstery, and tile cleaning: pricing, payment, scheduling, what to expect on service day, and caring for carpet afterward.',
-      isPartOf: { '@id': 'https://iqoracleaningservices.com/#website' },
-      about: { '@id': 'https://iqoracleaningservices.com/#organization' },
-      breadcrumb: { '@id': 'https://iqoracleaningservices.com/faq/#breadcrumb' },
+      isPartOf: { '@id': `${BASE_URL}/#website` },
+      about: { '@id': `${BASE_URL}/#organization` },
+      breadcrumb: { '@id': `${BASE_URL}/faq/#breadcrumb` },
       inLanguage: 'en-US',
       mainEntity: [
         {
@@ -212,19 +213,19 @@ const faqSchema = {
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://iqoracleaningservices.com/faq/#breadcrumb',
+      '@id': `${BASE_URL}/faq/#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://iqoracleaningservices.com/' },
-        { '@type': 'ListItem', position: 2, name: 'FAQ', item: 'https://iqoracleaningservices.com/faq/' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${BASE_URL}/faq/` },
       ],
     },
     {
       '@type': ['LocalBusiness', 'Organization'],
-      '@id': 'https://iqoracleaningservices.com/#organization',
+      '@id': `${BASE_URL}/#organization`,
       name: 'IQORA Cleaning Services',
       legalName: 'IQORA Cleaning Services LLC',
-      url: 'https://iqoracleaningservices.com/',
-      logo: 'https://iqoracleaningservices.com/images/iqora-logo.png',
+      url: `${BASE_URL}/`,
+      logo: `${BASE_URL}/images/iqora-logo.png`,
       telephone: '+1-323-916-8039',
       email: 'iqoracleaningservices@gmail.com',
       priceRange: '$$',
@@ -243,10 +244,10 @@ const faqSchema = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://iqoracleaningservices.com/#website',
-      url: 'https://iqoracleaningservices.com/',
+      '@id': `${BASE_URL}/#website`,
+      url: `${BASE_URL}/`,
       name: 'IQORA Cleaning Services',
-      publisher: { '@id': 'https://iqoracleaningservices.com/#organization' },
+      publisher: { '@id': `${BASE_URL}/#organization` },
     },
   ],
 };
@@ -338,7 +339,7 @@ export default function FAQPage({ onNavigate, onOpenQuote }) {
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a href="tel:+13239168039" className="btn-primary-tw w-full sm:w-auto"><Phone size={16} /><span>+1 (323) 916-8039</span></a>
-            <a href="https://iqoracleaningservices.com/our-reviews/" onClick={(event) => navigate(event, '/our-reviews')} className="btn-outline-tw w-full sm:w-auto">Read Customer Reviews</a>
+            <a href={`${BASE_URL}/our-reviews/`} onClick={(event) => navigate(event, '/our-reviews')} className="btn-outline-tw w-full sm:w-auto">Read Customer Reviews</a>
           </div>
         </div>
       </section>

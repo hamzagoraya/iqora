@@ -61,7 +61,7 @@ export default function LocationMap() {
         <div className="relative rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-dark-surface">
           <div className="lg:absolute lg:top-6 lg:left-6 z-10 p-6 bg-white dark:bg-dark-surface lg:max-w-sm w-full shadow-lg rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
             <div className="text-xs font-bold uppercase tracking-wider text-primary">IQORA Cleaning Services</div>
-            <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white">Based in North Hollywood, Los Angeles, CA [CONFIRM ZIP]</h3>
+            <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white">Based in North Hollywood, Los Angeles, CA 91605</h3>
 
             <div className="space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
               <div className="flex items-center gap-2.5">

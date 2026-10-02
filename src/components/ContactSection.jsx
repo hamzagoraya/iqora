@@ -37,6 +37,36 @@ export default function ContactSection({ onOpenQuote }) {
     onOpenQuote?.();
   };
 
+  const handleWhatsAppSubmit = () => {
+    let message = `Hello IQORA Cleaning Services, I would like a quote.\n\n`;
+    message += `*Name:* ${formData.name || 'Not provided'}\n`;
+    message += `*Phone:* ${formData.phone || 'Not provided'}\n`;
+    if (formData.email) message += `*Email:* ${formData.email}\n`;
+    message += `*City:* ${formData.city}\n`;
+    
+    if (formData.service.length > 0) {
+      message += `*Services Needed:* ${formData.service.join(', ')}\n`;
+    }
+    
+    if (formData.details) {
+      message += `*What needs cleaning?*\n${formData.details}\n`;
+    }
+    
+    if (formData.instructions) {
+      message += `*Special Instructions:*\n${formData.instructions}\n`;
+    }
+    
+    if (formData.photos && formData.photos.length > 0) {
+      message += `\n_(I have photos to share)_`;
+    }
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappNumber = '15598240198';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <section className="py-16 lg:py-24" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -216,9 +246,19 @@ export default function ContactSection({ onOpenQuote }) {
                 />
               </div>
 
-              <button type="submit" className="btn-primary-tw w-full justify-center text-sm py-4 mt-2">
-                <span>Request My Free Quote</span>
-              </button>
+              <div className="flex flex-col sm:flex-row gap-3 pt-2 mt-2">
+                <button type="submit" className="btn-primary-tw flex-1 justify-center text-sm py-4">
+                  <span>Request My Free Quote</span>
+                </button>
+                <button 
+                  type="button" 
+                  onClick={handleWhatsAppSubmit}
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-600 px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:bg-green-500 shadow-md hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                >
+                  <WhatsAppIcon size={18} />
+                  <span>Get Quote on WhatsApp</span>
+                </button>
+              </div>
             </form>
           </div>
         </div>

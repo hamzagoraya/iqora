@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2, Sparkles } from 'lucide-react';
 import { SERVICES, SPECIALTY_SERVICES } from '../../data/siteData';
+import WhatsAppIcon from '../shared/WhatsAppIcon';
 
 const SERVICE_OPTIONS = [...SERVICES, ...SPECIALTY_SERVICES];
 
@@ -16,6 +17,25 @@ export default function EstimateCallout() {
   const handleSubmit = (e) => {
     e.preventDefault();
     window.alert('Thank you! Your free estimate request has been received.');
+  };
+
+  const handleWhatsAppSubmit = () => {
+    if (!formData.name || !formData.phone || !formData.details || !formData.city) {
+      window.alert('Please fill out all fields before getting a quote on WhatsApp.');
+      return;
+    }
+
+    let message = `Hello IQORA Cleaning Services, I would like an estimate.\n\n`;
+    message += `*Name:* ${formData.name}\n`;
+    message += `*Phone:* ${formData.phone}\n`;
+    message += `*City:* ${formData.city}\n`;
+    message += `*Rooms or Items:* ${formData.details}\n`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappNumber = '15598240198';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -81,6 +101,7 @@ export default function EstimateCallout() {
                   <label className="text-xs font-bold text-slate-300">Rooms or Items</label>
                   <input
                     type="text"
+                    required
                     value={formData.details}
                     onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                     placeholder="3 rooms + 1 sofa"
@@ -92,6 +113,7 @@ export default function EstimateCallout() {
                   <label className="text-xs font-bold text-slate-300">City</label>
                   <input
                     type="text"
+                    required
                     value={formData.city}
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                     placeholder="Los Angeles"
@@ -99,9 +121,19 @@ export default function EstimateCallout() {
                   />
                 </div>
 
-                <button type="submit" className="btn-primary-tw w-full justify-center text-sm py-4 mt-2">
-                  <span>Request My Free Quote</span>
-                </button>
+                <div className="flex flex-col sm:flex-row gap-3 pt-2 mt-2">
+                  <button type="submit" className="btn-primary-tw flex-1 justify-center text-sm py-4">
+                    <span>Request My Free Quote</span>
+                  </button>
+                  <button 
+                    type="button" 
+                    onClick={handleWhatsAppSubmit}
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-600 px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:bg-green-500 shadow-md hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                  >
+                    <WhatsAppIcon size={18} />
+                    <span>WhatsApp Quote</span>
+                  </button>
+                </div>
               </form>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { BASE_URL } from '../../config';
 const services = [
   {
     id: 'carpet-cleaning',
@@ -8,7 +9,7 @@ const services = [
     description: 'Deep hot water extraction that lifts embedded dirt, allergens, and pet odors from every room.',
     price: '$40 per room · $120 minimum',
     image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop',
-    link: 'https://iqoracleaningservices.com/carpet-cleaning-services-in-north-hollywood/',
+    link: `${BASE_URL}/carpet-cleaning-services-in-north-hollywood`,
   },
   {
     id: 'upholstery-cleaning',
@@ -17,7 +18,7 @@ const services = [
     description: 'Gentle, fabric-matched cleaning for sofas, sectionals, recliners, ottomans, and dining chairs.',
     price: 'From $29 per seat',
     image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop',
-    link: 'https://iqoracleaningservices.com/upholstery-cleaning-services-in-north-hollywood/',
+    link: `${BASE_URL}/upholstery-cleaning-services-in-north-hollywood`,
   },
   {
     id: 'tile-and-grout-cleaning',
@@ -26,7 +27,7 @@ const services = [
     description: 'Deep cleaning that lifts the grime settled in grout lines and brings back your floor\'s original color.',
     price: '$20 per room',
     image: 'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=1200&auto=format&fit=crop',
-    link: 'https://iqoracleaningservices.com/tile-and-grout-cleaning-services-in-north-hollywood/',
+    link: `${BASE_URL}/tile-and-grout-cleaning-services-in-north-hollywood`,
   },
 ];
 
@@ -68,7 +69,7 @@ export default function ServiceShowcase({ onOpenQuote, onNavigate }) {
                 <p className="text-sm font-extrabold text-primary">{service.price}</p>
 
                 <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3">
-                  <a href={service.link} className="inline-flex items-center gap-2 text-xs font-extrabold text-slate-900 dark:text-white hover:text-primary transition-colors">
+                  <a href={service.link} onClick={(e) => { e.preventDefault(); onNavigate?.(service.link.replace(BASE_URL, '')); }} className="inline-flex items-center gap-2 text-xs font-extrabold text-slate-900 dark:text-white hover:text-primary transition-colors">
                     <span>{service.name} Details</span>
                     <ArrowRight size={14} />
                   </a>
