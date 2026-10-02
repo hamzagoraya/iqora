@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { ArrowRight, MapPin, Phone, Sparkles } from 'lucide-react';
 import { BRAND, SERVICES, SPECIALTY_SERVICES, getParentCity, getServiceCityPath, getSpecialtyPath } from '../data/siteData';
+import { BASE_URL } from '../config';
 
 const PAGE_TITLE = 'Carpet, Upholstery & Specialty Cleaning Services | IQORA';
 const PAGE_DESCRIPTION = "Compare IQORA's 8 cleaning services, from carpet and upholstery to rugs, mattresses, leather, and tile, with real prices across Greater LA and Orange County.";
@@ -245,27 +246,27 @@ const servicesSchema = {
   '@graph': [
     {
       '@type': 'CollectionPage',
-      '@id': 'https://iqoracleaningservices.com/cleaning-services/#webpage',
-      url: 'https://iqoracleaningservices.com/cleaning-services/',
+      '@id': `${BASE_URL}/cleaning-services/#webpage`,
+      url: `${BASE_URL}/cleaning-services/`,
       name: PAGE_TITLE,
       description: PAGE_DESCRIPTION,
-      isPartOf: { '@id': 'https://iqoracleaningservices.com/#website' },
-      about: { '@id': 'https://iqoracleaningservices.com/#organization' },
-      breadcrumb: { '@id': 'https://iqoracleaningservices.com/cleaning-services/#breadcrumb' },
-      mainEntity: { '@id': 'https://iqoracleaningservices.com/cleaning-services/#service-list' },
+      isPartOf: { '@id': `${BASE_URL}/#website` },
+      about: { '@id': `${BASE_URL}/#organization` },
+      breadcrumb: { '@id': `${BASE_URL}/cleaning-services/#breadcrumb` },
+      mainEntity: { '@id': `${BASE_URL}/cleaning-services/#service-list` },
       inLanguage: 'en-US',
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://iqoracleaningservices.com/cleaning-services/#breadcrumb',
+      '@id': `${BASE_URL}/cleaning-services/#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://iqoracleaningservices.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Cleaning Services', item: 'https://iqoracleaningservices.com/cleaning-services/' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'Cleaning Services', item: `${BASE_URL}/cleaning-services/` },
       ],
     },
     {
       '@type': 'ItemList',
-      '@id': 'https://iqoracleaningservices.com/cleaning-services/#service-list',
+      '@id': `${BASE_URL}/cleaning-services/#service-list`,
       name: 'IQORA Cleaning Services',
       numberOfItems: 8,
       itemListOrder: 'https://schema.org/ItemListUnordered',
@@ -274,31 +275,31 @@ const servicesSchema = {
         position: index + 1,
         item: {
           '@type': 'Service',
-          '@id': `https://iqoracleaningservices.com/${service.id}/#service`,
+          '@id': `${BASE_URL}/${service.id}/#service`,
           name: service.name,
           serviceType: service.name,
-          url: `https://iqoracleaningservices.com/${service.id}/`,
+          url: `${BASE_URL}/${service.id}/`,
           description: service.description,
-          provider: { '@id': 'https://iqoracleaningservices.com/#organization' },
-          areaServed: { '@id': 'https://iqoracleaningservices.com/#service-area' },
+          provider: { '@id': `${BASE_URL}/#organization` },
+          areaServed: { '@id': `${BASE_URL}/#service-area` },
           ...(service.offers ? { offers: service.offers.map(makeOffer) } : {}),
         },
       })),
     },
     {
       '@type': ['LocalBusiness', 'Organization'],
-      '@id': 'https://iqoracleaningservices.com/#organization',
+      '@id': `${BASE_URL}/#organization`,
       name: 'IQORA Cleaning Services',
       legalName: 'IQORA Cleaning Services LLC',
-      url: 'https://iqoracleaningservices.com/',
-      logo: 'https://iqoracleaningservices.com/images/iqora-logo.png',
+      url: `${BASE_URL}/`,
+      logo: `${BASE_URL}/images/iqora-logo.png`,
       telephone: '+1-323-916-8039',
       email: 'iqoracleaningservices@gmail.com',
       priceRange: '$$',
       address: { '@type': 'PostalAddress', addressLocality: 'Los Angeles', addressRegion: 'CA', addressCountry: 'US' },
       areaServed: {
         '@type': 'AdministrativeArea',
-        '@id': 'https://iqoracleaningservices.com/#service-area',
+        '@id': `${BASE_URL}/#service-area`,
         name: 'Greater Los Angeles, Orange County, and the Inland Empire',
         containsPlace: cityNamesInSchema.map((name) => ({ '@type': 'City', name })),
       },
@@ -311,15 +312,15 @@ const servicesSchema = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://iqoracleaningservices.com/#website',
-      url: 'https://iqoracleaningservices.com/',
+      '@id': `${BASE_URL}/#website`,
+      url: `${BASE_URL}/`,
       name: 'IQORA Cleaning Services',
-      publisher: { '@id': 'https://iqoracleaningservices.com/#organization' },
+      publisher: { '@id': `${BASE_URL}/#organization` },
     },
     {
       '@type': 'FAQPage',
-      '@id': 'https://iqoracleaningservices.com/cleaning-services/#faq',
-      isPartOf: { '@id': 'https://iqoracleaningservices.com/cleaning-services/#webpage' },
+      '@id': `${BASE_URL}/cleaning-services/#faq`,
+      isPartOf: { '@id': `${BASE_URL}/cleaning-services/#webpage` },
       mainEntity: SERVICE_FAQS.map(({ q, a }) => ({
         '@type': 'Question',
         name: q,
@@ -409,14 +410,14 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
                       </div>
                     </div>
                     <p className="mb-5 flex-grow text-sm leading-relaxed text-slate-600 dark:text-slate-300">{description}</p>
-                    <a href={`https://iqoracleaningservices.com${mainPath}/`} onClick={(event) => navigate(event, mainPath, onNavigate)} className="btn-primary-tw mb-5 w-full justify-center text-center">{name} in Los Angeles <ArrowRight size={15} /></a>
+                    <a href={`${BASE_URL}${mainPath}/`} onClick={(event) => navigate(event, mainPath, onNavigate)} className="btn-primary-tw mb-5 w-full justify-center text-center">{name} in Los Angeles <ArrowRight size={15} /></a>
                     <div className="border-t border-slate-100 pt-4 dark:border-slate-800">
                       <p className="mb-2.5 text-xs font-bold text-slate-500 dark:text-slate-400">Also available in:</p>
                       <div className="flex flex-wrap gap-1.5">
                         {CITY_LINKS.map((city) => {
                           const path = getServiceCityPath(id, city.slug);
                           return (
-                            <a key={city.slug} href={`https://iqoracleaningservices.com${path}/`} onClick={(event) => navigate(event, path, onNavigate)} className="rounded-md border border-slate-200 px-2.5 py-1 text-xs font-semibold text-slate-600 transition-colors hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300">
+                            <a key={city.slug} href={`${BASE_URL}${path}/`} onClick={(event) => navigate(event, path, onNavigate)} className="rounded-md border border-slate-200 px-2.5 py-1 text-xs font-semibold text-slate-600 transition-colors hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300">
                               {city.name}
                             </a>
                           );
@@ -451,7 +452,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
                   <h3 className="mb-2 font-heading text-xl font-extrabold text-slate-900 dark:text-white">{name}</h3>
                   <p className="mb-4 flex-grow text-sm leading-relaxed text-slate-600 dark:text-slate-300">{description}</p>
                   <p className="mb-4 inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 dark:text-slate-400"><Sparkles size={13} className="text-primary" />{feature}</p>
-                  <a href={`https://iqoracleaningservices.com${path}/`} onClick={(event) => navigate(event, path, onNavigate)} className="btn-outline-tw w-full justify-center text-center">{name} Details <ArrowRight size={15} /></a>
+                  <a href={`${BASE_URL}${path}/`} onClick={(event) => navigate(event, path, onNavigate)} className="btn-outline-tw w-full justify-center text-center">{name} Details <ArrowRight size={15} /></a>
                 </article>
               );
             })}
@@ -495,7 +496,7 @@ export default function ServicesHubPage({ onNavigate, onOpenQuote }) {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <h2 className="mb-3 text-3xl font-heading font-extrabold text-slate-900 dark:text-white sm:text-4xl">Every Service, in 20 Cities Across Southern California</h2>
           <p className="mx-auto mb-6 max-w-3xl text-sm leading-relaxed text-slate-600 dark:text-slate-300">IQORA is based in Los Angeles and serves 20 cities across Los Angeles County, Orange County, the Inland Empire, and Thousand Oaks. Every service on this page is available in all 20 cities, with the same posted prices.</p>
-          <a href="https://iqoracleaningservices.com/areas-we-serve/" onClick={(event) => navigate(event, '/areas-we-serve', onNavigate)} className="btn-secondary-tw"><MapPin size={16} /><span>View All Service Areas</span></a>
+          <a href={`${BASE_URL}/areas-we-serve/`} onClick={(event) => navigate(event, '/areas-we-serve', onNavigate)} className="btn-secondary-tw"><MapPin size={16} /><span>View All Service Areas</span></a>
         </div>
       </section>
 

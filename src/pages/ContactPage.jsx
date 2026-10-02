@@ -3,37 +3,38 @@ import Hero from '../components/Hero';
 import ContactCards from '../components/ContactCards';
 import ContactSection from '../components/ContactSection';
 import LocationMap from '../components/LocationMap';
+import { BASE_URL } from '../config';
 
 const contactSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'ContactPage',
-      '@id': 'https://iqoracleaningservices.com/contact-us/#webpage',
-      url: 'https://iqoracleaningservices.com/contact-us/',
+      '@id': `${BASE_URL}/contact-us/#webpage`,
+      url: `${BASE_URL}/contact-us/`,
       name: 'Contact IQORA Cleaning Services | Free Quote in Los Angeles',
       description: 'Contact IQORA Cleaning Services for a free carpet, upholstery, or tile cleaning quote. Call +1 (323) 916-8039, message us on WhatsApp, or use our quote form.',
-      isPartOf: { '@id': 'https://iqoracleaningservices.com/#website' },
-      about: { '@id': 'https://iqoracleaningservices.com/#organization' },
-      mainEntity: { '@id': 'https://iqoracleaningservices.com/#organization' },
-      breadcrumb: { '@id': 'https://iqoracleaningservices.com/contact-us/#breadcrumb' },
+      isPartOf: { '@id': `${BASE_URL}/#website` },
+      about: { '@id': `${BASE_URL}/#organization` },
+      mainEntity: { '@id': `${BASE_URL}/#organization` },
+      breadcrumb: { '@id': `${BASE_URL}/contact-us/#breadcrumb` },
       inLanguage: 'en-US',
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://iqoracleaningservices.com/contact-us/#breadcrumb',
+      '@id': `${BASE_URL}/contact-us/#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://iqoracleaningservices.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Contact Us', item: 'https://iqoracleaningservices.com/contact-us/' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'Contact Us', item: `${BASE_URL}/contact-us/` },
       ],
     },
     {
       '@type': ['LocalBusiness', 'Organization'],
-      '@id': 'https://iqoracleaningservices.com/#organization',
+      '@id': `${BASE_URL}/#organization`,
       name: 'IQORA Cleaning Services',
       legalName: 'IQORA Cleaning Services LLC',
-      url: 'https://iqoracleaningservices.com/',
-      logo: 'https://iqoracleaningservices.com/images/iqora-logo.png',
+      url: `${BASE_URL}/`,
+      logo: `${BASE_URL}/images/iqora-logo.png`,
       telephone: '+1-323-916-8039',
       email: 'iqoracleaningservices@gmail.com',
       priceRange: '$$',
@@ -91,15 +92,15 @@ const contactSchema = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://iqoracleaningservices.com/#website',
-      url: 'https://iqoracleaningservices.com/',
+      '@id': `${BASE_URL}/#website`,
+      url: `${BASE_URL}/`,
       name: 'IQORA Cleaning Services',
-      publisher: { '@id': 'https://iqoracleaningservices.com/#organization' },
+      publisher: { '@id': `${BASE_URL}/#organization` },
     },
     {
       '@type': 'FAQPage',
-      '@id': 'https://iqoracleaningservices.com/contact-us/#faq',
-      isPartOf: { '@id': 'https://iqoracleaningservices.com/contact-us/#webpage' },
+      '@id': `${BASE_URL}/contact-us/#faq`,
+      isPartOf: { '@id': `${BASE_URL}/contact-us/#webpage` },
       mainEntity: [
         {
           '@type': 'Question',

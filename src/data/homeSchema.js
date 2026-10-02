@@ -1,22 +1,24 @@
-{
+import { BASE_URL } from '../config';
+
+const homeSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": ["LocalBusiness", "Organization"],
-      "@id": "https://iqoracleaningservices.com/#organization",
+      "@id": `${BASE_URL}/#organization`,
       "name": "IQORA Cleaning Services",
       "legalName": "IQORA Cleaning Services LLC",
       "alternateName": "IQORA",
       "additionalType": "https://en.wikipedia.org/wiki/Carpet_cleaning",
       "slogan": "Because clean isn't just visible — it's felt.",
       "description": "IQORA Cleaning Services is a locally owned carpet, upholstery, and tile and grout cleaning company based in North Hollywood, California, serving 20 cities across Los Angeles County, Orange County, the Inland Empire, and Thousand Oaks. Services include area rug, mattress, leather couch, and curtain cleaning plus Scotchgard protection, using professional hot water extraction with upfront, posted prices.",
-      "url": "https://iqoracleaningservices.com/",
+      "url": `${BASE_URL}/`,
       "logo": {
         "@type": "ImageObject",
-        "@id": "https://iqoracleaningservices.com/#logo",
-        "url": "https://iqoracleaningservices.com/images/iqora-logo.png"
+        "@id": `${BASE_URL}/#logo`,
+        "url": `${BASE_URL}/images/iqora-logo.png`
       },
-      "image": { "@id": "https://iqoracleaningservices.com/#logo" },
+      "image": { "@id": `${BASE_URL}/#logo` },
       "telephone": "+1-323-916-8039",
       "email": "iqoracleaningservices@gmail.com",
       "priceRange": "$$",
@@ -24,11 +26,11 @@
       "foundingDate": "2025-11-12",
       "founder": {
         "@type": "Person",
-        "@id": "https://iqoracleaningservices.com/#founder",
+        "@id": `${BASE_URL}/#founder`,
         "name": "Gurbaj Singh",
         "jobTitle": "Founder & Owner",
         "description": "Gurbaj brings 5 years of hands-on cleaning experience to every job.",
-        "worksFor": { "@id": "https://iqoracleaningservices.com/#organization" }
+        "worksFor": { "@id": `${BASE_URL}/#organization` }
       },
       "address": {
         "@type": "PostalAddress",
@@ -38,7 +40,7 @@
       },
       "areaServed": {
         "@type": "AdministrativeArea",
-        "@id": "https://iqoracleaningservices.com/#service-area",
+        "@id": `${BASE_URL}/#service-area`,
         "name": "Greater Los Angeles, Orange County, and the Inland Empire",
         "containsPlace": [
           { "@type": "City", "name": "Los Angeles, CA" },
@@ -97,13 +99,13 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "@id": "https://iqoracleaningservices.com/carpet-cleaning-services-in-north-hollywood/#service",
+              "@id": `${BASE_URL}/carpet-cleaning-services-in-north-hollywood/#service`,
               "name": "Carpet Cleaning",
-              "url": "https://iqoracleaningservices.com/carpet-cleaning-services-in-north-hollywood/",
+              "url": `${BASE_URL}/carpet-cleaning-services-in-north-hollywood/`,
               "description": "Deep hot water extraction carpet cleaning that lifts embedded dirt, allergens, and pet odors. $40 per room with a $120 minimum visit.",
               "serviceType": "Carpet Cleaning",
-              "provider": { "@id": "https://iqoracleaningservices.com/#organization" },
-              "areaServed": { "@id": "https://iqoracleaningservices.com/#service-area" },
+              "provider": { "@id": `${BASE_URL}/#organization` },
+              "areaServed": { "@id": `${BASE_URL}/#service-area` },
               "offers": [
                 {
                   "@type": "Offer",
@@ -128,13 +130,13 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "@id": "https://iqoracleaningservices.com/upholstery-cleaning-services-in-north-hollywood/#service",
+              "@id": `${BASE_URL}/upholstery-cleaning-services-in-north-hollywood/#service`,
               "name": "Upholstery Cleaning",
-              "url": "https://iqoracleaningservices.com/upholstery-cleaning-services-in-north-hollywood/",
+              "url": `${BASE_URL}/upholstery-cleaning-services-in-north-hollywood/`,
               "description": "Fabric-safe cleaning for sofas, sectionals, recliners, ottomans, and dining chairs, matched to each fabric's cleaning code.",
               "serviceType": "Upholstery Cleaning",
-              "provider": { "@id": "https://iqoracleaningservices.com/#organization" },
-              "areaServed": { "@id": "https://iqoracleaningservices.com/#service-area" },
+              "provider": { "@id": `${BASE_URL}/#organization` },
+              "areaServed": { "@id": `${BASE_URL}/#service-area` },
               "offers": [
                 {
                   "@type": "Offer",
@@ -158,13 +160,13 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "@id": "https://iqoracleaningservices.com/tile-and-grout-cleaning-services-in-north-hollywood/#service",
+              "@id": `${BASE_URL}/tile-and-grout-cleaning-services-in-north-hollywood/#service`,
               "name": "Tile & Grout Cleaning",
-              "url": "https://iqoracleaningservices.com/tile-and-grout-cleaning-services-in-north-hollywood/",
+              "url": `${BASE_URL}/tile-and-grout-cleaning-services-in-north-hollywood/`,
               "description": "Deep tile and grout cleaning that lifts the grime settled in grout lines and restores the floor's original color. $20 per room.",
                 "serviceType": "Tile & Grout Cleaning",
-              "provider": { "@id": "https://iqoracleaningservices.com/#organization" },
-              "areaServed": { "@id": "https://iqoracleaningservices.com/#service-area" },
+              "provider": { "@id": `${BASE_URL}/#organization` },
+              "areaServed": { "@id": `${BASE_URL}/#service-area` },
               "offers": [
                 {
                   "@type": "Offer",
@@ -178,13 +180,13 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "@id": "https://iqoracleaningservices.com/area-rug-cleaning-services/#service",
+              "@id": `${BASE_URL}/area-rug-cleaning-services/#service`,
               "name": "Area Rug Cleaning",
-              "url": "https://iqoracleaningservices.com/area-rug-cleaning-services/",
+              "url": `${BASE_URL}/area-rug-cleaning-services/`,
               "description": "Fiber-specific cleaning for wool and synthetic area rugs.",
               "serviceType": "Area Rug Cleaning",
-              "provider": { "@id": "https://iqoracleaningservices.com/#organization" },
-              "areaServed": { "@id": "https://iqoracleaningservices.com/#service-area" },
+              "provider": { "@id": `${BASE_URL}/#organization` },
+              "areaServed": { "@id": `${BASE_URL}/#service-area` },
               "offers": [
                 { "@type": "Offer", "name": "Medium area rug", "price": 100, "priceCurrency": "USD" },
                 { "@type": "Offer", "name": "Large area rug", "price": 120, "priceCurrency": "USD" },
@@ -196,13 +198,13 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "@id": "https://iqoracleaningservices.com/mattress-cleaning-services/#service",
+              "@id": `${BASE_URL}/mattress-cleaning-services/#service`,
               "name": "Mattress Cleaning",
-              "url": "https://iqoracleaningservices.com/mattress-cleaning-services/",
+              "url": `${BASE_URL}/mattress-cleaning-services/`,
               "description": "Mattress cleaning that removes dust mites, sweat, body oils, and stains.",
               "serviceType": "Mattress Cleaning",
-              "provider": { "@id": "https://iqoracleaningservices.com/#organization" },
-              "areaServed": { "@id": "https://iqoracleaningservices.com/#service-area" },
+              "provider": { "@id": `${BASE_URL}/#organization` },
+              "areaServed": { "@id": `${BASE_URL}/#service-area` },
               "offers": [
                 { "@type": "Offer", "name": "Single mattress", "price": 89, "priceCurrency": "USD" },
                 { "@type": "Offer", "name": "Queen mattress", "price": 99, "priceCurrency": "USD" },
@@ -214,13 +216,13 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "@id": "https://iqoracleaningservices.com/leather-couch-cleaning-services/#service",
+              "@id": `${BASE_URL}/leather-couch-cleaning-services/#service`,
               "name": "Leather Couch Cleaning",
-              "url": "https://iqoracleaningservices.com/leather-couch-cleaning-services/",
+              "url": `${BASE_URL}/leather-couch-cleaning-services/`,
               "description": "Gentle, leather-safe cleaning for leather sofas and couches.",
               "serviceType": "Leather Couch Cleaning",
-              "provider": { "@id": "https://iqoracleaningservices.com/#organization" },
-              "areaServed": { "@id": "https://iqoracleaningservices.com/#service-area" },
+              "provider": { "@id": `${BASE_URL}/#organization` },
+              "areaServed": { "@id": `${BASE_URL}/#service-area` },
               "offers": [
                 {
                   "@type": "Offer",
@@ -234,13 +236,13 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "@id": "https://iqoracleaningservices.com/scotchgard-protection-services/#service",
+              "@id": `${BASE_URL}/scotchgard-protection-services/#service`,
               "name": "Scotchgard Protection",
-              "url": "https://iqoracleaningservices.com/scotchgard-protection-services/",
+              "url": `${BASE_URL}/scotchgard-protection-services/`,
               "description": "Scotchgard fabric protection that helps sofas and chairs resist future spills and stains.",
               "serviceType": "Scotchgard Protection",
-              "provider": { "@id": "https://iqoracleaningservices.com/#organization" },
-              "areaServed": { "@id": "https://iqoracleaningservices.com/#service-area" },
+              "provider": { "@id": `${BASE_URL}/#organization` },
+              "areaServed": { "@id": `${BASE_URL}/#service-area` },
               "offers": [
                 {
                   "@type": "Offer",
@@ -254,13 +256,13 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "@id": "https://iqoracleaningservices.com/curtain-cleaning-services/#service",
+              "@id": `${BASE_URL}/curtain-cleaning-services/#service`,
               "name": "Curtain Cleaning",
-              "url": "https://iqoracleaningservices.com/curtain-cleaning-services/",
+              "url": `${BASE_URL}/curtain-cleaning-services/`,
               "description": "In-home curtain cleaning that removes dust and odors without taking curtains down.",
               "serviceType": "Curtain Cleaning",
-              "provider": { "@id": "https://iqoracleaningservices.com/#organization" },
-              "areaServed": { "@id": "https://iqoracleaningservices.com/#service-area" },
+              "provider": { "@id": `${BASE_URL}/#organization` },
+              "areaServed": { "@id": `${BASE_URL}/#service-area` },
               "offers": [
                 { "@type": "Offer", "name": "Small curtain", "price": 80, "priceCurrency": "USD" },
                 { "@type": "Offer", "name": "Standard or large curtain", "price": 120, "priceCurrency": "USD" }
@@ -272,28 +274,28 @@
     },
     {
       "@type": "WebSite",
-      "@id": "https://iqoracleaningservices.com/#website",
-      "url": "https://iqoracleaningservices.com/",
+      "@id": `${BASE_URL}/#website`,
+      "url": `${BASE_URL}/`,
       "name": "IQORA Cleaning Services",
       "alternateName": "IQORA",
-      "publisher": { "@id": "https://iqoracleaningservices.com/#organization" },
+      "publisher": { "@id": `${BASE_URL}/#organization` },
       "inLanguage": "en-US"
     },
     {
       "@type": "WebPage",
-      "@id": "https://iqoracleaningservices.com/#webpage",
-      "url": "https://iqoracleaningservices.com/",
+      "@id": `${BASE_URL}/#webpage`,
+      "url": `${BASE_URL}/`,
       "name": "Carpet & Upholstery Cleaning in Greater Los Angeles | IQORA",
       "description": "IQORA cleans carpets, sofas, rugs, mattresses, and tile across Los Angeles, Orange County, and the Inland Empire. Upfront prices and open 24/7 for bookings.",
-      "isPartOf": { "@id": "https://iqoracleaningservices.com/#website" },
-      "about": { "@id": "https://iqoracleaningservices.com/#organization" },
-      "mainEntity": { "@id": "https://iqoracleaningservices.com/#organization" },
+      "isPartOf": { "@id": `${BASE_URL}/#website` },
+      "about": { "@id": `${BASE_URL}/#organization` },
+      "mainEntity": { "@id": `${BASE_URL}/#organization` },
       "inLanguage": "en-US"
     },
     {
       "@type": "FAQPage",
-      "@id": "https://iqoracleaningservices.com/#faq",
-      "isPartOf": { "@id": "https://iqoracleaningservices.com/#webpage" },
+      "@id": `${BASE_URL}/#faq`,
+      "isPartOf": { "@id": `${BASE_URL}/#webpage` },
       "mainEntity": [
         {
           "@type": "Question",
@@ -348,4 +350,6 @@
       ]
     }
   ]
-}
+};
+
+export default homeSchema;

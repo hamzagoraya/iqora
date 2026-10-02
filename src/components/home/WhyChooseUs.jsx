@@ -14,7 +14,7 @@ export default function WhyChooseUs({ onOpenQuote }) {
       id: 2,
       icon: <Leaf className="text-primary" size={28} />,
       title: 'Pet Stain and Odor Treatment',
-      desc: 'Pet accidents, spilled drinks, and everyday traffic marks get targeted treatment before the main cleaning. Fresh stains usually come out completely, while older ones often fade far more than people expect, as our before-and-after carpet and upholstery results show.',
+      desc: 'We use professional pet enzyme treatments to break down odor-causing urine crystals, rather than just masking the smell. Pet accidents, spilled drinks, and everyday traffic marks get targeted treatment before the main cleaning. Fresh stains usually come out completely, while older ones often fade far more than people expect.',
       link: '#estimate',
     },
     {

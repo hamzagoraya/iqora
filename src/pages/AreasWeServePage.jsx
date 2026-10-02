@@ -3,19 +3,20 @@ import { MapPin, ArrowRight, Phone, Star } from 'lucide-react';
 import Hero from '../components/Hero';
 import CTABand from '../components/shared/CTABand';
 import { SERVICES, CITIES, BRAND, getServiceCityPath, getAreaPath } from '../data/siteData';
+import { BASE_URL } from '../config';
 
 const areaSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'CollectionPage',
-      '@id': 'https://iqoracleaningservices.com/areas-we-serve/#webpage',
-      url: 'https://iqoracleaningservices.com/areas-we-serve/',
+      '@id': `${BASE_URL}/areas-we-serve/#webpage`,
+      url: `${BASE_URL}/areas-we-serve/`,
       name: 'Areas We Serve | IQORA Cleaning Services',
       description: 'IQORA Cleaning Services provides carpet, upholstery, and tile cleaning in Los Angeles, Orange County, the Inland Empire, and nearby communities.',
-      isPartOf: { '@id': 'https://iqoracleaningservices.com/#website' },
-      about: { '@id': 'https://iqoracleaningservices.com/#organization' },
-      breadcrumb: { '@id': 'https://iqoracleaningservices.com/areas-we-serve/#breadcrumb' },
+      isPartOf: { '@id': `${BASE_URL}/#website` },
+      about: { '@id': `${BASE_URL}/#organization` },
+      breadcrumb: { '@id': `${BASE_URL}/areas-we-serve/#breadcrumb` },
       inLanguage: 'en-US',
       mainEntity: {
         '@type': 'ItemList',
@@ -38,18 +39,18 @@ const areaSchema = {
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://iqoracleaningservices.com/areas-we-serve/#breadcrumb',
+      '@id': `${BASE_URL}/areas-we-serve/#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://iqoracleaningservices.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Areas We Serve', item: 'https://iqoracleaningservices.com/areas-we-serve/' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'Areas We Serve', item: `${BASE_URL}/areas-we-serve/` },
       ],
     },
     {
       '@type': ['LocalBusiness', 'Organization'],
-      '@id': 'https://iqoracleaningservices.com/#organization',
+      '@id': `${BASE_URL}/#organization`,
       name: 'IQORA Cleaning Services',
       legalName: 'IQORA Cleaning Services LLC',
-      url: 'https://iqoracleaningservices.com/',
+      url: `${BASE_URL}/`,
       telephone: '+1-323-916-8039',
       email: 'iqoracleaningservices@gmail.com',
       address: {
@@ -69,10 +70,10 @@ const areaSchema = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://iqoracleaningservices.com/#website',
-      url: 'https://iqoracleaningservices.com/',
+      '@id': `${BASE_URL}/#website`,
+      url: `${BASE_URL}/`,
       name: 'IQORA Cleaning Services',
-      publisher: { '@id': 'https://iqoracleaningservices.com/#organization' },
+      publisher: { '@id': `${BASE_URL}/#organization` },
     },
   ],
 };

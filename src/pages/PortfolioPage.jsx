@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { ArrowRight, MapPin, Phone } from 'lucide-react';
 import { BRAND, CITIES, PORTFOLIO, getCity, getServiceCityPath, getSpecialtyPath } from '../data/siteData';
+import { BASE_URL } from '../config';
 
 const PAGE_TITLE = 'Before & After Carpet and Upholstery Cleaning Photos | IQORA';
 const PAGE_DESCRIPTION = 'See before-and-after photos of IQORA carpet, upholstery, tile, rug, and mattress cleaning from real homes across Los Angeles, Orange County, and Inland Empire.';
@@ -23,31 +24,31 @@ const reviewSchema = {
   '@graph': [
     {
       '@type': 'ImageGallery',
-      '@id': 'https://iqoracleaningservices.com/portfolio/#webpage',
-      url: 'https://iqoracleaningservices.com/portfolio/',
+      '@id': `${BASE_URL}/portfolio/#webpage`,
+      url: `${BASE_URL}/portfolio/`,
       name: PAGE_TITLE,
       description: PAGE_DESCRIPTION,
-      isPartOf: { '@id': 'https://iqoracleaningservices.com/#website' },
-      about: { '@id': 'https://iqoracleaningservices.com/#organization' },
-      creator: { '@id': 'https://iqoracleaningservices.com/#organization' },
-      breadcrumb: { '@id': 'https://iqoracleaningservices.com/portfolio/#breadcrumb' },
+      isPartOf: { '@id': `${BASE_URL}/#website` },
+      about: { '@id': `${BASE_URL}/#organization` },
+      creator: { '@id': `${BASE_URL}/#organization` },
+      breadcrumb: { '@id': `${BASE_URL}/portfolio/#breadcrumb` },
       inLanguage: 'en-US',
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://iqoracleaningservices.com/portfolio/#breadcrumb',
+      '@id': `${BASE_URL}/portfolio/#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://iqoracleaningservices.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Portfolio', item: 'https://iqoracleaningservices.com/portfolio/' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'Portfolio', item: `${BASE_URL}/portfolio/` },
       ],
     },
     {
       '@type': ['LocalBusiness', 'Organization'],
-      '@id': 'https://iqoracleaningservices.com/#organization',
+      '@id': `${BASE_URL}/#organization`,
       name: 'IQORA Cleaning Services',
       legalName: 'IQORA Cleaning Services LLC',
-      url: 'https://iqoracleaningservices.com/',
-      logo: 'https://iqoracleaningservices.com/images/iqora-logo.png',
+      url: `${BASE_URL}/`,
+      logo: `${BASE_URL}/images/iqora-logo.png`,
       telephone: '+1-323-916-8039',
       email: 'iqoracleaningservices@gmail.com',
       priceRange: '$$',
@@ -61,15 +62,15 @@ const reviewSchema = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://iqoracleaningservices.com/#website',
-      url: 'https://iqoracleaningservices.com/',
+      '@id': `${BASE_URL}/#website`,
+      url: `${BASE_URL}/`,
       name: 'IQORA Cleaning Services',
-      publisher: { '@id': 'https://iqoracleaningservices.com/#organization' },
+      publisher: { '@id': `${BASE_URL}/#organization` },
     },
     {
       '@type': 'FAQPage',
-      '@id': 'https://iqoracleaningservices.com/portfolio/#faq',
-      isPartOf: { '@id': 'https://iqoracleaningservices.com/portfolio/#webpage' },
+      '@id': `${BASE_URL}/portfolio/#faq`,
+      isPartOf: { '@id': `${BASE_URL}/portfolio/#webpage` },
       mainEntity: REVIEW_FAQS.map(({ question, answer }) => ({
         '@type': 'Question',
         name: question,
@@ -230,7 +231,7 @@ export default function PortfolioPage({ onNavigate, onOpenQuote }) {
           <p className="mb-7 text-sm leading-relaxed text-slate-600 dark:text-slate-400 sm:text-base">Every project in this gallery started with a simple message and a photo. Send us a picture of the carpet, sofa, rug, or grout you want cleaned, and we'll tell you honestly what to expect and confirm your price before any work begins.</p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <button type="button" onClick={onOpenQuote} className="btn-primary-tw w-full sm:w-auto"><span>Start My Project</span><ArrowRight size={16} /></button>
-            <a href="https://iqoracleaningservices.com/our-reviews/" onClick={(event) => navigate(event, '/our-reviews', onNavigate)} className="btn-outline-tw w-full sm:w-auto">Read Customer Reviews</a>
+            <a href={`${BASE_URL}/our-reviews/`} onClick={(event) => navigate(event, '/our-reviews', onNavigate)} className="btn-outline-tw w-full sm:w-auto">Read Customer Reviews</a>
           </div>
         </div>
       </section>

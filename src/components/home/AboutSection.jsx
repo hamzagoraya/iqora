@@ -1,7 +1,8 @@
 import React from 'react';
 import { ShieldCheck, CheckCircle2, Award } from 'lucide-react';
+import { BASE_URL } from '../../config';
 
-export default function AboutSection({ onOpenQuote }) {
+export default function AboutSection({ onOpenQuote, onNavigate }) {
   return (
     <section id="about" className="py-16 lg:py-24 bg-white dark:bg-dark-surface/40" data-reveal>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,7 +34,7 @@ export default function AboutSection({ onOpenQuote }) {
             </h2>
 
             <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
-              IQORA Cleaning Services is a <a href="https://iqoracleaningservices.com/about-us/" className="text-primary underline underline-offset-4">locally owned cleaning company in North Hollywood</a>, founded in 2025 by Gurbaj Singh. Gurbaj brings 5 years of hands-on cleaning experience to every job. The business runs on a simple idea: tell customers the price before starting, do careful work in their home, and leave every room fresher than we found it.
+              IQORA Cleaning Services is a <a href={`${BASE_URL}/about-us`} onClick={(e) => { e.preventDefault(); onNavigate?.('/about-us'); }} className="text-primary underline underline-offset-4">locally owned cleaning company in North Hollywood</a>, founded in 2025 by Gurbaj Singh. Gurbaj brings 5 years of hands-on cleaning experience to every job. The business runs on a simple idea: tell customers the price before starting, do careful work in their home, and leave every room fresher than we found it.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">

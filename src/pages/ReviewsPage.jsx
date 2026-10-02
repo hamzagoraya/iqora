@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { ArrowRight, MapPin, Phone } from 'lucide-react';
 import { BRAND, CITIES, REVIEWS, getMainPagePath, getServiceMainPath, getSpecialtyPath } from '../data/siteData';
+import { BASE_URL } from '../config';
 
 const PAGE_TITLE = 'IQORA Reviews | Carpet & Upholstery Cleaning Los Angeles';
 const PAGE_DESCRIPTION = 'Read customer reviews of IQORA Cleaning Services for carpet, upholstery, tile, rug, and mattress cleaning across Los Angeles, Orange County, and Inland Empire.';
@@ -24,30 +25,30 @@ const reviewSchema = {
   '@graph': [
     {
       '@type': 'WebPage',
-      '@id': 'https://iqoracleaningservices.com/our-reviews/#webpage',
-      url: 'https://iqoracleaningservices.com/our-reviews/',
+      '@id': `${BASE_URL}/our-reviews/#webpage`,
+      url: `${BASE_URL}/our-reviews/`,
       name: PAGE_TITLE,
       description: PAGE_DESCRIPTION,
-      isPartOf: { '@id': 'https://iqoracleaningservices.com/#website' },
-      about: { '@id': 'https://iqoracleaningservices.com/#organization' },
-      breadcrumb: { '@id': 'https://iqoracleaningservices.com/our-reviews/#breadcrumb' },
+      isPartOf: { '@id': `${BASE_URL}/#website` },
+      about: { '@id': `${BASE_URL}/#organization` },
+      breadcrumb: { '@id': `${BASE_URL}/our-reviews/#breadcrumb` },
       inLanguage: 'en-US',
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://iqoracleaningservices.com/our-reviews/#breadcrumb',
+      '@id': `${BASE_URL}/our-reviews/#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://iqoracleaningservices.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Our Reviews', item: 'https://iqoracleaningservices.com/our-reviews/' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'Our Reviews', item: `${BASE_URL}/our-reviews/` },
       ],
     },
     {
       '@type': ['LocalBusiness', 'Organization'],
-      '@id': 'https://iqoracleaningservices.com/#organization',
+      '@id': `${BASE_URL}/#organization`,
       name: 'IQORA Cleaning Services',
       legalName: 'IQORA Cleaning Services LLC',
-      url: 'https://iqoracleaningservices.com/',
-      logo: 'https://iqoracleaningservices.com/images/iqora-logo.png',
+      url: `${BASE_URL}/`,
+      logo: `${BASE_URL}/images/iqora-logo.png`,
       telephone: '+1-323-916-8039',
       email: 'iqoracleaningservices@gmail.com',
       priceRange: '$$',
@@ -61,15 +62,15 @@ const reviewSchema = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://iqoracleaningservices.com/#website',
-      url: 'https://iqoracleaningservices.com/',
+      '@id': `${BASE_URL}/#website`,
+      url: `${BASE_URL}/`,
       name: 'IQORA Cleaning Services',
-      publisher: { '@id': 'https://iqoracleaningservices.com/#organization' },
+      publisher: { '@id': `${BASE_URL}/#organization` },
     },
     {
       '@type': 'FAQPage',
-      '@id': 'https://iqoracleaningservices.com/our-reviews/#faq',
-      isPartOf: { '@id': 'https://iqoracleaningservices.com/our-reviews/#webpage' },
+      '@id': `${BASE_URL}/our-reviews/#faq`,
+      isPartOf: { '@id': `${BASE_URL}/our-reviews/#webpage` },
       mainEntity: REVIEW_FAQS.map(({ question, answer }) => ({
         '@type': 'Question',
         name: question,
@@ -191,7 +192,7 @@ export default function ReviewsPage({ onNavigate, onOpenQuote }) {
           </p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <button type="button" onClick={onOpenQuote} className="btn-primary-tw w-full sm:w-auto">Get My Free Quote</button>
-            <a href="https://iqoracleaningservices.com/portfolio/" className="btn-outline-tw w-full sm:w-auto">View Before-and-After Photos</a>
+            <a href={`${BASE_URL}/portfolio`} onClick={(e) => { e.preventDefault(); onNavigate('/portfolio'); }} className="btn-outline-tw w-full sm:w-auto">View Before-and-After Photos</a>
           </div>
         </div>
       </section>
