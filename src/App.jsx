@@ -20,7 +20,9 @@ import FAQPage from './pages/FAQPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
 import useRevealAnimations from './hooks/useRevealAnimations';
-
+import AdminLogin from "./admin/pages/AdminLogin";
+import AdminDashboard from "./admin/pages/AdminDashboard";
+import ProtectedRoute from "./admin/ProtectedRoute";
 import {
   getService,
   getServiceMainPath,
@@ -333,6 +335,17 @@ export default function App() {
 
     return <HomePage {...pageProps} />;
   };
+if (currentPage === '/admin/login') {
+  return <AdminLogin />;
+}
+if (currentPage === '/admin') {
+  
+  return(
+  <ProtectedRoute>
+        <AdminDashboard />
+      </ProtectedRoute>
+  );
+}
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 flex flex-col justify-between">
